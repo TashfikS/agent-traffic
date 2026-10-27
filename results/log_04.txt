@@ -1,0 +1,99 @@
+/home/tinux/.claude-science/conda/envs/agenttraffic/lib/python3.11/site-packages/joblib/externals/loky/backend/context.py:134: UserWarning: Could not find the number of physical cores for the following reason:
+found 0 physical cores < 1
+Returning the number of logical cores instead. You can silence this warning by setting LOKY_MAX_CPU_COUNT to the number of cores you want to use.
+  warnings.warn(
+  File "/home/tinux/.claude-science/conda/envs/agenttraffic/lib/python3.11/site-packages/joblib/externals/loky/backend/context.py", line 272, in _count_physical_cores
+    raise ValueError(f"found {cpu_count_physical} physical cores < 1")
+pair model trained on 1764 conns
+           tag           linker        conns  n_turns  parent_acc     lo     hi
+0   main_seed3       sequential          all     5464       0.857  0.839  0.876
+1   main_seed3       sequential  multiplexed     2002       0.662  0.642  0.683
+2   main_seed3       sequential    dedicated     3462       0.971  0.966  0.976
+3   main_seed3  paper_ctxgrowth          all     5464       0.758  0.737  0.779
+4   main_seed3  paper_ctxgrowth  multiplexed     2002       0.557  0.537  0.579
+5   main_seed3  paper_ctxgrowth    dedicated     3462       0.874  0.859  0.890
+6   main_seed3      hybrid_rule          all     5464       0.862  0.842  0.881
+7   main_seed3      hybrid_rule  multiplexed     2002       0.668  0.644  0.694
+8   main_seed3      hybrid_rule    dedicated     3462       0.975  0.969  0.980
+9   main_seed3       hybrid_map          all     5464       0.955  0.947  0.963
+10  main_seed3       hybrid_map  multiplexed     2002       0.891  0.876  0.905
+11  main_seed3       hybrid_map    dedicated     3462       0.992  0.989  0.995
+12       subM1       sequential          all     1673       0.868  0.845  0.891
+13       subM1       sequential  multiplexed      404       0.691  0.649  0.730
+14       subM1       sequential    dedicated     1269       0.924  0.918  0.932
+15       subM1  paper_ctxgrowth          all     1673       0.702  0.675  0.733
+16       subM1  paper_ctxgrowth  multiplexed      404       0.522  0.478  0.565
+17       subM1  paper_ctxgrowth    dedicated     1269       0.760  0.736  0.787
+18       subM1      hybrid_rule          all     1673       0.888  0.865  0.913
+19       subM1      hybrid_rule  multiplexed      404       0.700  0.665  0.736
+20       subM1      hybrid_rule    dedicated     1269       0.948  0.937  0.959
+21       subM1       hybrid_map          all     1673       0.956  0.943  0.967
+22       subM1       hybrid_map  multiplexed      404       0.903  0.867  0.940
+23       subM1       hybrid_map    dedicated     1269       0.972  0.965  0.979
+24       subM2       sequential          all     2019       0.668  0.647  0.690
+25       subM2       sequential  multiplexed     1829       0.633  0.614  0.653
+26       subM2       sequential    dedicated      190       1.000  1.000  1.000
+27       subM2  paper_ctxgrowth          all     2019       0.578  0.552  0.605
+28       subM2  paper_ctxgrowth  multiplexed     1829       0.537  0.515  0.560
+29       subM2  paper_ctxgrowth    dedicated      190       0.963  0.938  0.984
+30       subM2      hybrid_rule          all     2019       0.693  0.669  0.717
+31       subM2      hybrid_rule  multiplexed     1829       0.662  0.638  0.684
+32       subM2      hybrid_rule    dedicated      190       0.995  0.983  1.000
+33       subM2       hybrid_map          all     2019       0.885  0.867  0.901
+34       subM2       hybrid_map  multiplexed     1829       0.873  0.855  0.892
+35       subM2       hybrid_map    dedicated      190       1.000  1.000  1.000
+36       subM4       sequential          all     2857       0.499  0.480  0.521
+37       subM4       sequential  multiplexed     2630       0.456  0.438  0.475
+38       subM4       sequential    dedicated      227       1.000  1.000  1.000
+39       subM4  paper_ctxgrowth          all     2857       0.463  0.443  0.484
+40       subM4  paper_ctxgrowth  multiplexed     2630       0.420  0.403  0.437
+41       subM4  paper_ctxgrowth    dedicated      227       0.960  0.930  0.986
+42       subM4      hybrid_rule          all     2857       0.500  0.479  0.521
+43       subM4      hybrid_rule  multiplexed     2630       0.457  0.439  0.476
+44       subM4      hybrid_rule    dedicated      227       0.996  0.986  1.000
+45       subM4       hybrid_map          all     2857       0.767  0.751  0.783
+46       subM4       hybrid_map  multiplexed     2630       0.746  0.730  0.764
+47       subM4       hybrid_map    dedicated      227       1.000  1.000  1.000
+48       subM8       sequential          all     4301       0.310  0.294  0.328
+49       subM8       sequential  multiplexed     4103       0.277  0.263  0.290
+50       subM8       sequential    dedicated      198       1.000  1.000  1.000
+51       subM8  paper_ctxgrowth          all     4301       0.338  0.322  0.354
+52       subM8  paper_ctxgrowth  multiplexed     4103       0.307  0.293  0.321
+53       subM8  paper_ctxgrowth    dedicated      198       0.975  0.948  0.995
+54       subM8      hybrid_rule          all     4301       0.325  0.309  0.342
+55       subM8      hybrid_rule  multiplexed     4103       0.293  0.280  0.307
+56       subM8      hybrid_rule    dedicated      198       1.000  1.000  1.000
+57       subM8       hybrid_map          all     4301       0.634  0.617  0.650
+58       subM8       hybrid_map  multiplexed     4103       0.617  0.598  0.634
+59       subM8       hybrid_map    dedicated      198       1.000  1.000  1.000
+           tag          model     n  macroF1     lo     hi  F1_start  F1_sequential  F1_parallel_fork_join  F1_transport_retry  F1_semantic_retry  F1_sub_agent
+0   main_seed3     slice_only  5470    0.426  0.413  0.438     0.806          0.469                  0.272               0.169              0.303         0.539
+1   main_seed3        v3_full  5470    0.819  0.809  0.832     0.831          0.891                  0.660               0.982              0.621         0.932
+2   main_seed3  v3_no_context  5470    0.558  0.544  0.572     0.800          0.619                  0.400               0.379              0.358         0.792
+3   main_seed3  v3_no_latency  5470    0.778  0.766  0.789     0.821          0.833                  0.631               0.982              0.588         0.812
+4     failfast     slice_only  1604    0.422  0.400  0.444     0.787          0.443                  0.256               0.171              0.330         0.545
+5     failfast        v3_full  1604    0.807  0.782  0.827     0.798          0.889                  0.638               0.988              0.607         0.922
+6     failfast  v3_no_context  1604    0.550  0.520  0.577     0.800          0.600                  0.369               0.469              0.292         0.768
+7     failfast  v3_no_latency  1604    0.776  0.754  0.795     0.800          0.826                  0.628               0.994              0.606         0.800
+8        subM8     slice_only  4397    0.478  0.459  0.496     0.749          0.542                  0.269               0.293              0.198         0.820
+9        subM8        v3_full  4397    0.710  0.686  0.729     0.758          0.768                  0.456               0.971              0.372         0.937
+10       subM8  v3_no_context  4397    0.555  0.537  0.572     0.753          0.656                  0.332               0.481              0.239         0.870
+11       subM8  v3_no_latency  4397    0.707  0.689  0.725     0.788          0.743                  0.446               0.983              0.377         0.903
+/media/tinux/Media & Files/Research/Topic2_Agent_Traffic/scripts/04_graph_and_tool_id.py:184: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  T = T.div(T.sum(1), axis=0); prior = np.vstack([T.loc[p].values if p in T.index else np.full(len(cls), 1 / len(cls)) for p in test.prev_tool])
+/media/tinux/Media & Files/Research/Topic2_Agent_Traffic/scripts/04_graph_and_tool_id.py:184: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  T = T.div(T.sum(1), axis=0); prior = np.vstack([T.loc[p].values if p in T.index else np.full(len(cls), 1 / len(cls)) for p in test.prev_tool])
+/media/tinux/Media & Files/Research/Topic2_Agent_Traffic/scripts/04_graph_and_tool_id.py:184: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  T = T.div(T.sum(1), axis=0); prior = np.vstack([T.loc[p].values if p in T.index else np.full(len(cls), 1 / len(cls)) for p in test.prev_tool])
+/media/tinux/Media & Files/Research/Topic2_Agent_Traffic/scripts/04_graph_and_tool_id.py:184: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  T = T.div(T.sum(1), axis=0); prior = np.vstack([T.loc[p].values if p in T.index else np.full(len(cls), 1 / len(cls)) for p in test.prev_tool])
+/media/tinux/Media & Files/Research/Topic2_Agent_Traffic/scripts/04_graph_and_tool_id.py:184: Pandas4Warning: Starting with pandas version 4.0 all arguments of sum will be keyword-only.
+  T = T.div(T.sum(1), axis=0); prior = np.vstack([T.loc[p].values if p in T.index else np.full(len(cls), 1 / len(cls)) for p in test.prev_tool])
+                                                                                     closed_acc        AUROC_msp        AUROC_energy        AUROC_maha       
+                                                                                           mean    std      mean    std         mean    std       mean    std
+tag             features                                                                                                                                     
+main            y_hat+gap                                                                 0.578  0.014     0.557  0.103        0.548  0.055      0.594  0.068
+                y_hat+gap+a_prev+ttft+p_ndown+dreq+dn_med+prev_y_hat+prev_gap             0.615  0.022     0.563  0.091        0.559  0.075      0.529  0.038
+                y_hat+gap+a_prev+ttft+p_ndown+dreq+dn_med+prev_y_hat+prev_gap+markov      0.612  0.021     0.563  0.089        0.496  0.013      0.529  0.038
+main_GT_ceiling true_logsize+gap                                                          0.599  0.016     0.569  0.109        0.566  0.070      0.619  0.078
+{'n': 4161, 'MI_proxy_argslen_vs_tool': 0.022153806955364487, 'transition_chi2_p': 0.09908409715071334}

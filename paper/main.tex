@@ -1,0 +1,225 @@
+% Manuscript source (IEEEtran journal mode).
+\documentclass[journal]{IEEEtran}
+\usepackage{iftex}
+\ifXeTeX\usepackage{fontspec}\setmainfont{texgyretermes}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]\else\usepackage[T1]{fontenc}\fi
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx,booktabs,multirow}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{proposition}{Proposition}
+\graphicspath{{figures/}}
+\newcommand{\figph}[2]{\IfFileExists{figures/#1}{\includegraphics[width=#2]{#1}}{\fbox{\parbox[c][3cm][c]{#2}{\centering\small placeholder: figures/#1}}}}
+
+\newcommand{\repourl}{\url{https://REPLACE-WITH-REPOSITORY-URL}} % TODO: set repository/anonymous-mirror link before submission
+\begin{document}
+\title{What Encrypted Agent Traffic Reveals: Log-Free Turn Segmentation, Tool-Result Size Recovery and Execution-Graph Reconstruction over TLS~1.3 and HTTP/2}
+\author{S~M~Tasfik~Us~Salahin
+\thanks{S.~M.~T.~U.~Salahin is an independent researcher (e-mail: tasfiksalehin10@gmail.com).}
+\thanks{Code, processing scripts and derived datasets for review: \repourl.}}
+\markboth{Preprint}{What Encrypted Agent Traffic Reveals}
+\maketitle
+
+\begin{abstract}
+Large language model (LLM) agents call a model API many times per task and re-send their growing context on each call. We study what an on-path observer who sees only TLS~1.3 record headers can recover from this traffic. We evaluate on a real stack (Qwen 1.5B and 7B behind the Cloudflare edge, driven by a scripted agent and unmodified LangGraph and AutoGen agents; 32,677 turns), live free-tier providers (1,913 turns), ANT, a public network-traffic benchmark for agent behaviour auditing, with real coding agents (2,627 episodes) and a controlled testbed (57,740 turns). (i)~A two-parameter write-burst rule recovers turn boundaries with F1 $\geq$0.95 at $\pm$100\,ms on every real corpus, and 0.90 when eight sub-agents share one HTTP/2 connection. (ii)~Request growth recovers tool-result sizes with 3\% median error for results $\geq$1\,KB on dedicated connections. (iii)~When conversations interleave or each request opens a new connection, joint conversation tracking restores the links between turns for an attacker who has profiled the agent stack: predecessor accuracy is 0.92 on Gemini and 0.86 on AutoGen, with 3.0\% and 5.2\% size error; eight-way fan-out and LangGraph remain harder (0.66, 0.65). (iv)~Context-growth features give edge-type macro-F1 0.82 on the testbed and 0.71 on real traffic, against 0.12--0.48 for the authors' official Whisper-Leak and Deep Fingerprinting code. Per-corpus conformal intervals cover 89--96\% of results, and on ANT 8--25\% of requests shrink, so real contexts are not append-only. Padding to 64\,KB reduces the size correlation to $\rho = 0.43$ at 78\% bandwidth overhead, streaming-preserving SSE batching hides nothing, and no defence removes graph leakage.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Conformal prediction, HTTP/2, large language model agents, side-channel attacks, TLS~1.3, traffic analysis.
+\end{IEEEkeywords}
+
+
+\section{Introduction}
+Traffic analysis of encrypted LLM sessions has recovered response topics and token lengths from streaming token sizes~\cite{weiss2024,whisperleak,netecho,length2content}, and timing channels from speculative decoding and caching~\cite{carlini2024,earlybird,gu2025}. Work on agents fingerprints which agent or workflow is running~\cite{agentprint,kang2026,lugoloobi2026,dangol2026}, or classifies each step once step boundaries are taken from logs~\cite{ant}.
+The structure of the agent's execution, i.e.\ where each turn begins, how much data each tool returned and how turns depend on each other, has not been recovered from ciphertext alone. Our contributions are:
+\begin{itemize}
+\item a conservation argument (Prop.~\ref{prop:cons}) that links the growth of consecutive request ciphertexts to tool-result bytes, and its empirical calibration across transports and mitigations;
+\item log-free turn segmentation that holds under HTTP/2 multiplexing on real stacks, including the Cloudflare edge and unmodified LangGraph and AutoGen agents;
+\item joint conversation tracking from ciphertext, which links interleaved or per-request-connection turns to their own predecessor and recovers tool-result sizes at live providers;
+\item execution-graph reconstruction that outperforms the authors' official Whisper-Leak and Deep Fingerprinting code, with conformally calibrated size intervals;
+\item external validation on 2,627 episodes of the ANT corpus of real coding agents, and a bandwidth/leak trade-off for nine defence conditions.
+\end{itemize}
+
+\section{Related work}\label{sec:related}
+\emph{Website and application fingerprinting.} Classical website fingerprinting identifies pages from the sizes, directions and timing of encrypted packets. Early work showed that coarse features such as total bandwidth and burst volumes defeat many proposed defences~\cite{peekaboo}. Later attacks used engineered cumulative features~\cite{cumul}, random-forest fingerprints~\cite{kfp} and deep networks trained on raw direction sequences~\cite{rimmer2018,df,varcnn}. The same signals identify video titles from the burst pattern of adaptive streaming~\cite{schuster2017,reed2017}. These methods classify a whole trace into one of a closed set of labels. We instead recover a structure inside one session (turn boundaries, per-turn sizes and the graph between turns), and we use Deep Fingerprinting and Whisper-Leak as baselines for the per-turn classification step.
+
+\emph{Side channels in LLM services.} Token-length and timing leaks from streamed LLM responses reveal response topics and content~\cite{weiss2024,whisperleak,netecho,length2content}, and speculative decoding and prompt caching add timing channels~\cite{carlini2024,earlybird,gu2025}. These attacks target a single prompt and response. Agents differ because each call re-sends the whole conversation, so the request side, not only the response side, carries information: the growth of the request reveals what the tools returned.
+
+\emph{Agent traffic.} Recent work fingerprints which agent framework or workflow is running from its traffic~\cite{agentprint,kang2026,lugoloobi2026,dangol2026}, and ANT~\cite{ant} classifies agent behaviour from packet captures with step boundaries taken from logs. None of these recovers turn boundaries, tool-result sizes or execution graphs without logs, and none evaluates on real CDN-fronted stacks and live providers together.
+
+\emph{Defences.} Padding, traffic morphing~\cite{wright2009} and adaptive padding~\cite{wtfpad} trade bandwidth for indistinguishability, and burst-level schemes such as Walkie-Talkie~\cite{walkietalkie} and FRONT~\cite{front} reshape the traffic pattern. LLM providers have started to pad streamed tokens against token-length attacks~\cite{whisperleak}. We evaluate padding, compression, server-side state, jitter, SSE batching and their combination against the request-growth channel, which token padding does not address.
+
+\section{Threat model}\label{sec:threat}
+\emph{Scope A:} a passive observer on the path between the agent host and the API endpoint (enterprise egress, ISP, shared Wi-Fi). It sees IP/TCP headers and TLS record headers (type, length, timing, direction) but no keys. TLS~1.3 AEAD adds a fixed 17-byte overhead per record, so record lengths reveal plaintext lengths exactly up to padding~\cite{wright2009}. \emph{Scope B:} the same observer sees an HTTP/2 connection shared by several concurrent agents, whose streams are interleaved. Agents hosted inside the provider's cloud are out of scope; there the only on-path observer is the cloud operator.
+\emph{Profiling.} As in prior traffic-analysis work~\cite{whisperleak,df}, the observer may profile the target software on its own host before observing the victim: it runs the open-source agent framework (e.g.\ LangGraph, AutoGen) against the public API schema, records its own labelled sessions, and calibrates its models on them. Profiling uses no victim data. We report profiled results as the main setting and zero-shot transfer, without profiling the target stack, separately (Sec.~\ref{sec:track}).
+
+\section{Context-growth conservation}
+\begin{proposition}\label{prop:cons}
+Let a stateless API receive at turn $k$ a body of $b_k$ bytes that serialises the whole history. If turn $k$ follows turn $k-1$ whose response contained assistant output $a_{k-1}$ and the agent appended tool results $r_{k,1..m}$, then
+\begin{equation}
+b_k - b_{k-1} = \phi(a_{k-1}) + \textstyle\sum_j \psi(r_{k,j}) + c_m ,
+\end{equation}
+where $\phi,\psi$ are the JSON serialisation maps of the schema and $c_m$ is a per-message constant. If $\psi(r) = \gamma r + \epsilon$ with escaping factor $\gamma \geq 1$, the total tool bytes are identifiable from $(b_k - b_{k-1})$ and the response size $|a_{k-1}|$ up to escaping noise.
+\end{proposition}
+\begin{proof}[Sketch]
+Serialisation of a list is the concatenation of its element serialisations plus fixed delimiters; the history at turn $k$ is that of $k-1$ plus $a_{k-1}$ and the tool messages. Subtracting removes all shared content. The observed ciphertext length equals the plaintext length plus a known per-record overhead, and the response length is observed on the downstream direction.
+\end{proof}
+Under server-side state the body contains only the new items, so $b_k$ itself, rather than the difference, carries $\sum_j \psi(r_{k,j})$: the leak changes form but is not removed. With compression, $\psi$ becomes content-dependent, which widens the error. Padding to bucket size $B$ quantises $b_k$ and bounds the information to $\log_2$ of the number of buckets crossed. The identifiability is limited by the non-tool part of each turn's growth (the assistant message and its JSON framing), which varies by a few hundred bytes per turn on real stacks (Sec.~\ref{sec:real}). Results well above this floor (in practice $\geq$1\,KB) are recovered accurately, and smaller ones are not.
+
+\section{Controlled testbed}
+The controlled testbed runs on loopback: a mock API server (hyper-h2 HTTP/2 and HTTP/1.1, ALPN, TLS~1.3), an on-path TCP relay that records only TLS record headers, and agents in three schema styles (chat-completions, messages with content blocks, responses with item lists and \texttt{previous\_response\_id}). Twelve tools have log-normal output sizes (40\,B--200\,KB) and latencies. The six motifs are sequential, parallel fork--join, transport retry (HTTP 529), in-band semantic retry, sub-agent on the pooled connection and sub-agent on a new connection. Delays are time-compressed by 10$\times$ and reported in real-time-equivalent units. An extended version adds sliding-window and summarising context policies, instant-failure latency and in-stream SSE batching. We regenerated the corpus deterministically from the original seeds (57,740 turns): training uses seeds 1--2 and held-out results are on seed 3 or unseen datasets. We use the testbed for controlled ablations and the defence sweep. The headline results are on real stacks (Sec.~\ref{sec:real}).
+
+\emph{Labelling under multiplexing.} The original labeller assigned each request to the next upstream record, so concurrent requests flushed in one read collapsed onto one label (19\% of $M{=}8$ boundaries lost). We use a size-aware one-to-one assignment and evaluate against the wire time at which a request's first record crosses the observer.
+
+\section{Testbed results}
+\subsection{Log-free turn segmentation}
+On dedicated connections a two-parameter rule (upstream record $> \tau_L$ after silence $> \tau_g$) is sufficient (F1 0.997 at $\pm$100\,ms on seed 3), so learning is needed only for multiplexed connections. There the rule degrades with concurrency (0.925 at $M{=}4$, 0.885 at $M{=}8$). A frame-aware detector that keeps every upstream record that is not the continuation of a full 16\,KB record, with no silence gap and no non-maximum suppression, scored by LightGBM on record size, same-read group size and rank, and HTTP/2 and TLS overhead residues, reaches \textbf{0.979 [0.968, 0.987]} at $M{=}8$ (Table~\ref{tab:seg}, Fig.~\ref{fig:mux}). A dilated-convolution and transformer encoder over the same candidates performs identically (0.978).
+
+\begin{table}[t]\centering
+\caption{Testbed boundary F1 at $\pm$100\,ms on multiplexed connections (wire-clock truth, 95\% CI by connection bootstrap, 1,000 resamples).}\label{tab:seg}
+\resizebox{\columnwidth}{!}{\begin{tabular}{lcccc}\toprule
+Method & $M{=}2$ & $M{=}4$ & $M{=}8$ & Seed 3 (98 conns)\\\midrule
+Rule (len + gap) & 0.956 & 0.925 & 0.885 [0.879, 0.892] & 0.967\\
+Frame rule & 0.964 & 0.973 & 0.965 [0.954, 0.973] & 0.971\\
+Frame-aware GBM & 0.993 & 0.997 & \textbf{0.979 [0.968, 0.987]} & 1.000\\
+Conv + transformer & 0.993 & 0.997 & 0.978 [0.968, 0.987] & 1.000\\\bottomrule
+\end{tabular}}\end{table}
+
+\begin{figure}[t]\centering
+\figph{fig1_multiplex.pdf}{\columnwidth}
+\caption{Testbed boundary F1 versus concurrent streams per connection, client-clock and wire-clock truth.}\label{fig:mux}
+\end{figure}
+
+\subsection{Tool-result size and calibrated intervals}\label{sec:sizeest}
+Before regression we subtract framing explicitly: 17\,B TLS overhead per record and 9\,B per HTTP/2 DATA frame. When a request shrinks, the predecessor is replaced by the largest earlier request that is consistent with growth (hybrid baseline). On held-out seed 3 (HTTP/2, log-free boundaries) the median error for results $<$1\,KB falls from 13.2\% to \textbf{7.4\%}, and stays at 2.8\% for results $\geq$1\,KB. Split conformal quantile regression, with a separate Mondrian group per transport mode, raises the coverage of the 90\% interval from 0.78 to \textbf{0.914 [0.902, 0.925]} on HTTP/2 and to 0.888 on HTTP/1.1. Under server-side state coverage is still 0.74 because only about 150 training turns fall in that regime. A CUSUM detector on negative growth residuals detects summarisation breaks with precision 0.72 and recall 0.52. On sliding-window contexts, abstaining on detected breaks (15\% of turns) raises coverage from 0.78 to 0.88.
+
+\begin{figure}[t]\centering
+\figph{fig2_size.pdf}{\columnwidth}
+\caption{(a)~Coverage of the 90\% interval before and after conformal calibration per transport mode. (b)~Median error by true result size.}\label{fig:size}
+\end{figure}
+
+\subsection{Execution-graph reconstruction}
+\emph{Parent linking} is a constrained MAP assignment: a pairwise LightGBM likelihood over recency, conservation residual, request ratio, gap, concurrency and out-degree, decoded in time order under the DAG constraint that a parent's response completes before its child begins. It reaches \textbf{0.955 [0.947, 0.963]} on seed 3, against 0.857 for the sequential chain and 0.758 for the original context-growth rule, and 0.634 at $M{=}8$ (sequential: 0.310).
+\emph{Edge typing} uses LightGBM over per-turn slice features plus context-growth features relative to the MAP parent and next-turn features. It reaches macro-F1 \textbf{0.819 [0.809, 0.832]}, against 0.558 without context features and 0.426 with slice features only (Table~\ref{tab:edges}). Per-class F1 is 0.98 for transport retry, 0.93 sub-agent, 0.89 sequential, 0.83 start, 0.66 parallel fork--join and 0.62 semantic retry. On a corpus where tracebacks return in 2--20\,ms, the latency cue helps sequential and sub-agent turns but not retries (retry F1 0.607 with the cue and 0.606 without). The authors' official Whisper-Leak (0.38--0.39) and Deep Fingerprinting (0.26--0.34) code, adapted only at the input loader, lies at the slice-only level. The ranking carries over to real traffic (Table~\ref{tab:edges}, last column): on 10,819 held-out real-stack turns our model reaches 0.707, against 0.476 for Whisper-Leak and 0.12--0.34 for Deep Fingerprinting, and removing context growth costs 0.10.
+
+\begin{table*}[t]\centering
+\caption{Edge-type macro-F1 with log-free boundaries (undetected turns counted as errors; 95\% CI). Real stack: Kaggle + Cloudflare (natural, $M{=}4$, $M{=}8$) and the LangGraph and AutoGen agents, pooled; trained on even episodes, tested on 10,819 odd-episode turns.}\label{tab:edges}
+\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lcccc}\toprule
+Model & Seed 3 & Fail-fast & $M{=}8$ & Real stack\\\midrule
+Whisper-Leak (official code) & 0.385 & 0.381 & 0.387 & 0.476\\
+Deep Fingerprinting (official code) & 0.259 & 0.256 & 0.341 & 0.12--0.34$^\dagger$\\
+Slice features only & 0.426 & 0.422 & 0.478 & 0.573\\
+Ours without context growth & 0.558 & 0.550 & 0.555 & 0.604\\
+Ours without latency & 0.778 & 0.776 & 0.707 & --\\
+Ours (full) & \textbf{0.819 [0.809, 0.832]} & 0.807 & 0.710 & \textbf{0.707}\\\bottomrule
+\end{tabular}\\[2pt]{\footnotesize $^\dagger$Range of per-corpus scores over the five real corpora (not pooled).}
+\end{table*}
+
+\begin{figure}[t]\centering
+\figph{fig3_edges.pdf}{\columnwidth}
+\caption{(a)~Parent-link accuracy versus concurrency. (b)~Edge-type F1 per class.}\label{fig:edges}
+\end{figure}
+
+\emph{Tool identity.} The testbed draws tools uniformly at random and argument lengths are tool-independent, so even exact sizes plus latency give only 0.60 accuracy and 0.62 unknown-tool AUROC. We therefore evaluate tool identification only on real agents (Sec.~\ref{sec:real}).
+
+\subsection{Defences}
+Table~\ref{tab:def} and Fig.~\ref{fig:def} evaluate nine conditions on the testbed (150 episodes each). The log-free attacker is retrained for every condition (chunks 0--1 train, chunk 2 test). Bandwidth overhead is ciphertext bytes per turn relative to the undefended stack.
+\begin{itemize}
+\item \textbf{Server state and gzip} reduce bytes by 37\% and 21\% and leave the size channel intact ($\rho \geq 0.95$).
+\item \textbf{SSE batching inside the stream}, which coalesces 8 events per write with up to 500\,ms jitter, costs no bandwidth ($-$1\%). It also hides nothing: $\rho = 0.93$, and edge macro-F1 stays at 0.76.
+\item \textbf{Padding} trades bandwidth for leakage. Padding to 4\,KB costs 7\% and gives $\rho = 0.82$; 16\,KB costs 14\% ($\rho = 0.67$); 64\,KB costs 78\% ($\rho = 0.43$).
+\item \textbf{Combined} (server state, 16\,KB padding, 30\% chaff and jitter) gives the lowest graph accuracy (edge macro-F1 0.61, against 0.76 undefended) and lowers boundary F1 to 0.84.
+\end{itemize}
+No condition brings edge typing close to chance (0.17), so graph structure leaks through timing and request order even when sizes are hidden.
+
+\emph{Padding on real captures.} We applied the same padding transformation to the real Kaggle + Cloudflare and AutoGen captures, rounding each turn's request and response byte totals up to a multiple of $B$, and refitted the size model per condition (Table~\ref{tab:realpad}). The conclusion holds and is stronger on real traffic: 4\,KB padding already lowers $\rho$ from 0.71--0.97 to 0.48--0.75, and 16\,KB padding to $\leq$0.33. Because real contexts are smaller than the testbed's, the bandwidth cost is larger: 15--18\% at 4\,KB, 65--105\% at 16\,KB and 373--549\% at 64\,KB.
+
+\begin{table}[t]\centering
+\caption{Padding applied to real captures (profiled joint tracking; size model refitted per condition).}\label{tab:realpad}
+\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llrcc}\toprule
+Corpus & Pad & BW\,\% & Size $\rho$ & MedAPE\,\% ($\geq$1\,KB)\\\midrule
+Kaggle, dedicated & none & +0 & 0.97 & 3 \\
+Kaggle, dedicated & 4\,KB & +17 & 0.66 & 30 \\
+Kaggle, dedicated & 16\,KB & +86 & 0.08 & 53 \\
+Kaggle, dedicated & 64\,KB & +549 & -0.02 & 52 \\
+Kaggle, $M{=}4$ & none & +0 & 0.84 & 7 \\
+Kaggle, $M{=}4$ & 4\,KB & +17 & 0.60 & 39 \\
+Kaggle, $M{=}4$ & 16\,KB & +76 & 0.33 & 42 \\
+Kaggle, $M{=}4$ & 64\,KB & +439 & 0.11 & 50 \\
+Kaggle, $M{=}8$ & none & +0 & 0.71 & 17 \\
+Kaggle, $M{=}8$ & 4\,KB & +15 & 0.48 & 40 \\
+Kaggle, $M{=}8$ & 16\,KB & +65 & 0.27 & 46 \\
+Kaggle, $M{=}8$ & 64\,KB & +373 & 0.04 & 52 \\
+AutoGen & none & +0 & 0.89 & 5 \\
+AutoGen & 4\,KB & +18 & 0.75 & 32 \\
+AutoGen & 16\,KB & +105 & -0.08 & 45 \\
+AutoGen & 64\,KB & +545 & -0.31 & 48 \\
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[t]\centering
+\caption{Defences on the testbed (attacker retrained per condition). BW: bandwidth overhead in \%. $^*$Streaming disabled, so its byte change is not comparable with the streamed conditions.}\label{tab:def}
+\resizebox{\columnwidth}{!}{\begin{tabular}{lrcccc}\toprule
+Defence & BW\,\% & Boundary F1 & Edge macro-F1 & Size $\rho$ & Size MedAPE\,\% ($\geq$1\,KB)\\\midrule
+None & +0 & 0.939 & 0.759 & 0.95 & 8 \\
+Server state & -37 & 0.943 & 0.762 & 0.98 & 6 \\
+gzip & -21 & 0.944 & 0.759 & 0.95 & 9 \\
+Pad 4\,KB & +7 & 0.943 & 0.705 & 0.82 & 34 \\
+Pad 16\,KB & +14 & 0.936 & 0.708 & 0.67 & 56 \\
+Pad 64\,KB & +78 & 0.939 & 0.669 & 0.43 & 69 \\
+Jitter, non-streamed$^*$ & -43 & 0.947 & 0.750 & 0.95 & 14 \\
+SSE batching (8) + jitter & -1 & 0.948 & 0.761 & 0.93 & 9 \\
+Combined & -56 & 0.836 & 0.610 & 0.65 & 44 \\
+\bottomrule\end{tabular}}\end{table}
+
+\begin{figure*}[t]\centering
+\figph{fig4_defences.pdf}{0.85\textwidth}
+\caption{Attacker performance against bandwidth overhead for each defence: (a)~tool-size channel, (b)~edge typing.}\label{fig:def}
+\end{figure*}
+
+\input{sec_v3_real}
+
+\section{Limitations}
+The loopback testbed shares one event loop between client, server and observer, which delays the observer. Sec.~\ref{sec:real} shows that its $M{=}8$ segmentation collapse and its frame-level rule do not carry over to real stacks, while the size channel does. Most real-stack turns use Qwen2.5-1.5B; a 1,480-turn Qwen2.5-7B run confirms the results at a larger model size, but we did not test frontier-scale models. We ran 3,909 turns of unmodified LangGraph and AutoGen, but production deployments with deeper multi-agent hierarchies or custom middleware may behave differently. On live providers, where each request opens a new connection, greedy cross-connection linking fails (19\% parent accuracy). Our joint matching tracker reaches 92\% predecessor accuracy (3.0\% size error) on Gemini when the stack has been profiled. Unprofiled cross-stack tracking (42\% on Gemini) and lockstep sibling fan-out ($M{=}8$ at 66\%, LangGraph at 65\%) remain open. ANT lacks per-request labels, so on ANT we validate only request counts, non-monotonic context and episode-level tasks. Closed-set tool identification succeeds on real frameworks (0.90 on AutoGen, 0.69 on LangGraph), but open-set detection of unseen tools remains near chance (AUROC 0.51--0.62). AgentPrint and MARK have no public code; the Whisper-Leak and Deep Fingerprinting baselines use the authors' code.
+
+\section{Ethics and disclosure}
+No third-party user traffic was observed. All Cloudflare and live-provider experiments captured only our own synthetic agent sessions running on our own accounts within free-tier rate limits, without disrupting service. We are disclosing the context-growth size leak and padding/state mitigations to the affected API and framework maintainers.
+
+\section{Conclusion}
+Re-sending the full context makes agent traffic structurally transparent on real stacks, not only in a testbed. A two-parameter write-burst rule recovers turn boundaries with F1 0.90--1.00 across the Cloudflare edge, unmodified LangGraph and AutoGen agents, and four live providers. Request growth recovers tool-result sizes with 3--5\% median error on dedicated connections. Where conversations interleave or each request opens a new connection, profiled joint conversation tracking restores 3.0--7.4\% error on Gemini, AutoGen and $M{=}4$. The ANT corpus of real coding agents confirms that contexts are not append-only (8--25\% of requests shrink), which the non-monotonic extension of Prop.~\ref{prop:cons} handles. Across nine defence conditions, padding is the only single mitigation that clearly weakens the size channel, streaming-preserving SSE batching hides nothing, and only combined defences substantially degrade graph reconstruction.
+
+\appendices
+\section{Baseline hyper-parameter parity}\label{app:parity}
+\noindent{\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.18\columnwidth}p{0.34\columnwidth}p{0.36\columnwidth}}\toprule
+Baseline & Source & Settings used\\\midrule
+Whisper-Leak & {\footnotesize\texttt{yo-yo-yo-jbo/}\newline\texttt{whisper\_leak}} & LightGBM, 5000 trees, learning rate 0.02, early stopping 40, max length 584 (p95), multiclass objective\\
+Deep Fingerprinting & {\footnotesize\texttt{deep-}\newline\texttt{fingerprinting/df}} & DFNet unchanged; 5000 directions; Adamax, learning rate 0.002, batch 128, 30 epochs\\\bottomrule
+\end{tabular}}
+
+\begin{thebibliography}{99}
+\bibitem{weiss2024} R.~Weiss, D.~Ayzenshteyn, G.~Amit, Y.~Mirsky \emph{et al.}, ``What Was Your Prompt? A Remote Keylogging Attack on AI Assistants,'' in \emph{USENIX Security Symposium}, 2024.
+\bibitem{whisperleak} G.~McDonald and J.~B.~Or, ``Whisper Leak: a side-channel attack on Large Language Models,'' arXiv:2511.03675, 2025. Code: \url{https://github.com/yo-yo-yo-jbo/whisper_leak}.
+\bibitem{netecho} Z.~Zhang, G.-L.~Wu, S.~Deng, S.~Wang \emph{et al.}, ``NetEcho: From Real-World Streaming Side-Channels to Full LLM Conversation Recovery,'' arXiv:2510.25472, 2025.
+\bibitem{length2content} G.~McDonald and J.~B.~Or, ``From Length to Content: Token-Length Side-Channel Attacks on LLM API Merged Outputs,'' in \emph{USENIX Security}, 2026.
+\bibitem{carlini2024} N.~Carlini and M.~Nasr, ``Remote Timing Attacks on Efficient Language Model Inference,'' arXiv:2410.17175, 2024.
+\bibitem{earlybird} L.~Song, Z.~Pang, W.~Wang, Z.~Wang \emph{et al.}, ``The Early Bird Catches the Leak: Unveiling Timing Side Channels in LLM Serving Systems,'' \emph{IEEE Trans.\ Inf.\ Forensics Security}, 2025.
+\bibitem{gu2025} C.~Gu, X.~L.~Li, R.~Kuditipudi, P.~Liang \emph{et al.}, ``Auditing Prompt Caching in Language Model APIs,'' arXiv:2502.07776, 2025.
+\bibitem{agentprint} Y.~Zhang, X.~Deng, Z.~Gu, Y.~Chen \emph{et al.}, ``Exposing LLM User Privacy via Traffic Fingerprint Analysis: A Study of Privacy Risks in LLM Agent Interactions,'' arXiv:2510.07176, 2025. (No public code at the time of writing.)
+\bibitem{kang2026} D.~Kang, H.~Jeong, J.~Sheffey, P.~Datta \emph{et al.}, ``Whose Agent Are You? Multi-Layer Fingerprinting and Attribution of Autonomous Web Agents,'' arXiv:2606.20910, 2026.
+\bibitem{lugoloobi2026} W.~Lugoloobi, S.~Marro, J.~Magomere, J.~Wright \emph{et al.}, ``Known By Their Actions: Fingerprinting LLM Browser Agents via UI Traces,'' arXiv:2605.14786, 2026.
+\bibitem{dangol2026} B.~Dangol, ``From Privacy to Workflow Integrity: Communication-Graph Metadata in Autonomous Agent Interoperability,'' arXiv:2606.07150, 2026.
+\bibitem{ant} F.~Li, X.~Gao, Z.~Liu, T.~Li \emph{et al.}, ``ANT: A Multi-Granularity Network Traffic Dataset and Benchmark for Agents Behavior Auditing,'' arXiv:2610.06514, 2026.
+\bibitem{wright2009} C.~V.~Wright, S.~E.~Coull, and F.~Monrose, ``Traffic Morphing: An Efficient Defense Against Statistical Traffic Analysis,'' in \emph{NDSS}, 2009.
+\bibitem{df} P.~Sirinam, M.~Imani, M.~Juarez, M.~Wright, ``Deep Fingerprinting: Undermining Website Fingerprinting Defenses with Deep Learning,'' in \emph{ACM CCS}, 2018. Code: \url{https://github.com/deep-fingerprinting/df}.
+\bibitem{peekaboo} K.~P.~Dyer, S.~E.~Coull, T.~Ristenpart, and T.~Shrimpton, ``Peek-a-Boo, I Still See You: Why Efficient Traffic Analysis Countermeasures Fail,'' in \emph{IEEE S\&P}, 2012.
+\bibitem{cumul} A.~Panchenko, F.~Lanze, A.~Zinnen, M.~Henze, J.~Pennekamp, K.~Wehrle, and T.~Engel, ``Website Fingerprinting at Internet Scale,'' in \emph{NDSS}, 2016.
+\bibitem{kfp} J.~Hayes and G.~Danezis, ``k-fingerprinting: A Robust Scalable Website Fingerprinting Technique,'' in \emph{USENIX Security}, 2016.
+\bibitem{rimmer2018} V.~Rimmer, D.~Preuveneers, M.~Juarez, T.~Van~Goethem, and W.~Joosen, ``Automated Website Fingerprinting through Deep Learning,'' in \emph{NDSS}, 2018.
+\bibitem{varcnn} S.~Bhat, D.~Lu, A.~Kwon, and S.~Devadas, ``Var-CNN: A Data-Efficient Website Fingerprinting Attack Based on Deep Learning,'' \emph{PoPETs}, 2019.
+\bibitem{schuster2017} R.~Schuster, V.~Shmatikov, and E.~Tromer, ``Beauty and the Burst: Remote Identification of Encrypted Video Streams,'' in \emph{USENIX Security}, 2017.
+\bibitem{reed2017} A.~Reed and M.~Kranch, ``Identifying HTTPS-Protected Netflix Videos in Real-Time,'' in \emph{ACM CODASPY}, 2017.
+\bibitem{wtfpad} M.~Juarez, M.~Imani, M.~Perry, C.~Diaz, and M.~Wright, ``Toward an Efficient Website Fingerprinting Defense,'' in \emph{ESORICS}, 2016.
+\bibitem{walkietalkie} T.~Wang and I.~Goldberg, ``Walkie-Talkie: An Efficient Defense Against Passive Website Fingerprinting Attacks,'' in \emph{USENIX Security}, 2017.
+\bibitem{front} J.~Gong and T.~Wang, ``Zero-delay Lightweight Defenses against Website Fingerprinting,'' in \emph{USENIX Security}, 2020.
+\end{thebibliography}
+\end{document}

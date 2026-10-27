@@ -1,0 +1,101 @@
+n train/cal 2890 2956 {'main_seed3': 2395, 'h1_stream': 545, 'state': 291}
+/home/tinux/.claude-science/conda/envs/agenttraffic/lib/python3.11/site-packages/joblib/externals/loky/backend/context.py:134: UserWarning: Could not find the number of physical cores for the following reason:
+found 0 physical cores < 1
+Returning the number of logical cores instead. You can silence this warning by setting LOKY_MAX_CPU_COUNT to the number of cores you want to use.
+  warnings.warn(
+  File "/home/tinux/.claude-science/conda/envs/agenttraffic/lib/python3.11/site-packages/joblib/externals/loky/backend/context.py", line 272, in _count_physical_cores
+    raise ValueError(f"found {cpu_count_physical} physical cores < 1")
+            tag                          estimator regime     n    MedAE_B  MedAPE  PICP90  width_med_ratio
+0    main_seed3                       paper_linear    all  2395   1992.911   0.889     NaN              NaN
+1    main_seed3                       paper_linear   <1KB   815   1726.292   5.077     NaN              NaN
+2    main_seed3                       paper_linear  >=1KB  1580   2244.935   0.370     NaN              NaN
+5    main_seed3        paper_lgbm_q50 (raw 90% PI)    all  2395     98.164   0.046   0.787            1.504
+6    main_seed3        paper_lgbm_q50 (raw 90% PI)   <1KB   815     42.114   0.132   0.799            1.938
+7    main_seed3        paper_lgbm_q50 (raw 90% PI)  >=1KB  1580    160.647   0.032   0.780            1.336
+10   main_seed3               struct_prop1_framing    all  2395    105.497   0.047     NaN              NaN
+11   main_seed3               struct_prop1_framing   <1KB   815     66.591   0.225     NaN              NaN
+12   main_seed3               struct_prop1_framing  >=1KB  1580    141.026   0.026     NaN              NaN
+15   main_seed3              ours_q50 (raw 90% PI)    all  2395     71.376   0.037   0.750            1.367
+16   main_seed3              ours_q50 (raw 90% PI)   <1KB   815     23.292   0.074   0.766            1.745
+17   main_seed3              ours_q50 (raw 90% PI)  >=1KB  1580    142.144   0.028   0.742            1.254
+20   main_seed3                     ours_q50 + CQR    all  2395     71.376   0.037   0.934            1.589
+21   main_seed3                     ours_q50 + CQR   <1KB   815     23.292   0.074   0.874            2.028
+22   main_seed3                     ours_q50 + CQR  >=1KB  1580    142.144   0.028   0.966            1.457
+25   main_seed3            ours_q50 + Mondrian-CQR    all  2395     71.376   0.037   0.918            1.640
+26   main_seed3            ours_q50 + Mondrian-CQR   <1KB   815     23.292   0.074   0.909            2.351
+27   main_seed3            ours_q50 + Mondrian-CQR  >=1KB  1580    142.144   0.028   0.923            1.380
+30   main_seed3  ours_q50 + transport-Mondrian-CQR    all  2395     71.376   0.037   0.914            1.519
+31   main_seed3  ours_q50 + transport-Mondrian-CQR   <1KB   815     23.292   0.074   0.860            1.935
+32   main_seed3  ours_q50 + transport-Mondrian-CQR  >=1KB  1580    142.144   0.028   0.941            1.392
+35    h1_stream                       paper_linear    all   545   1953.468   0.851     NaN              NaN
+36    h1_stream                       paper_linear   <1KB   194   1480.912   4.784     NaN              NaN
+37    h1_stream                       paper_linear  >=1KB   351   2180.545   0.354     NaN              NaN
+40    h1_stream        paper_lgbm_q50 (raw 90% PI)    all   545    108.968   0.054   0.750            1.539
+41    h1_stream        paper_lgbm_q50 (raw 90% PI)   <1KB   194     47.933   0.175   0.727            2.301
+42    h1_stream        paper_lgbm_q50 (raw 90% PI)  >=1KB   351    168.068   0.037   0.764            1.336
+45    h1_stream               struct_prop1_framing    all   545    131.461   0.067     NaN              NaN
+46    h1_stream               struct_prop1_framing   <1KB   194     95.666   0.345     NaN              NaN
+47    h1_stream               struct_prop1_framing  >=1KB   351    166.598   0.033     NaN              NaN
+50    h1_stream              ours_q50 (raw 90% PI)    all   545    126.731   0.067   0.727            1.715
+51    h1_stream              ours_q50 (raw 90% PI)   <1KB   194     42.709   0.133   0.680            2.374
+52    h1_stream              ours_q50 (raw 90% PI)  >=1KB   351    219.565   0.052   0.752            1.415
+55    h1_stream                     ours_q50 + CQR    all   545    126.731   0.067   0.877            1.993
+56    h1_stream                     ours_q50 + CQR   <1KB   194     42.709   0.133   0.799            2.759
+57    h1_stream                     ours_q50 + CQR  >=1KB   351    219.565   0.052   0.920            1.644
+60    h1_stream            ours_q50 + Mondrian-CQR    all   545    126.731   0.067   0.877            2.094
+61    h1_stream            ours_q50 + Mondrian-CQR   <1KB   194     42.709   0.133   0.851            3.163
+62    h1_stream            ours_q50 + Mondrian-CQR  >=1KB   351    219.565   0.052   0.892            1.585
+65    h1_stream  ours_q50 + transport-Mondrian-CQR    all   545    126.731   0.067   0.888            1.930
+66    h1_stream  ours_q50 + transport-Mondrian-CQR   <1KB   194     42.709   0.133   0.799            2.702
+67    h1_stream  ours_q50 + transport-Mondrian-CQR  >=1KB   351    219.565   0.052   0.937            1.600
+70        state                       paper_linear    all   291   2172.506   1.018     NaN              NaN
+71        state                       paper_linear   <1KB    95   1469.449   4.929     NaN              NaN
+72        state                       paper_linear  >=1KB   196   3282.802   0.594     NaN              NaN
+75        state        paper_lgbm_q50 (raw 90% PI)    all   291    669.060   0.400   0.491            5.410
+76        state        paper_lgbm_q50 (raw 90% PI)   <1KB    95    173.701   0.568   0.684           13.847
+77        state        paper_lgbm_q50 (raw 90% PI)  >=1KB   196   1398.392   0.340   0.398            2.476
+80        state               struct_prop1_framing    all   291    360.000   0.255     NaN              NaN
+81        state               struct_prop1_framing   <1KB    95    242.131   0.985     NaN              NaN
+82        state               struct_prop1_framing  >=1KB   196    514.552   0.120     NaN              NaN
+85        state              ours_q50 (raw 90% PI)    all   291    663.488   0.381   0.564            6.310
+86        state              ours_q50 (raw 90% PI)   <1KB    95    222.000   0.605   0.789           17.426
+87        state              ours_q50 (raw 90% PI)  >=1KB   196   1175.586   0.305   0.454            3.238
+90        state                     ours_q50 + CQR    all   291    663.488   0.381   0.656            7.333
+91        state                     ours_q50 + CQR   <1KB    95    222.000   0.605   0.800           20.254
+92        state                     ours_q50 + CQR  >=1KB   196   1175.586   0.305   0.587            3.763
+95        state            ours_q50 + Mondrian-CQR    all   291    663.488   0.381   0.619            7.546
+96        state            ours_q50 + Mondrian-CQR   <1KB    95    222.000   0.605   0.811           23.538
+97        state            ours_q50 + Mondrian-CQR  >=1KB   196   1175.586   0.305   0.526            3.576
+100       state  ours_q50 + transport-Mondrian-CQR    all   291    663.488   0.381   0.739           10.614
+101       state  ours_q50 + transport-Mondrian-CQR   <1KB    95    222.000   0.605   0.821           24.949
+102       state  ours_q50 + transport-Mondrian-CQR  >=1KB   196   1175.586   0.305   0.699            5.557
+105    ctx_summ          naive (append-only model)    all   633     86.024   0.049   0.815            1.718
+106    ctx_summ          naive (append-only model)   <1KB   226     22.630   0.072   0.832            2.658
+107    ctx_summ          naive (append-only model)  >=1KB   407    177.792   0.043   0.806            1.457
+110    ctx_summ                        break-aware    all   633     86.024   0.051   0.801            1.640
+111    ctx_summ                        break-aware   <1KB   226     22.630   0.072   0.841            2.435
+112    ctx_summ                        break-aware  >=1KB   407    181.207   0.044   0.779            1.380
+115    ctx_summ           break turns only - naive    all    98   4686.040   0.375   0.357            4.066
+116    ctx_summ           break turns only - naive   <1KB    13   1215.929   2.901   0.308            5.105
+117    ctx_summ           break turns only - naive  >=1KB    85   8194.683   0.304   0.365            4.065
+120    ctx_summ            non-break turns - naive    all   535     55.425   0.040   0.899            1.620
+121    ctx_summ            non-break turns - naive   <1KB   213     20.678   0.065   0.864            2.424
+122    ctx_summ            non-break turns - naive  >=1KB   322    110.704   0.032   0.922            1.353
+125    ctx_summ  break turns only - reset baseline    all    44   1953.361   0.804   0.409            1.507
+126    ctx_summ  break turns only - reset baseline   <1KB    13    755.000   3.045   0.615         1501.000
+127    ctx_summ  break turns only - reset baseline  >=1KB    31   4782.365   0.547   0.323            1.366
+130  ctx_window          naive (append-only model)    all   625     90.557   0.056   0.776            1.783
+131  ctx_window          naive (append-only model)   <1KB   217     26.181   0.082   0.876            2.602
+132  ctx_window          naive (append-only model)  >=1KB   408    186.070   0.048   0.723            1.416
+135  ctx_window                        break-aware    all   530     60.032   0.045   0.883            1.602
+136  ctx_window                        break-aware   <1KB   212     25.607   0.078   0.887            2.522
+137  ctx_window                        break-aware  >=1KB   318    128.038   0.035   0.881            1.341
+140  ctx_window           break turns only - naive    all   208   1206.849   0.601   0.481            5.448
+141  ctx_window           break turns only - naive   <1KB    55     35.523   0.217   0.764            6.242
+142  ctx_window           break turns only - naive  >=1KB   153  12514.071   0.926   0.379            5.428
+145  ctx_window            non-break turns - naive    all   417     54.856   0.041   0.923            1.531
+146  ctx_window            non-break turns - naive   <1KB   162     23.367   0.071   0.914            2.370
+147  ctx_window            non-break turns - naive  >=1KB   255    119.914   0.033   0.929            1.327
+          tag     h    c_summ  n_turns  n_breaks  det_precision  det_recall  det_recall_ctx_events  n_conv_switch  far_on_appendonly  n_tool_turns  n_tool_break_turns  abstain_rate
+0    ctx_summ  4.45  6406.857      785       103          0.717       0.516                  0.476             28              0.037           633                  98         0.000
+1  ctx_window  4.45  6677.146      795       241          0.827       0.405                  0.402             27              0.037           625                 208         0.152

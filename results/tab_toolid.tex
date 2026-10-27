@@ -1,0 +1,14 @@
+\begin{table}
+\caption{Open-set tool identification (mean of 5 held-out-tool splits).}
+\label{tab:tool}
+\begin{tabular}{llrrrr}
+\toprule
+tag & features & closed\_acc & AUROC\_msp & AUROC\_energy & AUROC\_maha \\
+\midrule
+main & y\_hat+gap & 0.578 & 0.557 & 0.548 & 0.594 \\
+main & y\_hat+gap+a\_prev+ttft+p\_ndown+dreq+dn\_med+prev\_y\_hat+prev\_gap & 0.615 & 0.563 & 0.559 & 0.529 \\
+main & y\_hat+gap+a\_prev+ttft+p\_ndown+dreq+dn\_med+prev\_y\_hat+prev\_gap+markov & 0.612 & 0.563 & 0.496 & 0.529 \\
+main\_GT\_ceiling & true\_logsize+gap & 0.599 & 0.569 & 0.566 & 0.619 \\
+\bottomrule
+\end{tabular}
+\end{table}

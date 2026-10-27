@@ -1,0 +1,137 @@
+['ft_cloudflare', 'ft_gemini', 'ft_groq', 'ft_openrouter', 'real_m4', 'real_m4v2', 'real_m4v3', 'real_m8', 'real_m8v2', 'real_m8v3', 'real_main']
+              tag                method clock  n_conn  n_req  F1@50  F1@100  F1@100_lo  F1@100_hi  F1@250
+0   ft_cloudflare  frame_rule (testbed)   app     164    164  0.049   0.485      0.470      0.497   0.500
+1   ft_cloudflare  frame_rule (testbed)  wire     164    164  0.500   0.500      0.500      0.500   0.500
+2   ft_cloudflare     burst_rule (real)   app     164    164  0.097   0.967      0.939      0.988   0.997
+3   ft_cloudflare     burst_rule (real)  wire     164    164  0.997   0.997      0.991      1.000   0.997
+4       ft_gemini  frame_rule (testbed)   app     683    700  0.000   0.068      0.056      0.080   0.496
+5       ft_gemini  frame_rule (testbed)  wire     683    700  0.499   0.499      0.497      0.500   0.499
+6       ft_gemini     burst_rule (real)   app     683    700  0.000   0.131      0.108      0.156   0.990
+7       ft_gemini     burst_rule (real)  wire     683    700  0.997   0.997      0.994      1.000   0.997
+8         ft_groq  frame_rule (testbed)   app     402    406  0.026   0.467      0.453      0.478   0.493
+9         ft_groq  frame_rule (testbed)  wire     402    406  0.495   0.495      0.489      0.499   0.495
+10        ft_groq     burst_rule (real)   app     402    406  0.052   0.932      0.904      0.956   0.984
+11        ft_groq     burst_rule (real)  wire     402    406  0.989   0.989      0.978      0.998   0.989
+12  ft_openrouter  frame_rule (testbed)   app      41     42  0.120   0.491      0.463      0.506   0.503
+13  ft_openrouter  frame_rule (testbed)  wire      41     42  0.503   0.503      0.500      0.509   0.503
+14  ft_openrouter     burst_rule (real)   app      41     42  0.238   0.976      0.927      1.000   1.000
+15  ft_openrouter     burst_rule (real)  wire      41     42  1.000   1.000      1.000      1.000   1.000
+16        real_m4  frame_rule (testbed)   app     545   1371  0.559   0.582      0.577      0.587   0.584
+17        real_m4  frame_rule (testbed)  wire     545   1371  0.587   0.587      0.582      0.591   0.587
+18        real_m4     burst_rule (real)   app     545   1371  0.943   0.992      0.987      0.996   0.995
+19        real_m4     burst_rule (real)  wire     545   1371  1.000   1.000      0.999      1.000   1.000
+20      real_m4v2  frame_rule (testbed)   app     674   3324  0.622   0.623      0.621      0.625   0.623
+21      real_m4v2  frame_rule (testbed)  wire     674   3324  0.623   0.623      0.622      0.626   0.623
+22      real_m4v2     burst_rule (real)   app     674   3324  0.997   0.998      0.996      0.999   0.998
+23      real_m4v2     burst_rule (real)  wire     674   3324  0.999   0.999      0.998      1.000   0.999
+24      real_m4v3  frame_rule (testbed)   app     725   6408  0.650   0.659      0.657      0.662   0.659
+25      real_m4v3  frame_rule (testbed)  wire     725   6408  0.659   0.659      0.657      0.662   0.659
+26      real_m4v3     burst_rule (real)   app     725   6408  0.949   0.979      0.978      0.981   0.979
+27      real_m4v3     burst_rule (real)  wire     725   6408  0.979   0.979      0.978      0.981   0.979
+28        real_m8  frame_rule (testbed)   app     413    565  0.493   0.523      0.512      0.533   0.529
+29        real_m8  frame_rule (testbed)  wire     413    565  0.535   0.535      0.524      0.545   0.535
+30        real_m8     burst_rule (real)   app     413    565  0.913   0.977      0.965      0.988   0.988
+31        real_m8     burst_rule (real)  wire     413    565  1.000   1.000      1.000      1.000   1.000
+32      real_m8v2  frame_rule (testbed)   app     741   3301  0.615   0.618      0.616      0.621   0.619
+33      real_m8v2  frame_rule (testbed)  wire     741   3301  0.619   0.619      0.617      0.621   0.619
+34      real_m8v2     burst_rule (real)   app     741   3301  0.992   0.998      0.996      0.999   1.000
+35      real_m8v2     burst_rule (real)  wire     741   3301  1.000   1.000      0.999      1.000   1.000
+36      real_m8v3  frame_rule (testbed)   app     694   9995  0.685   0.685      0.683      0.687   0.686
+37      real_m8v3  frame_rule (testbed)  wire     694   9995  0.686   0.686      0.684      0.688   0.686
+38      real_m8v3     burst_rule (real)   app     694   9995  0.911   0.912      0.909      0.915   0.913
+39      real_m8v3     burst_rule (real)  wire     694   9995  0.914   0.914      0.911      0.917   0.914
+40      real_main  frame_rule (testbed)   app     572   1386  0.558   0.580      0.575      0.585   0.583
+41      real_main  frame_rule (testbed)  wire     572   1386  0.585   0.585      0.581      0.589   0.585
+42      real_main     burst_rule (real)   app     572   1386  0.942   0.991      0.987      0.996   0.996
+43      real_main     burst_rule (real)  wire     572   1386  1.000   1.000      1.000      1.000   1.000
+/home/tinux/.claude-science/conda/envs/agenttraffic/lib/python3.11/site-packages/joblib/externals/loky/backend/context.py:134: UserWarning: Could not find the number of physical cores for the following reason:
+found 0 physical cores < 1
+Returning the number of logical cores instead. You can silence this warning by setting LOKY_MAX_CPU_COUNT to the number of cores you want to use.
+  warnings.warn(
+  File "/home/tinux/.claude-science/conda/envs/agenttraffic/lib/python3.11/site-packages/joblib/externals/loky/backend/context.py", line 272, in _count_physical_cores
+    raise ValueError(f"found {cpu_count_physical} physical cores < 1")
+          tag        estimator regime     n   MedAE_B  MedAPE  MedAPE_lo  MedAPE_hi  PICP90
+0   ft_gemini     struct_prop1    all   603   276.172   0.669      0.566      0.778     NaN
+1   ft_gemini  lgbm_q50 raw PI    all   603   235.211   0.702      0.665      0.732   0.972
+2   ft_gemini   lgbm_q50 + CQR    all   603   235.211   0.702      0.665      0.732   0.983
+3   ft_gemini     struct_prop1   <1KB   447   287.353   1.030      0.949      1.154     NaN
+4   ft_gemini  lgbm_q50 raw PI   <1KB   447   119.799   0.508      0.448      0.581   0.962
+5   ft_gemini   lgbm_q50 + CQR   <1KB   447   119.799   0.508      0.448      0.581   0.978
+6   ft_gemini     struct_prop1  >=1KB   156   269.233   0.140      0.124      0.165     NaN
+7   ft_gemini  lgbm_q50 raw PI  >=1KB   156  1597.110   0.905      0.903      0.908   1.000
+8   ft_gemini   lgbm_q50 + CQR  >=1KB   156  1597.110   0.905      0.903      0.908   1.000
+9     real_m4     struct_prop1    all   631    93.504   0.066      0.056      0.079     NaN
+10    real_m4  lgbm_q50 raw PI    all   631    82.644   0.075      0.062      0.087   0.803
+11    real_m4   lgbm_q50 + CQR    all   631    82.644   0.075      0.062      0.087   0.933
+12    real_m4     struct_prop1   <1KB   253    87.987   0.285      0.247      0.362     NaN
+13    real_m4  lgbm_q50 raw PI   <1KB   253    54.737   0.237      0.193      0.277   0.727
+14    real_m4   lgbm_q50 + CQR   <1KB   253    54.737   0.237      0.193      0.277   0.834
+15    real_m4     struct_prop1  >=1KB   378    98.700   0.036      0.033      0.042     NaN
+16    real_m4  lgbm_q50 raw PI  >=1KB   378   106.187   0.041      0.036      0.046   0.854
+17    real_m4   lgbm_q50 + CQR  >=1KB   378   106.187   0.041      0.036      0.046   1.000
+18  real_m4v2     struct_prop1    all  2175   113.810   0.111      0.098      0.125     NaN
+19  real_m4v2  lgbm_q50 raw PI    all  2175   122.811   0.111      0.101      0.126   0.648
+20  real_m4v2   lgbm_q50 + CQR    all  2175   122.811   0.111      0.101      0.126   0.804
+21  real_m4v2     struct_prop1   <1KB   968   102.889   0.372      0.311      0.449     NaN
+22  real_m4v2  lgbm_q50 raw PI   <1KB   968    90.848   0.307      0.264      0.364   0.636
+23  real_m4v2   lgbm_q50 + CQR   <1KB   968    90.848   0.307      0.264      0.364   0.758
+24  real_m4v2     struct_prop1  >=1KB  1207   121.399   0.048      0.045      0.050     NaN
+25  real_m4v2  lgbm_q50 raw PI  >=1KB  1207   147.843   0.059      0.053      0.065   0.657
+26  real_m4v2   lgbm_q50 + CQR  >=1KB  1207   147.843   0.059      0.053      0.065   0.840
+27  real_m4v3     struct_prop1    all  4158   227.698   0.200      0.185      0.213     NaN
+28  real_m4v3  lgbm_q50 raw PI    all  4158   259.204   0.255      0.237      0.271   0.746
+29  real_m4v3   lgbm_q50 + CQR    all  4158   259.204   0.255      0.237      0.271   0.888
+30  real_m4v3     struct_prop1   <1KB  1591   110.878   0.476      0.425      0.527     NaN
+31  real_m4v3  lgbm_q50 raw PI   <1KB  1591    98.507   0.338      0.309      0.377   0.775
+32  real_m4v3   lgbm_q50 + CQR   <1KB  1591    98.507   0.338      0.309      0.377   0.856
+33  real_m4v3     struct_prop1  >=1KB  2567   376.301   0.111      0.101      0.121     NaN
+34  real_m4v3  lgbm_q50 raw PI  >=1KB  2567   552.688   0.196      0.173      0.216   0.728
+35  real_m4v3   lgbm_q50 + CQR  >=1KB  2567   552.688   0.196      0.173      0.216   0.907
+36    real_m8     struct_prop1    all    96    80.482   0.065      0.043      0.094     NaN
+37    real_m8  lgbm_q50 raw PI    all    96    98.844   0.094      0.063      0.124   0.844
+38    real_m8   lgbm_q50 + CQR    all    96    98.844   0.094      0.063      0.124   0.979
+39    real_m8     struct_prop1   <1KB    35    77.807   0.241      0.168      0.493     NaN
+40    real_m8  lgbm_q50 raw PI   <1KB    35    43.850   0.170      0.101      0.290   0.829
+41    real_m8   lgbm_q50 + CQR   <1KB    35    43.850   0.170      0.101      0.290   0.943
+42    real_m8     struct_prop1  >=1KB    61    82.465   0.032      0.027      0.045     NaN
+43    real_m8  lgbm_q50 raw PI  >=1KB    61   146.891   0.071      0.037      0.097   0.852
+44    real_m8   lgbm_q50 + CQR  >=1KB    61   146.891   0.071      0.037      0.097   1.000
+45  real_m8v2     struct_prop1    all  2146    91.642   0.078      0.072      0.086     NaN
+46  real_m8v2  lgbm_q50 raw PI    all  2146    98.299   0.095      0.088      0.102   0.767
+47  real_m8v2   lgbm_q50 + CQR    all  2146    98.299   0.095      0.088      0.102   0.903
+48  real_m8v2     struct_prop1   <1KB   964    81.991   0.260      0.240      0.281     NaN
+49  real_m8v2  lgbm_q50 raw PI   <1KB   964    64.781   0.221      0.206      0.244   0.772
+50  real_m8v2   lgbm_q50 + CQR   <1KB   964    64.781   0.221      0.206      0.244   0.871
+51  real_m8v2     struct_prop1  >=1KB  1182   101.834   0.039      0.037      0.041     NaN
+52  real_m8v2  lgbm_q50 raw PI  >=1KB  1182   139.418   0.051      0.048      0.056   0.763
+53  real_m8v2   lgbm_q50 + CQR  >=1KB  1182   139.418   0.051      0.048      0.056   0.928
+54  real_m8v3     struct_prop1    all  6441   565.446   0.535      0.503      0.560     NaN
+55  real_m8v3  lgbm_q50 raw PI    all  6441   589.820   0.597      0.572      0.627   0.707
+56  real_m8v3   lgbm_q50 + CQR    all  6441   589.820   0.597      0.572      0.627   0.833
+57  real_m8v3     struct_prop1   <1KB  2576   260.790   0.994      0.991      0.996     NaN
+58  real_m8v3  lgbm_q50 raw PI   <1KB  2576   194.300   0.750      0.705      0.806   0.750
+59  real_m8v3   lgbm_q50 + CQR   <1KB  2576   194.300   0.750      0.705      0.806   0.806
+60  real_m8v3     struct_prop1  >=1KB  3865   994.430   0.306      0.283      0.329     NaN
+61  real_m8v3  lgbm_q50 raw PI  >=1KB  3865  1439.595   0.525      0.489      0.554   0.678
+62  real_m8v3   lgbm_q50 + CQR  >=1KB  3865  1439.595   0.525      0.489      0.554   0.851
+63  real_main     struct_prop1    all   333    80.188   0.061      0.053      0.078     NaN
+64  real_main  lgbm_q50 raw PI    all   333    64.825   0.066      0.053      0.082   0.760
+65  real_main   lgbm_q50 + CQR    all   333    64.825   0.066      0.053      0.082   0.904
+66  real_main     struct_prop1   <1KB   158    77.059   0.281      0.242      0.410     NaN
+67  real_main  lgbm_q50 raw PI   <1KB   158    42.737   0.218      0.153      0.301   0.677
+68  real_main   lgbm_q50 + CQR   <1KB   158    42.737   0.218      0.153      0.301   0.797
+69  real_main     struct_prop1  >=1KB   175    81.683   0.032      0.026      0.038     NaN
+70  real_main  lgbm_q50 raw PI  >=1KB   175    98.084   0.035      0.029      0.042   0.834
+71  real_main   lgbm_q50 + CQR  >=1KB   175    98.084   0.035      0.029      0.042   1.000
+              tag     n  sequential  hybrid                     note
+0   ft_cloudflare    49       0.000   0.837  cross-connection linker
+1       ft_gemini   698       0.000   0.865  cross-connection linker
+2         ft_groq   134       0.000   0.948  cross-connection linker
+3   ft_openrouter    15       0.000   0.933  cross-connection linker
+4         real_m4  1370       0.563   0.565           per-connection
+5       real_m4v2  2698       0.735   0.729           per-connection
+6       real_m4v3  6158       0.503   0.524           per-connection
+7         real_m8   564       0.248   0.248           per-connection
+8       real_m8v2  3052       0.746   0.739           per-connection
+9       real_m8v3  7809       0.318   0.354           per-connection
+10      real_main   694       0.553   0.556           per-connection

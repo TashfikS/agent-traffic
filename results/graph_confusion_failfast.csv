@@ -1,0 +1,8 @@
+,start,sequential,parallel_fork_join,transport_retry,semantic_retry,sub_agent,missed
+start,85,0,0,0,0,15,0
+sequential,0,632,43,1,37,2,1
+parallel_fork_join,0,43,133,0,32,0,1
+transport_retry,0,0,0,81,0,0,1
+semantic_retry,0,28,32,0,102,2,0
+sub_agent,28,3,0,0,1,301,0
+missed,0,0,0,0,0,0,0

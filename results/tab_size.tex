@@ -1,0 +1,100 @@
+\begin{table}
+\caption{Tool-result size recovery and 90\% interval coverage (log-free boundaries).}
+\label{tab:size}
+\begin{tabular}{lllrrrr}
+\toprule
+tag & estimator & regime & n & MedAE\_B & MedAPE & PICP90 \\
+\midrule
+main\_seed3 & paper\_linear & all & 2395 & 1992.911 & 0.889 & NaN \\
+main\_seed3 & paper\_linear & <1KB & 815 & 1726.292 & 5.077 & NaN \\
+main\_seed3 & paper\_linear & >=1KB & 1580 & 2244.935 & 0.370 & NaN \\
+main\_seed3 & paper\_lgbm\_q50 (raw 90\% PI) & all & 2395 & 98.164 & 0.046 & 0.787 \\
+main\_seed3 & paper\_lgbm\_q50 (raw 90\% PI) & <1KB & 815 & 42.114 & 0.132 & 0.799 \\
+main\_seed3 & paper\_lgbm\_q50 (raw 90\% PI) & >=1KB & 1580 & 160.647 & 0.032 & 0.780 \\
+main\_seed3 & struct\_prop1\_framing & all & 2395 & 105.497 & 0.047 & NaN \\
+main\_seed3 & struct\_prop1\_framing & <1KB & 815 & 66.591 & 0.225 & NaN \\
+main\_seed3 & struct\_prop1\_framing & >=1KB & 1580 & 141.026 & 0.026 & NaN \\
+main\_seed3 & ours\_q50 (raw 90\% PI) & all & 2395 & 71.376 & 0.037 & 0.750 \\
+main\_seed3 & ours\_q50 (raw 90\% PI) & <1KB & 815 & 23.292 & 0.074 & 0.766 \\
+main\_seed3 & ours\_q50 (raw 90\% PI) & >=1KB & 1580 & 142.144 & 0.028 & 0.742 \\
+main\_seed3 & ours\_q50 + CQR & all & 2395 & 71.376 & 0.037 & 0.934 \\
+main\_seed3 & ours\_q50 + CQR & <1KB & 815 & 23.292 & 0.074 & 0.874 \\
+main\_seed3 & ours\_q50 + CQR & >=1KB & 1580 & 142.144 & 0.028 & 0.966 \\
+main\_seed3 & ours\_q50 + Mondrian-CQR & all & 2395 & 71.376 & 0.037 & 0.918 \\
+main\_seed3 & ours\_q50 + Mondrian-CQR & <1KB & 815 & 23.292 & 0.074 & 0.909 \\
+main\_seed3 & ours\_q50 + Mondrian-CQR & >=1KB & 1580 & 142.144 & 0.028 & 0.923 \\
+main\_seed3 & ours\_q50 + transport-Mondrian-CQR & all & 2395 & 71.376 & 0.037 & 0.914 \\
+main\_seed3 & ours\_q50 + transport-Mondrian-CQR & <1KB & 815 & 23.292 & 0.074 & 0.860 \\
+main\_seed3 & ours\_q50 + transport-Mondrian-CQR & >=1KB & 1580 & 142.144 & 0.028 & 0.941 \\
+h1\_stream & paper\_linear & all & 545 & 1953.468 & 0.851 & NaN \\
+h1\_stream & paper\_linear & <1KB & 194 & 1480.912 & 4.784 & NaN \\
+h1\_stream & paper\_linear & >=1KB & 351 & 2180.545 & 0.354 & NaN \\
+h1\_stream & paper\_lgbm\_q50 (raw 90\% PI) & all & 545 & 108.968 & 0.054 & 0.750 \\
+h1\_stream & paper\_lgbm\_q50 (raw 90\% PI) & <1KB & 194 & 47.933 & 0.175 & 0.727 \\
+h1\_stream & paper\_lgbm\_q50 (raw 90\% PI) & >=1KB & 351 & 168.068 & 0.037 & 0.764 \\
+h1\_stream & struct\_prop1\_framing & all & 545 & 131.461 & 0.067 & NaN \\
+h1\_stream & struct\_prop1\_framing & <1KB & 194 & 95.666 & 0.345 & NaN \\
+h1\_stream & struct\_prop1\_framing & >=1KB & 351 & 166.598 & 0.033 & NaN \\
+h1\_stream & ours\_q50 (raw 90\% PI) & all & 545 & 126.731 & 0.067 & 0.727 \\
+h1\_stream & ours\_q50 (raw 90\% PI) & <1KB & 194 & 42.709 & 0.133 & 0.680 \\
+h1\_stream & ours\_q50 (raw 90\% PI) & >=1KB & 351 & 219.565 & 0.052 & 0.752 \\
+h1\_stream & ours\_q50 + CQR & all & 545 & 126.731 & 0.067 & 0.877 \\
+h1\_stream & ours\_q50 + CQR & <1KB & 194 & 42.709 & 0.133 & 0.799 \\
+h1\_stream & ours\_q50 + CQR & >=1KB & 351 & 219.565 & 0.052 & 0.920 \\
+h1\_stream & ours\_q50 + Mondrian-CQR & all & 545 & 126.731 & 0.067 & 0.877 \\
+h1\_stream & ours\_q50 + Mondrian-CQR & <1KB & 194 & 42.709 & 0.133 & 0.851 \\
+h1\_stream & ours\_q50 + Mondrian-CQR & >=1KB & 351 & 219.565 & 0.052 & 0.892 \\
+h1\_stream & ours\_q50 + transport-Mondrian-CQR & all & 545 & 126.731 & 0.067 & 0.888 \\
+h1\_stream & ours\_q50 + transport-Mondrian-CQR & <1KB & 194 & 42.709 & 0.133 & 0.799 \\
+h1\_stream & ours\_q50 + transport-Mondrian-CQR & >=1KB & 351 & 219.565 & 0.052 & 0.937 \\
+state & paper\_linear & all & 291 & 2172.506 & 1.018 & NaN \\
+state & paper\_linear & <1KB & 95 & 1469.449 & 4.929 & NaN \\
+state & paper\_linear & >=1KB & 196 & 3282.802 & 0.594 & NaN \\
+state & paper\_lgbm\_q50 (raw 90\% PI) & all & 291 & 669.060 & 0.400 & 0.491 \\
+state & paper\_lgbm\_q50 (raw 90\% PI) & <1KB & 95 & 173.701 & 0.568 & 0.684 \\
+state & paper\_lgbm\_q50 (raw 90\% PI) & >=1KB & 196 & 1398.392 & 0.340 & 0.398 \\
+state & struct\_prop1\_framing & all & 291 & 360.000 & 0.255 & NaN \\
+state & struct\_prop1\_framing & <1KB & 95 & 242.131 & 0.985 & NaN \\
+state & struct\_prop1\_framing & >=1KB & 196 & 514.552 & 0.120 & NaN \\
+state & ours\_q50 (raw 90\% PI) & all & 291 & 663.488 & 0.381 & 0.564 \\
+state & ours\_q50 (raw 90\% PI) & <1KB & 95 & 222.000 & 0.605 & 0.789 \\
+state & ours\_q50 (raw 90\% PI) & >=1KB & 196 & 1175.586 & 0.305 & 0.454 \\
+state & ours\_q50 + CQR & all & 291 & 663.488 & 0.381 & 0.656 \\
+state & ours\_q50 + CQR & <1KB & 95 & 222.000 & 0.605 & 0.800 \\
+state & ours\_q50 + CQR & >=1KB & 196 & 1175.586 & 0.305 & 0.587 \\
+state & ours\_q50 + Mondrian-CQR & all & 291 & 663.488 & 0.381 & 0.619 \\
+state & ours\_q50 + Mondrian-CQR & <1KB & 95 & 222.000 & 0.605 & 0.811 \\
+state & ours\_q50 + Mondrian-CQR & >=1KB & 196 & 1175.586 & 0.305 & 0.526 \\
+state & ours\_q50 + transport-Mondrian-CQR & all & 291 & 663.488 & 0.381 & 0.739 \\
+state & ours\_q50 + transport-Mondrian-CQR & <1KB & 95 & 222.000 & 0.605 & 0.821 \\
+state & ours\_q50 + transport-Mondrian-CQR & >=1KB & 196 & 1175.586 & 0.305 & 0.699 \\
+ctx\_summ & naive (append-only model) & all & 633 & 86.024 & 0.049 & 0.815 \\
+ctx\_summ & naive (append-only model) & <1KB & 226 & 22.630 & 0.072 & 0.832 \\
+ctx\_summ & naive (append-only model) & >=1KB & 407 & 177.792 & 0.043 & 0.806 \\
+ctx\_summ & break-aware & all & 633 & 86.024 & 0.051 & 0.801 \\
+ctx\_summ & break-aware & <1KB & 226 & 22.630 & 0.072 & 0.841 \\
+ctx\_summ & break-aware & >=1KB & 407 & 181.207 & 0.044 & 0.779 \\
+ctx\_summ & break turns only - naive & all & 98 & 4686.040 & 0.375 & 0.357 \\
+ctx\_summ & break turns only - naive & <1KB & 13 & 1215.929 & 2.901 & 0.308 \\
+ctx\_summ & break turns only - naive & >=1KB & 85 & 8194.683 & 0.304 & 0.365 \\
+ctx\_summ & non-break turns - naive & all & 535 & 55.425 & 0.040 & 0.899 \\
+ctx\_summ & non-break turns - naive & <1KB & 213 & 20.678 & 0.065 & 0.864 \\
+ctx\_summ & non-break turns - naive & >=1KB & 322 & 110.704 & 0.032 & 0.922 \\
+ctx\_summ & break turns only - reset baseline & all & 44 & 1953.361 & 0.804 & 0.409 \\
+ctx\_summ & break turns only - reset baseline & <1KB & 13 & 755.000 & 3.045 & 0.615 \\
+ctx\_summ & break turns only - reset baseline & >=1KB & 31 & 4782.365 & 0.547 & 0.323 \\
+ctx\_window & naive (append-only model) & all & 625 & 90.557 & 0.056 & 0.776 \\
+ctx\_window & naive (append-only model) & <1KB & 217 & 26.181 & 0.082 & 0.876 \\
+ctx\_window & naive (append-only model) & >=1KB & 408 & 186.070 & 0.048 & 0.723 \\
+ctx\_window & break-aware & all & 530 & 60.032 & 0.045 & 0.883 \\
+ctx\_window & break-aware & <1KB & 212 & 25.607 & 0.078 & 0.887 \\
+ctx\_window & break-aware & >=1KB & 318 & 128.038 & 0.035 & 0.881 \\
+ctx\_window & break turns only - naive & all & 208 & 1206.849 & 0.601 & 0.481 \\
+ctx\_window & break turns only - naive & <1KB & 55 & 35.523 & 0.217 & 0.764 \\
+ctx\_window & break turns only - naive & >=1KB & 153 & 12514.071 & 0.926 & 0.379 \\
+ctx\_window & non-break turns - naive & all & 417 & 54.856 & 0.041 & 0.923 \\
+ctx\_window & non-break turns - naive & <1KB & 162 & 23.367 & 0.071 & 0.914 \\
+ctx\_window & non-break turns - naive & >=1KB & 255 & 119.914 & 0.033 & 0.929 \\
+\bottomrule
+\end{tabular}
+\end{table}

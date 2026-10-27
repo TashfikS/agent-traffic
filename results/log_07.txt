@@ -1,0 +1,37 @@
+Initialized LightGBMClassifier with effective params: {'objective': 'multiclass', 'metric': 'multi_logloss', 'n_estimators': 5000, 'learning_rate': 0.02, 'num_leaves': 31, 'max_depth': -1, 'seed': 42, 'n_jobs': -1, 'colsample_bytree': 0.8, 'subsample': 0.8, 'reg_alpha': 0.1, 'reg_lambda': 0.1, 'num_class': 6}
+Preparing data for LightGBM training .................................................................................. [  OK  ]
+Fitting LightGBM model (patience=40) .................................................................................. /home/tinux/.claude-science/conda/envs/agenttraffic/lib/python3.11/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+[LightGBM] [Info] Auto-choosing row-wise multi-threading, the overhead of testing was 0.160166 seconds.
+You can set `force_row_wise=true` to remove the overhead.
+And if memory is not enough, you can set `force_col_wise=true`.
+[LightGBM] [Info] Total Bins 165032
+[LightGBM] [Info] Number of data points in the train set: 10420, number of used features: 1167
+[LightGBM] [Info] Start training from score -2.808942
+[LightGBM] [Info] Start training from score -0.787057
+[LightGBM] [Info] Start training from score -2.119784
+[LightGBM] [Info] Start training from score -2.989991
+[LightGBM] [Info] Start training from score -2.308360
+[LightGBM] [Info] Start training from score -1.538144
+Training until validation scores don't improve for 40 rounds
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[50]	validation's multi_logloss: 1.09651
+[100]	validation's multi_logloss: 1.03338
+[150]	validation's multi_logloss: 1.01433
+[200]	validation's multi_logloss: 1.01275
+[250]	validation's multi_logloss: 1.01193
+Early stopping, best iteration is:
+[245]	validation's multi_logloss: 1.01157
+[  OK  ]
+{'tag': 'main_seed3', 'model': 'whisperleak_official_lgbm', 'max_len': 584, 'n': 6107, 'macroF1': 0.38484907871002544, 'F1_start': np.float64(0.7851373182552503), 'F1_sequential': np.float64(0.7112523472483028), 'F1_parallel_fork_join': np.float64(0.011065006915629323), 'F1_transport_retry': np.float64(0.2953020134228188), 'F1_semantic_retry': np.float64(0.03185840707964602), 'F1_sub_agent': np.float64(0.47447937933850554)}
+{'tag': 'failfast', 'model': 'whisperleak_official_lgbm', 'max_len': 584, 'n': 3611, 'macroF1': 0.38053378285789025, 'F1_start': np.float64(0.7700534759358288), 'F1_sequential': np.float64(0.7058530510585305), 'F1_parallel_fork_join': np.float64(0.004640371229698376), 'F1_transport_retry': np.float64(0.32044198895027626), 'F1_semantic_retry': np.float64(0.006211180124223602), 'F1_sub_agent': np.float64(0.4760026298487837)}
+{'tag': 'subM8', 'model': 'whisperleak_official_lgbm', 'max_len': 584, 'n': 4572, 'macroF1': 0.3869086297945663, 'F1_start': np.float64(0.6914893617021277), 'F1_sequential': np.float64(0.725897920604915), 'F1_parallel_fork_join': np.float64(0.026217228464419477), 'F1_transport_retry': np.float64(0.13973799126637554), 'F1_semantic_retry': np.float64(0.014150943396226415), 'F1_sub_agent': np.float64(0.7239583333333334)}
+          tag                      model  max_len     n  macroF1  F1_start  F1_sequential  F1_parallel_fork_join  F1_transport_retry  F1_semantic_retry  F1_sub_agent
+0  main_seed3  whisperleak_official_lgbm      584  6107    0.385     0.785          0.711                  0.011               0.295              0.032         0.474
+1    failfast  whisperleak_official_lgbm      584  3611    0.381     0.770          0.706                  0.005               0.320              0.006         0.476
+2       subM8  whisperleak_official_lgbm      584  4572    0.387     0.691          0.726                  0.026               0.140              0.014         0.724
+exported DF inputs

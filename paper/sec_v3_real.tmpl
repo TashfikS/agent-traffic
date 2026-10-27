@@ -1,0 +1,80 @@
+%% ====================== v3 ADDITIONS (generated from results_v3/*.csv by scripts 07-09; template sec_v3_real.tmpl) ======================
+\section{Real-stack and external validation}\label{sec:real}
+\emph{Corpora.} (i)~\textbf{Kaggle + Cloudflare}: Qwen2.5-1.5B-Instruct served on a Kaggle T4 (HF transformers; real BPE tokenisation and token streaming), exposed through a Cloudflare quick tunnel. TLS~1.3 and HTTP/2 terminate at the Cloudflare edge, and the client reaches the edge over the public internet. The agent runs 12 executing tools and 6 motifs, with HTTP~529 injected. This gives 26,350 turns in seven runs, including two runs with forced parallel sub-agents. We also ran unmodified \textbf{LangGraph} (\texttt{create\_react\_agent}) and \textbf{AutoGen} (\texttt{AssistantAgent}) agents against the same endpoint, with the frameworks controlling the ReAct loop, parallel tool calls and SDK retries (3,909 turns). (ii)~\textbf{Live free-tier providers}: Gemini, Groq, Cloudflare Workers AI and OpenRouter \texttt{:free} models, observed by an on-path relay. We collected over three daily quota windows and removed every episode that received a rate-limit or quota error, together with its connections. This leaves 1,913 clean turns, the set used throughout this paper. Filtering does not change segmentation: boundary F1 is 0.989--1.000 on the raw single-window capture (1,312 turns) and 0.995--1.000 on the cleaned set (Table~\ref{tab:realseg}; OpenRouter's 25 clean turns are too few to evaluate separately). (iii)~\textbf{ANT}~\cite{ant}: 2,627 pcap-captured episodes of real coding and research agents (Claude Code with DeepSeek, MiMo and relay back-ends; Qwen Code), with fixed train/test splits. All times are wall-clock.
+
+\begin{figure*}[t]\centering\figph{fig_real_ant.pdf}{0.95\textwidth}
+\caption{(a)~Boundary F1 on real stacks. (b)~Prop.~1 size error on the Kaggle+Cloudflare stack, with bootstrap 95\% CI. (c)~ANT: share of requests that are not append-only, per engine.}\label{fig:realant}\end{figure*}
+
+
+\emph{Segmentation.} On the real stacks, the frame rule tuned on the testbed falls to F1 $\approx$0.50--0.62. The client writes each request as several records below 16\,KB, interleaved with HTTP/2 control frames, so the rule fires more than once per request. We replace it with a burst rule: a request starts at a burst of upstream records less than 5\,ms apart, with no downstream data in between and at least 300\,B in total. Its two parameters were fitted on one Kaggle run, and it transfers to every other corpus without refitting (Table~\ref{tab:realseg}). To test multiplexing on the real stack, two further runs force parallel sub-agents on one pooled HTTP/2 connection: 257 of 725 connections carry up to 4 concurrent requests in the $M{=}4$ run, and 268 of 694 carry up to 8 (mostly 7) in the $M{=}8$ run. On these connections the burst rule reaches F1 0.973 ($M{=}4$) and 0.898 ($M{=}8$), against 0.68 and 0.70 for the testbed rule. F1 falls gradually with concurrency, from 0.96 at 2 to 0.89 at 8, and does not collapse as it did in the testbed (0.62). The testbed collapse was therefore largely an artefact of its shared event loop. The framework runs confirm this: LangGraph's default client sends all 500 episodes over a single pooled HTTP/2 connection (four concurrent episodes), and AutoGen multiplexes 104 of its 503 connections. The burst rule reaches F1 0.977 on LangGraph, and 0.952 on AutoGen overall and 0.900 on its multiplexed connections.
+
+\begin{table}[t]\centering\caption{Boundary F1 at $\pm$100\,ms (wire clock) on real stacks. Burst-rule CIs are from a connection bootstrap.}\label{tab:realseg}
+\resizebox{\columnwidth}{!}{\begin{tabular}{lrcc}\toprule Corpus & Requests & Testbed rule & Burst rule \\\midrule
+@SEG@
+\bottomrule\end{tabular}}\end{table}
+
+\emph{Size recovery.} Prop.~\ref{prop:cons} holds on the real stack. With a three-parameter Huber fit on $(\Delta b, \hat a_{k-1}, n_{\mathrm{down}})$ and profiled joint tracking (Sec.~\ref{sec:track}), the median error for results $\geq$1\,KB is 3.3\% on dedicated connections and 3.0--17\% across the multiplexed, framework and live-provider corpora (Table~\ref{tab:realsize}). Results below 1\,KB sit at the noise floor set by the non-tool part of each turn's growth (the assistant message and its JSON framing). Measured on true predecessor pairs, this part has a median of 309--528\,B per turn (10th--90th percentile 90--1,090\,B on the Kaggle stack and the frameworks), and after the Prop.~1 correction its residual spread (median absolute deviation) is 56--301\,B. Results of 1\,KB or more, such as file reads, retrieved documents, scraped pages and code outputs, carry 90--97\% of all tool bytes on the Kaggle stack and frameworks and 64\% on Gemini.
+
+\emph{Naive linking.} The numbers so far assume that each turn's predecessor is the previous request on its connection, or the most recent consistent request (greedy recency linking). This assumption breaks in two settings. On Gemini each request travels on a new connection, and greedy cross-connection linking finds the true predecessor for only 19\% of turns, giving 87\% size error. When the true predecessor is supplied, a recalibration on even Gemini episodes gives 3.6\% error for results $\geq$1\,KB, so the leak is present at a live provider. With parallel sub-agents on one connection, the previous request often belongs to another conversation, and greedy parent accuracy on multiplexed turns is 0.42 ($M{=}4$) and 0.29 ($M{=}8$). For results $\geq$1\,KB the size error is then 11\% at $M{=}4$, 28\% at $M{=}8$, 20\% on LangGraph and 16\% on AutoGen. These failures motivate joint conversation tracking (Sec.~\ref{sec:track}).
+
+\subsection{Joint conversation tracking}\label{sec:track}
+Size recovery needs each turn's predecessor \emph{within its own conversation}. With interleaved conversations on one connection, or a new connection per request, that predecessor is rarely the previous request. We therefore track conversations jointly (\texttt{scripts/11}).
+\begin{itemize}
+\item \emph{Candidates.} For each turn $k$, the candidates are earlier turns in the same scope (the connection, or the whole capture for per-request connections) whose response completed before $k$ began.
+\item \emph{Pruning by Prop.~\ref{prop:cons}.} A candidate is flagged infeasible when the growth residual $(b_k - b_p) - \hat\kappa\,|a_p| - c$ falls below $-\epsilon$. $\hat\kappa$ and $c$ are fitted on training corpora of the same stack family, and $\epsilon$ is their robust 5th-percentile residual. Infeasible links are penalised rather than removed, so compaction resets remain possible.
+\item \emph{Scoring.} A pairwise LightGBM gives $P(p = \mathrm{pred}(k))$ from size, residual, timing, concurrency and same-connection features, and a second model scores conversation births.
+\item \emph{Joint decoding.} All turns are decoded at once as a minimum-cost bipartite matching (sparse full matching), so that each turn takes at most one predecessor and each predecessor at most one successor. Conversations therefore form disjoint chains.
+\end{itemize}
+Following the profiled threat model (Sec.~\ref{sec:threat}), the scorer is trained on even episodes of the target stack and evaluated on held-out odd episodes (Table~\ref{tab:track}).
+
+\begin{table}[t]\centering
+\caption{Conversation-predecessor accuracy and Prop.~1 size error for results $\geq$1\,KB: greedy linking (previous request on the connection) against profiled joint tracking. The size model is fitted on even episodes of each corpus and tested on odd episodes.}\label{tab:track}
+\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lcccc}\toprule
+ & \multicolumn{2}{c}{Predecessor acc.} & \multicolumn{2}{c}{Size err.\ $\geq$1\,KB}\\
+Corpus & Greedy & Joint & Greedy & Joint\\\midrule
+@TRACK@
+\bottomrule\end{tabular}\end{table}
+
+Profiled joint tracking reaches 0.92 on Gemini, where each request rides a new connection, and 0.86 on AutoGen. For results $\geq$1\,KB the size error drops to 3.0\% on Gemini (from 87\% log-free with the greedy linker), 5.2\% on AutoGen and 7.4\% at $M{=}4$. Two corpora remain hard: $M{=}8$ (accuracy 0.66, size error 17\%) and LangGraph (0.65, 12\%), where up to eight sibling sub-agents start from the same prompt and grow in lockstep. The $\geq$0.80 accuracy target is therefore met on Gemini, AutoGen and dedicated connections, but not on $M{=}8$ or LangGraph.
+
+\emph{Zero-shot transfer.} Without profiling, i.e.\ when the scorer is trained only on the other corpora (leave-one-corpus-out), joint tracking still improves on greedy linking but much less: predecessor accuracy is 0.90 (dedicated), 0.68 ($M{=}4$), 0.55 ($M{=}8$), 0.33 (LangGraph), 0.71 (AutoGen) and 0.42 (Gemini). Profiling the target framework, which an observer can do on its own host with the open-source framework and the public API schema, is what makes tracking reliable.
+
+\subsection{Calibrated intervals on real stacks}\label{sec:cqrreal}
+Each corpus is a Mondrian group, calibrated on its even episodes and tested on its odd episodes (\texttt{scripts/13}). The resulting 90\% intervals cover 0.89--0.96 of results on all ten corpora. Coverage falls within $90 \pm 2\%$ on five corpora (AutoGen, both $M{=}4$ runs, $M{=}8$, and the first $M{=}4$ plan); the others are conservative (up to 0.955), except LangGraph at 0.886. Calibrating on a single corpus and applying it elsewhere ranges from 0.86 to 1.00. Coverage below 1\,KB is weaker (0.77--0.93). The intervals are wide, with a median width ratio of 4--8$\times$ for results $\geq$1\,KB on dedicated connections.
+
+\subsection{Model size and clean live-provider turns}
+\emph{7B model.} We ran Qwen2.5-7B-Instruct (4-bit NF4, Hugging Face generation on a Colab T4) behind the same Cloudflare tunnel, with two concurrent agents, generation capped at 192 tokens and the model's prompt window capped at 3,500 tokens (the full request still crosses the wire). Of 1,480 requests, 1,402 completed and the remaining 78 are the injected HTTP~529 transport retries; no request hit Cloudflare's 100\,s edge timeout. Boundary F1 is 1.000 [0.999, 1.000], and the Prop.~1 size error is 5.1\% for results $\geq$1\,KB ($n{=}476$) and 33\% below 1\,KB, in line with the 1.5B dedicated-connection runs. The size channel therefore does not depend on model size between 1.5B and 7B.
+
+\emph{Clean live-provider set.} We collected over three daily quota windows and removed every episode that received a provider rate-limit or quota error, together with the connections that carried it. This leaves 1,913 clean turns (Gemini 1,484, Groq 216, Workers AI 188, OpenRouter 25), slightly short of our 2,000-turn goal. Boundary F1 is 0.995--1.000 on every clean set.
+
+\subsection{Tool identification on real agents}
+Real frameworks choose tools non-randomly, so we revisit tool identity on single-tool turns, grouped by episode with 5-fold cross-validation (\texttt{scripts/14}). Closed-set accuracy is 0.90 on AutoGen (chance 0.17) and 0.69 on LangGraph (chance 0.25), against 0.52 on the scripted agent with twelve tools (chance 0.08). Detection of unseen tools stays near chance under max-softmax, energy and Mahalanobis scores (AUROC 0.51--0.62). Ciphertext therefore reveals which of a framework's known tools ran, through result size, latency and argument length, but not whether a tool is new.
+
+\begin{table}[t]\centering\caption{Tool-result size recovery on real stacks with log-free burst boundaries and profiled joint conversation tracking (odd test episodes). MedAPE: median absolute percentage error. PICP$_{90}$: coverage of per-corpus Mondrian conformal 90\% intervals (computed with greedy-link features, Sec.~\ref{sec:cqrreal}).}\label{tab:realsize}
+\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrcc}\toprule Corpus & Size & $n$ & MedAPE\,\% & PICP$_{90}$\\\midrule
+@SIZE@
+\bottomrule\end{tabular}\end{table}
+
+\emph{ANT.} ANT has no per-request labels, so we test three properties instead:
+\begin{itemize}
+\item The number of requests the burst rule finds per episode tracks the number of annotated assistant steps (Spearman $\rho$ 0.69--0.96).
+\item \textbf{Contexts are not append-only in real agents.} Between 8\% and 25\% of requests are shorter than the preceding request, and 57--97\% of episodes contain at least one such shrink. These come from side calls (titling, summarisation) and from context compaction, which is why the estimator of Sec.~V-B switches regimes.
+\item On ANT's own scenario-family and task-identification tasks, with the fixed test split, episode features built from the recovered structure outperform a volume-histogram (AgentPrint-style) baseline (Table~\ref{tab:ant}).
+\end{itemize}
+
+\begin{table}[t]\centering\caption{ANT LLM-API flows per engine. $\rho$: Spearman correlation between detected requests and annotated assistant steps per episode. Shrink: requests smaller than their predecessor.}\label{tab:antsum}
+\resizebox{\columnwidth}{!}{\begin{tabular}{lrrcrrr}\toprule Engine & Eps & Req & $\rho$ & kB med & Shrink\% & Eps w/ shrink\% \\\midrule
+@ANT@
+\bottomrule\end{tabular}}\end{table}
+\begin{table}[t]\centering\caption{ANT episode tasks on the fixed train/test split (175 test episodes).}\label{tab:ant}
+\resizebox{\columnwidth}{!}{\begin{tabular}{llcc}\toprule Target & Features & Acc & Macro-F1\\\midrule
+@TK@
+\bottomrule\end{tabular}}\end{table}
+
+\emph{Official baselines.} We ran the authors' own code for Whisper-Leak (\texttt{LightGBMClassifier} with \texttt{configs/lgbm.yaml}) and for Deep Fingerprinting (\texttt{DFNet} with the ClosedWorld NoDef settings) on the same per-turn record slices; only the input loader was changed (App.~\ref{app:parity}). Their edge-type macro-F1 (Table~\ref{tab:edges}) is close to that of our re-implementations (0.26--0.39 versus 0.25--0.37) and remains well below our context-growth model. Neither AgentPrint~\cite{agentprint} nor MARK~\cite{kang2026} has public code, so the volume-histogram baseline is still our re-implementation.
+
+
+
+

@@ -1,0 +1,87 @@
+real_main 1383 pairs 1895 pred-in-cands 0.894
+real_m4v3 6158 pairs 46285 pred-in-cands 0.951
+real_m8v3 7809 pairs 88845 pred-in-cands 0.977
+fw_langgraph 1468 pairs 91872 pred-in-cands 1.0
+fw_autogen 2148 pairs 6923 pred-in-cands 0.993
+ft_gemini 698 pairs 42496 pred-in-cands 0.975
+ft_groq 134 pairs 6460 pred-in-cands 0.983
+ft_cloudflare 49 pairs 1170 pred-in-cands 1.0
+/home/tinux/.claude-science/conda/envs/agenttraffic/lib/python3.11/site-packages/joblib/externals/loky/backend/context.py:134: UserWarning: Could not find the number of physical cores for the following reason:
+found 0 physical cores < 1
+Returning the number of logical cores instead. You can silence this warning by setting LOKY_MAX_CPU_COUNT to the number of cores you want to use.
+  warnings.warn(
+  File "/home/tinux/.claude-science/conda/envs/agenttraffic/lib/python3.11/site-packages/joblib/externals/loky/backend/context.py", line 272, in _count_physical_cores
+    raise ValueError(f"found {cpu_count_physical} physical cores < 1")
+      corpus                  method     n    acc  acc_nonbirth  birth_recall
+0  real_main      prev_on_connection  1383  0.871         0.846         0.911
+1  real_main  greedy_recent_feasible  1383  0.879         0.847         0.930
+2  real_main         greedy_pairwise  1383  0.896         0.848         0.973
+3  real_main        joint_assignment  1383  0.899         0.855         0.970
+      corpus                  method     n    acc  acc_nonbirth  birth_recall
+0  real_m4v3      prev_on_connection  6158  0.517         0.575         0.336
+1  real_m4v3  greedy_recent_feasible  6158  0.561         0.620         0.378
+2  real_m4v3         greedy_pairwise  6158  0.670         0.599         0.892
+3  real_m4v3        joint_assignment  6158  0.683         0.623         0.870
+      corpus                  method     n    acc  acc_nonbirth  birth_recall
+0  real_m8v3      prev_on_connection  7809  0.340         0.402         0.210
+1  real_m8v3  greedy_recent_feasible  7809  0.414         0.452         0.334
+2  real_m8v3         greedy_pairwise  7809  0.525         0.511         0.553
+3  real_m8v3        joint_assignment  7809  0.551         0.500         0.660
+         corpus                  method     n    acc  acc_nonbirth  birth_recall
+0  fw_langgraph      prev_on_connection  1468  0.083         0.152         0.001
+1  fw_langgraph  greedy_recent_feasible  1468  0.118         0.216         0.001
+2  fw_langgraph         greedy_pairwise  1468  0.305         0.236         0.386
+3  fw_langgraph        joint_assignment  1468  0.330         0.211         0.471
+       corpus                  method     n    acc  acc_nonbirth  birth_recall
+0  fw_autogen      prev_on_connection  2148  0.569         0.635         0.494
+1  fw_autogen  greedy_recent_feasible  2148  0.626         0.594         0.662
+2  fw_autogen         greedy_pairwise  2148  0.712         0.575         0.868
+3  fw_autogen        joint_assignment  2148  0.712         0.572         0.871
+      corpus                  method    n    acc  acc_nonbirth  birth_recall
+0  ft_gemini      prev_on_connection  698  0.136         0.000         1.000
+1  ft_gemini  greedy_recent_feasible  698  0.123         0.138         0.032
+2  ft_gemini         greedy_pairwise  698  0.357         0.287         0.800
+3  ft_gemini        joint_assignment  698  0.421         0.343         0.916
+    corpus                  method    n    acc  acc_nonbirth  birth_recall
+0  ft_groq      prev_on_connection  134  0.142         0.000         1.000
+1  ft_groq  greedy_recent_feasible  134  0.157         0.096         0.526
+2  ft_groq         greedy_pairwise  134  0.261         0.157         0.895
+3  ft_groq        joint_assignment  134  0.209         0.096         0.895
+          corpus                  method   n    acc  acc_nonbirth  birth_recall
+0  ft_cloudflare      prev_on_connection  49  0.490          0.00         1.000
+1  ft_cloudflare  greedy_recent_feasible  49  0.163          0.24         0.083
+2  ft_cloudflare         greedy_pairwise  49  0.469          0.24         0.708
+3  ft_cloudflare        joint_assignment  49  0.490          0.36         0.625
+          corpus   kappa         c                                    fitted_on  beta        eps
+0      real_main  0.0090  296.6209  real_m4v3|real_m8v3|fw_langgraph|fw_autogen   1.0  1873.7096
+1      real_m4v3  0.0092  284.6686  real_main|real_m8v3|fw_langgraph|fw_autogen   1.0  1696.8805
+2      real_m8v3  0.0169  223.4284  real_main|real_m4v3|fw_langgraph|fw_autogen   0.0   569.5658
+3   fw_langgraph  0.0103  275.8652     real_main|real_m4v3|real_m8v3|fw_autogen   0.0  1364.8393
+4     fw_autogen  0.0089  302.1367   real_main|real_m4v3|real_m8v3|fw_langgraph   0.0   542.9947
+5      ft_gemini  0.0037   25.5306                        ft_groq|ft_cloudflare   0.0   327.6119
+6        ft_groq  0.0121  458.5931                      ft_gemini|ft_cloudflare   3.0    64.0000
+7  ft_cloudflare -0.0020  473.6126                            ft_gemini|ft_groq   1.0   470.8897
+          corpus                  method regime     n  MedAPE_kaggle_fit  MedAPE_per_corpus_fit_odd_eps   n_odd
+2      real_main      prev_on_connection  >=1KB   343              0.033                          0.032   175.0
+5      real_main  greedy_recent_feasible  >=1KB   343              0.033                          0.031   175.0
+8      real_main         greedy_pairwise  >=1KB   342              0.031                          0.031   174.0
+11     real_main        joint_assignment  >=1KB   343              0.032                          0.031   175.0
+14     real_m4v3      prev_on_connection  >=1KB  2567              0.152                          0.397  1282.0
+17     real_m4v3  greedy_recent_feasible  >=1KB  2567              0.120                          0.118  1282.0
+20     real_m4v3         greedy_pairwise  >=1KB  2179              0.117                          0.096  1096.0
+23     real_m4v3        joint_assignment  >=1KB  2273              0.114                          0.094  1145.0
+26     real_m8v3      prev_on_connection  >=1KB  3658              0.464                          0.455  1794.0
+29     real_m8v3  greedy_recent_feasible  >=1KB  3596              0.260                          0.279  1772.0
+32     real_m8v3         greedy_pairwise  >=1KB  3415              0.269                          0.266  1678.0
+35     real_m8v3        joint_assignment  >=1KB  3172              0.236                          0.205  1549.0
+38  fw_langgraph      prev_on_connection  >=1KB   440              0.301                          0.369   211.0
+41  fw_langgraph  greedy_recent_feasible  >=1KB   440              0.232                          0.249   211.0
+44  fw_langgraph         greedy_pairwise  >=1KB   439              0.512                          0.319   211.0
+47  fw_langgraph        joint_assignment  >=1KB   439              0.516                          0.326   211.0
+50    fw_autogen      prev_on_connection  >=1KB   866              0.227                          0.308   455.0
+53    fw_autogen  greedy_recent_feasible  >=1KB   864              0.174                          0.188   455.0
+56    fw_autogen         greedy_pairwise  >=1KB   515              0.049                          0.071   271.0
+59    fw_autogen        joint_assignment  >=1KB   502              0.048                          0.069   267.0
+62     ft_gemini  greedy_recent_feasible  >=1KB   156              1.065                          0.632    65.0
+65     ft_gemini         greedy_pairwise  >=1KB   156              0.695                          0.582    65.0
+68     ft_gemini        joint_assignment  >=1KB   152              0.568                          0.525    65.0

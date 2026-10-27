@@ -1,0 +1,50 @@
+claim,value,file,filter,column,matches_source,present_in_tex
+0.979,0.9785,seg_summary.csv,"{""method"": ""frame_gbm"", ""clock"": ""wire"", ""tag"": ""subM8"", ""multiplexed"": true}",F1@100,True,True
+0.885,0.8855,seg_summary.csv,"{""method"": ""rule_paper"", ""clock"": ""wire"", ""tag"": ""subM8"", ""multiplexed"": true}",F1@100,True,True
+0.997,0.9974,seg_summary.csv,"{""method"": ""rule_paper"", ""clock"": ""wire"", ""tag"": ""main_seed3"", ""multiplexed"": false}",F1@100,True,True
+7.4,7.357,size_results.csv,"{""tag"": ""main_seed3"", ""estimator"": ""ours_q50 + transport-Mondrian-CQR"", ""regime"": ""<1KB""}",MedAPE,True,True
+13.2,13.2278,size_results.csv,"{""tag"": ""main_seed3"", ""estimator"": ""paper_lgbm_q50 (raw 90% PI)"", ""regime"": ""<1KB""}",MedAPE,True,True
+2.8,2.8039,size_results.csv,"{""tag"": ""main_seed3"", ""estimator"": ""ours_q50 + transport-Mondrian-CQR"", ""regime"": "">=1KB""}",MedAPE,True,True
+0.955,0.955,graph_parent.csv,"{""tag"": ""main_seed3"", ""linker"": ""hybrid_map"", ""conns"": ""all""}",parent_acc,True,True
+0.857,0.8574,graph_parent.csv,"{""tag"": ""main_seed3"", ""linker"": ""sequential"", ""conns"": ""all""}",parent_acc,True,True
+0.634,0.6343,graph_parent.csv,"{""tag"": ""subM8"", ""linker"": ""hybrid_map"", ""conns"": ""all""}",parent_acc,True,True
+0.819,0.8195,graph_edges.csv,"{""tag"": ""main_seed3"", ""model"": ""v3_full""}",macroF1,True,True
+0.558,0.5582,graph_edges.csv,"{""tag"": ""main_seed3"", ""model"": ""v3_no_context""}",macroF1,True,True
+0.426,0.4264,graph_edges.csv,"{""tag"": ""main_seed3"", ""model"": ""slice_only""}",macroF1,True,True
+0.385,0.3848,official_baselines.csv,"{""model"": ""whisperleak_official_lgbm"", ""tag"": ""main_seed3""}",macroF1,True,True
+0.259,0.2587,official_baselines.csv,"{""model"": ""deep_fingerprinting_official"", ""tag"": ""main_seed3""}",macroF1,True,True
+0.92,0.9228,tracker_link_profiled.csv,"{""corpus"": ""ft_gemini"", ""method"": ""joint_assignment""}",acc,True,True
+0.86,0.8579,tracker_link_profiled.csv,"{""corpus"": ""fw_autogen"", ""method"": ""joint_assignment""}",acc,True,True
+0.66,0.6606,tracker_link_profiled.csv,"{""corpus"": ""real_m8v3"", ""method"": ""joint_assignment""}",acc,True,True
+0.65,0.648,tracker_link_profiled.csv,"{""corpus"": ""fw_langgraph"", ""method"": ""joint_assignment""}",acc,True,True
+0.42,0.4212,tracker_link_cross.csv,"{""corpus"": ""ft_gemini"", ""method"": ""joint_assignment""}",acc,True,True
+0.55,0.5514,tracker_link_cross.csv,"{""corpus"": ""real_m8v3"", ""method"": ""joint_assignment""}",acc,True,True
+3.0,3.0211,tracker_size_profiled.csv,"{""corpus"": ""ft_gemini"", ""method"": ""joint_assignment"", ""regime"": "">=1KB""}",MedAPE_per_corpus_fit_odd_eps,True,True
+5.2,5.2158,tracker_size_profiled.csv,"{""corpus"": ""fw_autogen"", ""method"": ""joint_assignment"", ""regime"": "">=1KB""}",MedAPE_per_corpus_fit_odd_eps,True,True
+7.4,7.3889,tracker_size_profiled.csv,"{""corpus"": ""real_m4v3"", ""method"": ""joint_assignment"", ""regime"": "">=1KB""}",MedAPE_per_corpus_fit_odd_eps,True,True
+17,17.0785,tracker_size_profiled.csv,"{""corpus"": ""real_m8v3"", ""method"": ""joint_assignment"", ""regime"": "">=1KB""}",MedAPE_per_corpus_fit_odd_eps,True,True
+12,11.6118,tracker_size_profiled.csv,"{""corpus"": ""fw_langgraph"", ""method"": ""joint_assignment"", ""regime"": "">=1KB""}",MedAPE_per_corpus_fit_odd_eps,True,True
+0.886,0.8862,cqr_percorpus.csv,"{""corpus"": ""fw_langgraph"", ""scheme"": ""per_corpus"", ""regime"": ""all""}",PICP90,True,True
+0.955,0.9545,cqr_percorpus.csv,"{""corpus"": ""real_m8"", ""scheme"": ""per_corpus"", ""regime"": ""all""}",PICP90,True,True
+0.90,0.9005,tool_id_real.csv,"{""corpus"": ""fw_autogen""}",closed_acc,True,True
+0.69,0.6931,tool_id_real.csv,"{""corpus"": ""fw_langgraph""}",closed_acc,True,True
+0.52,0.5198,tool_id_real.csv,"{""corpus"": ""real_main""}",closed_acc,True,True
+0.43,0.4268,defences.csv,"{""defence"": ""def_pad64k""}",size_rho,True,True
+78,78.0544,defences.csv,"{""defence"": ""def_pad64k""}",bw_overhead_pct,True,True
+0.93,0.9266,defences.csv,"{""defence"": ""def_sse_batch""}",size_rho,True,True
+0.61,0.6096,defences.csv,"{""defence"": ""def_combined""}",edge_macroF1,True,True
+1.000,0.9997,real_seg.csv,"{""tag"": ""real_7b_colab2"", ""method"": ""burst_rule (real)"", ""clock"": ""wire""}",F1@100,True,True
+5.1,5.1148,real_size.csv,"{""tag"": ""real_7b_colab2"", ""estimator"": ""struct_prop1"", ""regime"": "">=1KB""}",MedAPE,True,True
+0.898,0.898,real_seg_mux.csv,"{""tag"": ""real_m8v3"", ""method"": ""burst_rule""}",F1_100,True,True
+0.900,0.8999,real_seg_mux.csv,"{""tag"": ""fw_autogen"", ""method"": ""burst_rule""}",F1_100,True,True
+0.707,0.7067,real_edges.csv,"{""corpus"": ""all_real"", ""model"": ""ours_full""}",macroF1,True,True
+0.476,0.4764,real_edges.csv,"{""corpus"": ""all_real"", ""model"": ""whisperleak_official""}",macroF1,True,True
+0.604,0.604,real_edges.csv,"{""corpus"": ""all_real"", ""model"": ""ours_no_context_growth""}",macroF1,True,True
+0.989,0.9889,real_seg.csv,"{""tag"": ""ft_groq"", ""method"": ""burst_rule (real)"", ""clock"": ""wire""}",F1@100,True,True
+0.97,0.9731,real_padding.csv,"{""corpus"": ""real_main"", ""pad_B"": 0}",size_rho,True,True
+0.48,0.4787,real_padding.csv,"{""corpus"": ""real_m8v3"", ""pad_B"": 4096}",size_rho,True,True
+0.33,0.3267,real_padding.csv,"{""corpus"": ""real_m4v3"", ""pad_B"": 16384}",size_rho,True,True
+549,548.8455,real_padding.csv,"{""corpus"": ""real_main"", ""pad_B"": 65536}",bw_overhead_pct,True,True
+528,528.0,noise_floor.csv,"{""corpus"": ""fw_langgraph""}",nontool_growth_med_B,True,True
+309,309.0,noise_floor.csv,"{""corpus"": ""fw_autogen""}",nontool_growth_med_B,True,True
+0.973,0.9727,real_seg_mux.csv,"{""tag"": ""real_m4v3"", ""method"": ""burst_rule""}",F1_100,True,True

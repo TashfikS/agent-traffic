@@ -1,0 +1,160 @@
+loaded 1772 {'main_seed3': 596, 'subM1': 170, 'subM2': 153, 'subM4': 163, 'subM8': 153} 15 s
+           set  multiplexed  n_requests  paper_labels  sizeaware_labels
+0        train        False        7816          7816              7812
+1        train         True       13227         11671             13199
+2   main_seed3        False        3465          3465              3462
+3   main_seed3         True        2005          1885              2004
+4        subM1        False        1269          1269              1269
+5        subM1         True         404           384               404
+6        subM2        False         190           190               190
+7        subM2         True        1842          1713              1830
+8        subM4        False         227           227               227
+9        subM4         True        2640          2297              2631
+10       subM8        False         198           198               198
+11       subM8         True        4199          3383              4113
+paper rule (0.8694176629386811, 64, 0.004)
+/home/tinux/.claude-science/conda/envs/agenttraffic/lib/python3.11/site-packages/joblib/externals/loky/backend/context.py:134: UserWarning: Could not find the number of physical cores for the following reason:
+found 0 physical cores < 1
+Returning the number of logical cores instead. You can silence this warning by setting LOKY_MAX_CPU_COUNT to the number of cores you want to use.
+  warnings.warn(
+  File "/home/tinux/.claude-science/conda/envs/agenttraffic/lib/python3.11/site-packages/joblib/externals/loky/backend/context.py", line 272, in _count_physical_cores
+    raise ValueError(f"found {cpu_count_physical} physical cores < 1")
+dct epoch 0 0.0403
+dct epoch 1 0.0084
+dct epoch 2 0.0077
+dct epoch 3 0.0074
+dct epoch 4 0.0069
+dct epoch 5 0.0063
+dct epoch 6 0.0055
+dct epoch 7 0.006
+evaluated main_seed3
+evaluated subM1
+evaluated subM2
+evaluated subM4
+evaluated subM8
+           method clock         tag  multiplexed  n_conn  F1@50  F1@100  F1@100_lo  F1@100_hi  F1@250
+0       frame_dct   app  main_seed3        False     498  0.902   0.954      0.947      0.960   0.980
+1       frame_dct   app  main_seed3         True      98  0.899   0.962      0.954      0.970   0.981
+2       frame_dct   app       subM1        False     151  0.893   0.956      0.945      0.967   0.983
+3       frame_dct   app       subM1         True      19  0.901   0.965      0.947      0.982   0.983
+4       frame_dct   app       subM2        False      53  0.832   0.916      0.867      0.959   0.984
+5       frame_dct   app       subM2         True     100  0.723   0.871      0.840      0.900   0.974
+6       frame_dct   app       subM4        False      63  0.841   0.943      0.900      0.981   1.000
+7       frame_dct   app       subM4         True     100  0.570   0.824      0.798      0.852   0.972
+8       frame_dct   app       subM8        False      53  0.788   0.929      0.870      0.975   0.995
+9       frame_dct   app       subM8         True     100  0.367   0.610      0.555      0.662   0.886
+10      frame_dct  wire  main_seed3        False     498  0.999   0.999      0.998      1.000   0.999
+11      frame_dct  wire  main_seed3         True      98  1.000   1.000      0.998      1.000   1.000
+12      frame_dct  wire       subM1        False     151  1.000   1.000      1.000      1.000   1.000
+13      frame_dct  wire       subM1         True      19  1.000   1.000      1.000      1.000   1.000
+14      frame_dct  wire       subM2        False      53  1.000   1.000      1.000      1.000   1.000
+15      frame_dct  wire       subM2         True     100  0.993   0.993      0.990      0.997   0.993
+16      frame_dct  wire       subM4        False      63  1.000   1.000      1.000      1.000   1.000
+17      frame_dct  wire       subM4         True     100  0.997   0.997      0.994      0.999   0.997
+18      frame_dct  wire       subM8        False      53  1.000   1.000      1.000      1.000   1.000
+19      frame_dct  wire       subM8         True     100  0.978   0.978      0.968      0.987   0.979
+20      frame_gbm   app  main_seed3        False     498  0.902   0.953      0.947      0.960   0.980
+21      frame_gbm   app  main_seed3         True      98  0.899   0.962      0.954      0.970   0.981
+22      frame_gbm   app       subM1        False     151  0.893   0.956      0.945      0.967   0.983
+23      frame_gbm   app       subM1         True      19  0.901   0.965      0.947      0.982   0.983
+24      frame_gbm   app       subM2        False      53  0.832   0.916      0.867      0.959   0.984
+25      frame_gbm   app       subM2         True     100  0.723   0.871      0.840      0.900   0.974
+26      frame_gbm   app       subM4        False      63  0.841   0.943      0.900      0.981   1.000
+27      frame_gbm   app       subM4         True     100  0.570   0.824      0.798      0.852   0.972
+28      frame_gbm   app       subM8        False      53  0.788   0.929      0.870      0.975   0.995
+29      frame_gbm   app       subM8         True     100  0.367   0.610      0.556      0.662   0.886
+30      frame_gbm  wire  main_seed3        False     498  0.999   0.999      0.998      1.000   0.999
+31      frame_gbm  wire  main_seed3         True      98  1.000   1.000      0.998      1.000   1.000
+32      frame_gbm  wire       subM1        False     151  1.000   1.000      1.000      1.000   1.000
+33      frame_gbm  wire       subM1         True      19  1.000   1.000      1.000      1.000   1.000
+34      frame_gbm  wire       subM2        False      53  1.000   1.000      1.000      1.000   1.000
+35      frame_gbm  wire       subM2         True     100  0.993   0.993      0.990      0.997   0.993
+36      frame_gbm  wire       subM4        False      63  1.000   1.000      1.000      1.000   1.000
+37      frame_gbm  wire       subM4         True     100  0.997   0.997      0.994      0.999   0.997
+38      frame_gbm  wire       subM8        False      53  1.000   1.000      1.000      1.000   1.000
+39      frame_gbm  wire       subM8         True     100  0.978   0.979      0.968      0.987   0.980
+40     frame_rule   app  main_seed3        False     498  0.839   0.887      0.880      0.893   0.912
+41     frame_rule   app  main_seed3         True      98  0.874   0.935      0.926      0.943   0.953
+42     frame_rule   app       subM1        False     151  0.841   0.901      0.888      0.912   0.927
+43     frame_rule   app       subM1         True      19  0.878   0.941      0.922      0.958   0.958
+44     frame_rule   app       subM2        False      53  0.730   0.804      0.759      0.844   0.864
+45     frame_rule   app       subM2         True     100  0.702   0.845      0.814      0.873   0.945
+46     frame_rule   app       subM4        False      63  0.736   0.825      0.789      0.857   0.875
+47     frame_rule   app       subM4         True     100  0.557   0.805      0.778      0.833   0.949
+48     frame_rule   app       subM8        False      53  0.695   0.820      0.765      0.861   0.878
+49     frame_rule   app       subM8         True     100  0.361   0.602      0.548      0.653   0.873
+50     frame_rule  wire  main_seed3        False     498  0.929   0.929      0.926      0.933   0.929
+51     frame_rule  wire  main_seed3         True      98  0.971   0.971      0.968      0.974   0.971
+52     frame_rule  wire       subM1        False     151  0.942   0.942      0.936      0.947   0.942
+53     frame_rule  wire       subM1         True      19  0.975   0.975      0.970      0.978   0.975
+54     frame_rule  wire       subM2        False      53  0.878   0.878      0.866      0.888   0.878
+55     frame_rule  wire       subM2         True     100  0.964   0.964      0.960      0.968   0.964
+56     frame_rule  wire       subM4        False      63  0.875   0.875      0.864      0.885   0.875
+57     frame_rule  wire       subM4         True     100  0.973   0.973      0.970      0.976   0.973
+58     frame_rule  wire       subM8        False      53  0.882   0.882      0.868      0.893   0.882
+59     frame_rule  wire       subM8         True     100  0.964   0.965      0.954      0.973   0.966
+60  gbm_nms_paper   app  main_seed3        False     498  0.902   0.953      0.946      0.959   0.980
+61  gbm_nms_paper   app  main_seed3         True      98  0.880   0.932      0.924      0.940   0.950
+62  gbm_nms_paper   app       subM1        False     151  0.892   0.955      0.944      0.966   0.983
+63  gbm_nms_paper   app       subM1         True      19  0.886   0.944      0.929      0.959   0.954
+64  gbm_nms_paper   app       subM2        False      53  0.832   0.916      0.867      0.959   0.984
+65  gbm_nms_paper   app       subM2         True     100  0.720   0.849      0.820      0.874   0.938
+66  gbm_nms_paper   app       subM4        False      63  0.841   0.943      0.900      0.981   1.000
+67  gbm_nms_paper   app       subM4         True     100  0.575   0.791      0.768      0.815   0.902
+68  gbm_nms_paper   app       subM8        False      53  0.788   0.929      0.870      0.975   0.995
+69  gbm_nms_paper   app       subM8         True     100  0.389   0.606      0.554      0.657   0.826
+70  gbm_nms_paper  wire  main_seed3        False     498  0.998   0.998      0.997      0.999   0.998
+71  gbm_nms_paper  wire  main_seed3         True      98  0.968   0.968      0.966      0.970   0.968
+72  gbm_nms_paper  wire       subM1        False     151  1.000   1.000      0.999      1.000   1.000
+73  gbm_nms_paper  wire       subM1         True      19  0.972   0.972      0.966      0.977   0.972
+74  gbm_nms_paper  wire       subM2        False      53  1.000   1.000      1.000      1.000   1.000
+75  gbm_nms_paper  wire       subM2         True     100  0.956   0.956      0.952      0.960   0.956
+76  gbm_nms_paper  wire       subM4        False      63  1.000   1.000      1.000      1.000   1.000
+77  gbm_nms_paper  wire       subM4         True     100  0.926   0.926      0.921      0.930   0.926
+78  gbm_nms_paper  wire       subM8        False      53  1.000   1.000      1.000      1.000   1.000
+79  gbm_nms_paper  wire       subM8         True     100  0.885   0.886      0.879      0.892   0.887
+80     rule_paper   app  main_seed3        False     498  0.901   0.952      0.946      0.958   0.979
+81     rule_paper   app  main_seed3         True      98  0.880   0.932      0.924      0.939   0.949
+82     rule_paper   app       subM1        False     151  0.892   0.955      0.944      0.966   0.983
+83     rule_paper   app       subM1         True      19  0.886   0.944      0.929      0.959   0.954
+84     rule_paper   app       subM2        False      53  0.832   0.916      0.867      0.959   0.984
+85     rule_paper   app       subM2         True     100  0.721   0.849      0.820      0.874   0.938
+86     rule_paper   app       subM4        False      63  0.841   0.943      0.900      0.981   1.000
+87     rule_paper   app       subM4         True     100  0.575   0.791      0.768      0.815   0.902
+88     rule_paper   app       subM8        False      53  0.788   0.929      0.870      0.975   0.995
+89     rule_paper   app       subM8         True     100  0.389   0.606      0.553      0.657   0.826
+90     rule_paper  wire  main_seed3        False     498  0.997   0.997      0.996      0.999   0.997
+91     rule_paper  wire  main_seed3         True      98  0.967   0.967      0.965      0.969   0.967
+92     rule_paper  wire       subM1        False     151  1.000   1.000      0.999      1.000   1.000
+93     rule_paper  wire       subM1         True      19  0.972   0.972      0.966      0.977   0.972
+94     rule_paper  wire       subM2        False      53  1.000   1.000      1.000      1.000   1.000
+95     rule_paper  wire       subM2         True     100  0.956   0.956      0.952      0.961   0.956
+96     rule_paper  wire       subM4        False      63  1.000   1.000      1.000      1.000   1.000
+97     rule_paper  wire       subM4         True     100  0.925   0.925      0.921      0.930   0.925
+98     rule_paper  wire       subM8        False      53  1.000   1.000      1.000      1.000   1.000
+99     rule_paper  wire       subM8         True     100  0.885   0.885      0.879      0.892   0.887
+          tag  multiplexed     n  lag_p50_ms  lag_p75_ms  lag_p90_ms  lag_p95_ms  lag_p99_ms  frac_gt_50ms  frac_gt_100ms
+0  main_seed3        False  3462      15.261      25.016      48.838      89.945     369.193         0.097          0.046
+1  main_seed3         True  2004      17.129      27.543      50.029      75.989     340.550         0.100          0.037
+2       subM1        False  1269      15.817      24.850      53.171      82.344     344.815         0.107          0.044
+3       subM1         True   404      14.212      23.082      48.633      78.007     356.553         0.099          0.035
+4       subM2        False   190      20.157      37.540      96.775     115.330     455.632         0.168          0.084
+5       subM2         True  1830      26.387      54.167     113.545     153.011     367.770         0.272          0.123
+6       subM4        False   227      20.459      33.343      71.395     102.803     158.987         0.159          0.057
+7       subM4         True  2631      40.758      80.714     137.012     200.694     363.912         0.430          0.174
+8       subM8        False   198      21.157      41.547      77.869     110.809     177.534         0.212          0.071
+9       subM8         True  4113      71.585     141.792     245.638     341.592     489.876         0.632          0.383
+        method  p_coalesce  F1_100  F1_250
+0   frame_rule        0.00   0.965   0.966
+1    frame_gbm        0.00   0.979   0.980
+2   frame_rule        0.10   0.957   0.958
+3    frame_gbm        0.10   0.966   0.967
+4   frame_rule        0.25   0.945   0.946
+5    frame_gbm        0.25   0.947   0.948
+6   frame_rule        0.50   0.927   0.928
+7    frame_gbm        0.50   0.917   0.918
+8   frame_rule        0.75   0.898   0.899
+9    frame_gbm        0.75   0.874   0.875
+10  frame_rule        1.00   0.885   0.886
+11   frame_gbm        1.00   0.846   0.846
+total 165 s

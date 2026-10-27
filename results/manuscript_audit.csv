@@ -1,0 +1,370 @@
+file,number,source,context
+paper_tex/main.tex,1.3,seg_observer_lag.csv:n,Execution-Graph Reconstruction over TLS~1.3 and HTTP/2} \a
+paper_tex/main.tex,1.3,seg_observer_lag.csv:n,t an on-path observer who sees only TLS~1.3 record headers
+paper_tex/main.tex,0.95,seg_summary.csv:F1@50_lo," recovers turn boundaries with F1 $\geq$0.95 at $\pm$100\,m"
+paper_tex/main.tex,0.90,seg_summary.csv:F1@50," $\pm$100\,ms on every real corpus, and 0.90 when eight sub"
+paper_tex/main.tex,0.92,seg_summary.csv:F1@50_lo,he agent stack: predecessor accuracy is 0.92 on Gemini and 
+paper_tex/main.tex,0.86,seg_summary.csv:F1@50_lo,"decessor accuracy is 0.92 on Gemini and 0.86 on AutoGen, wi"
+paper_tex/main.tex,3.0,size_results.csv:MedAPE,".92 on Gemini and 0.86 on AutoGen, with 3.0\% and 5.2\% si"
+paper_tex/main.tex,5.2,size_results.csv:MedAE_B_hi,"ini and 0.86 on AutoGen, with 3.0\% and 5.2\% size error; "
+paper_tex/main.tex,0.66,seg_summary.csv:F1@50_lo,"ay fan-out and LangGraph remain harder (0.66, 0.65). (iv)~C"
+paper_tex/main.tex,0.65,seg_summary.csv:P@50,"-out and LangGraph remain harder (0.66, 0.65). (iv)~Context"
+paper_tex/main.tex,0.82,seg_summary.csv:F1@50_lo,growth features give edge-type macro-F1 0.82 on the testbed
+paper_tex/main.tex,0.71,seg_summary.csv:F1@50_lo,e-type macro-F1 0.82 on the testbed and 0.71 on real traffi
+paper_tex/main.tex,0.12,seg_observer_lag.csv:lag_p95_ms,"stbed and 0.71 on real traffic, against 0.12--0.48 for the "
+paper_tex/main.tex,0.48,size_breaks.csv:det_recall_ctx_events,"and 0.71 on real traffic, against 0.12--0.48 for the author"
+paper_tex/main.tex,0.43,seg_observer_lag.csv:frac_gt_50ms,reduces the size correlation to $\rho = 0.43$ at 78\% bandw
+paper_tex/main.tex,1.3,seg_observer_lag.csv:n,"s} Traffic analysis, side channels, TLS~1.3, HTTP/2, LLM a"
+paper_tex/main.tex,1.3,seg_observer_lag.csv:n,"th, timing, direction) but no keys. TLS~1.3 AEAD adds a fi"
+paper_tex/main.tex,1.1,size_results.csv:n,"ck API server (hyper-h2 HTTP/2 and HTTP/1.1, ALPN, TLS~1.3"
+paper_tex/main.tex,1.3,seg_observer_lag.csv:n,"hyper-h2 HTTP/2 and HTTP/1.1, ALPN, TLS~1.3), an on-path T"
+paper_tex/main.tex,0.997,seg_summary.csv:F1@50,"r silence $> \tau_g$) is sufficient (F1 0.997 at $\pm$100\,m"
+paper_tex/main.tex,0.925,seg_summary.csv:F1@50,"ere the rule degrades with concurrency (0.925 at $M{=}4$, 0."
+paper_tex/main.tex,0.885,seg_summary.csv:F1@50,"des with concurrency (0.925 at $M{=}4$, 0.885 at $M{=}8$). A"
+paper_tex/main.tex,0.979,seg_summary.csv:P@50," TLS overhead residues, reaches \textbf{0.979 [0.968, 0.987]"
+paper_tex/main.tex,0.968,seg_summary.csv:F1@50,"erhead residues, reaches \textbf{0.979 [0.968, 0.987]} at $M"
+paper_tex/main.tex,0.987,seg_summary.csv:F1@50_hi,"residues, reaches \textbf{0.979 [0.968, 0.987]} at $M{=}8$ ("
+paper_tex/main.tex,0.978,seg_summary.csv:F1@50,e same candidates performs identically (0.978).  \begin{tabl
+paper_tex/main.tex,0.956,seg_summary.csv:F1@50,(98 conns)\\\midrule Rule (len + gap) & 0.956 & 0.925 & 0.88
+paper_tex/main.tex,0.925,seg_summary.csv:F1@50,s)\\\midrule Rule (len + gap) & 0.956 & 0.925 & 0.885 [0.879
+paper_tex/main.tex,0.885,seg_summary.csv:F1@50,"rule Rule (len + gap) & 0.956 & 0.925 & 0.885 [0.879, 0.892]"
+paper_tex/main.tex,0.879,seg_summary.csv:F1@100_lo,"le (len + gap) & 0.956 & 0.925 & 0.885 [0.879, 0.892] & 0.96"
+paper_tex/main.tex,0.892,seg_summary.csv:F1@50," + gap) & 0.956 & 0.925 & 0.885 [0.879, 0.892] & 0.967\\ Fra"
+paper_tex/main.tex,0.967,seg_summary.csv:F1@50," 0.956 & 0.925 & 0.885 [0.879, 0.892] & 0.967\\ Frame rule &"
+paper_tex/main.tex,0.964,seg_summary.csv:F1@50,"5 [0.879, 0.892] & 0.967\\ Frame rule & 0.964 & 0.973 & 0.96"
+paper_tex/main.tex,0.973,seg_summary.csv:F1@50,", 0.892] & 0.967\\ Frame rule & 0.964 & 0.973 & 0.965 [0.954"
+paper_tex/main.tex,0.965,seg_summary.csv:F1@50_lo," & 0.967\\ Frame rule & 0.964 & 0.973 & 0.965 [0.954, 0.973]"
+paper_tex/main.tex,0.954,seg_summary.csv:F1@100,"7\\ Frame rule & 0.964 & 0.973 & 0.965 [0.954, 0.973] & 0.97"
+paper_tex/main.tex,0.973,seg_summary.csv:F1@50,"me rule & 0.964 & 0.973 & 0.965 [0.954, 0.973] & 0.971\\ Fra"
+paper_tex/main.tex,0.971,seg_summary.csv:F1@50," 0.964 & 0.973 & 0.965 [0.954, 0.973] & 0.971\\ Frame-aware "
+paper_tex/main.tex,0.993,seg_summary.csv:F1@50,"954, 0.973] & 0.971\\ Frame-aware GBM & 0.993 & 0.997 & \tex"
+paper_tex/main.tex,0.997,seg_summary.csv:F1@50,73] & 0.971\\ Frame-aware GBM & 0.993 & 0.997 & \textbf{0.97
+paper_tex/main.tex,0.979,seg_summary.csv:P@50,"ame-aware GBM & 0.993 & 0.997 & \textbf{0.979 [0.968, 0.987]"
+paper_tex/main.tex,0.968,seg_summary.csv:F1@50,"re GBM & 0.993 & 0.997 & \textbf{0.979 [0.968, 0.987]} & 1.0"
+paper_tex/main.tex,0.987,seg_summary.csv:F1@50_hi,"& 0.993 & 0.997 & \textbf{0.979 [0.968, 0.987]} & 1.000\\ Co"
+paper_tex/main.tex,1.000,seg_observer_lag.csv:multiplexed,"0.997 & \textbf{0.979 [0.968, 0.987]} & 1.000\\ Conv + trans"
+paper_tex/main.tex,0.993,seg_summary.csv:F1@50, 0.987]} & 1.000\\ Conv + transformer & 0.993 & 0.997 & 0.97
+paper_tex/main.tex,0.997,seg_summary.csv:F1@50, & 1.000\\ Conv + transformer & 0.993 & 0.997 & 0.978 [0.968
+paper_tex/main.tex,0.978,seg_summary.csv:F1@50,"\\ Conv + transformer & 0.993 & 0.997 & 0.978 [0.968, 0.987]"
+paper_tex/main.tex,0.968,seg_summary.csv:F1@50," + transformer & 0.993 & 0.997 & 0.978 [0.968, 0.987] & 1.00"
+paper_tex/main.tex,0.987,seg_summary.csv:F1@50_hi,"sformer & 0.993 & 0.997 & 0.978 [0.968, 0.987] & 1.000\\\bot"
+paper_tex/main.tex,1.000,seg_observer_lag.csv:multiplexed," 0.993 & 0.997 & 0.978 [0.968, 0.987] & 1.000\\\bottomrule \"
+paper_tex/main.tex,13.2,size_results.csv:MedAPE,"n error for results $<$1\,KB falls from 13.2\% to \textbf{7"
+paper_tex/main.tex,7.4,size_results.csv:MedAPE,"s $<$1\,KB falls from 13.2\% to \textbf{7.4\%}, and stays "
+paper_tex/main.tex,2.8,size_results.csv:MedAPE," 13.2\% to \textbf{7.4\%}, and stays at 2.8\% for results "
+paper_tex/main.tex,0.78,seg_summary.csv:P@50, the coverage of the 90\% interval from 0.78 to \textbf{0.9
+paper_tex/main.tex,0.914,size_results.csv:spearman," the 90\% interval from 0.78 to \textbf{0.914 [0.902, 0.925]"
+paper_tex/main.tex,0.902,seg_summary.csv:F1@50,"\% interval from 0.78 to \textbf{0.914 [0.902, 0.925]} on HT"
+paper_tex/main.tex,0.925,seg_summary.csv:F1@50,"rval from 0.78 to \textbf{0.914 [0.902, 0.925]} on HTTP/2 an"
+paper_tex/main.tex,0.888,seg_summary.csv:F1@50_hi,"{0.914 [0.902, 0.925]} on HTTP/2 and to 0.888 on HTTP/1.1. U"
+paper_tex/main.tex,0.74,seg_summary.csv:F1@50,der server-side state coverage is still 0.74 because only a
+paper_tex/main.tex,0.72,seg_summary.csv:F1@50,cts summarisation breaks with precision 0.72 and recall 0.5
+paper_tex/main.tex,0.78,seg_summary.csv:P@50,ks (15\% of turns) raises coverage from 0.78 to 0.88.  \beg
+paper_tex/main.tex,0.955,seg_summary.csv:F1@100,"re its child begins. It reaches \textbf{0.955 [0.947, 0.963]"
+paper_tex/main.tex,0.947,seg_summary.csv:F1@50_hi,"child begins. It reaches \textbf{0.955 [0.947, 0.963]} on se"
+paper_tex/main.tex,0.963,size_results.csv:MedAPE_hi,"egins. It reaches \textbf{0.955 [0.947, 0.963]} on seed 3, a"
+paper_tex/main.tex,0.857,seg_summary.csv:F1@50_hi,".955 [0.947, 0.963]} on seed 3, against 0.857 for the sequen"
+paper_tex/main.tex,0.758,size_results.csv:p90_APE,inst 0.857 for the sequential chain and 0.758 for the origin
+paper_tex/main.tex,0.634,tool_openset_reps.csv:closed_acc,"r the original context-growth rule, and 0.634 at $M{=}8$ (se"
+paper_tex/main.tex,0.310,size_results.csv:MedAE_B_lo,"rule, and 0.634 at $M{=}8$ (sequential: 0.310). \emph{Edge t"
+paper_tex/main.tex,0.819,seg_summary.csv:R@100,"n features. It reaches macro-F1 \textbf{0.819 [0.809, 0.832]"
+paper_tex/main.tex,0.809,size_results.csv:p90_APE,"res. It reaches macro-F1 \textbf{0.819 [0.809, 0.832]}, agai"
+paper_tex/main.tex,0.832,seg_summary.csv:F1@50," reaches macro-F1 \textbf{0.819 [0.809, 0.832]}, against 0.5"
+paper_tex/main.tex,0.558,size_results.csv:p90_APE," \textbf{0.819 [0.809, 0.832]}, against 0.558 without contex"
+paper_tex/main.tex,0.426,manuscript_audit.csv:number,inst 0.558 without context features and 0.426 with slice fea
+paper_tex/main.tex,0.98,seg_summary.csv:F1@50,Table~\ref{tab:edges}). Per-class F1 is 0.98 for transport 
+paper_tex/main.tex,0.93,seg_summary.csv:F1@50,"r-class F1 is 0.98 for transport retry, 0.93 sub-agent, 0.8"
+paper_tex/main.tex,0.89,seg_summary.csv:F1@50,"98 for transport retry, 0.93 sub-agent, 0.89 sequential, 0."
+paper_tex/main.tex,0.83,seg_summary.csv:F1@50,"retry, 0.93 sub-agent, 0.89 sequential, 0.83 start, 0.66 pa"
+paper_tex/main.tex,0.66,seg_summary.csv:F1@50_lo,"sub-agent, 0.89 sequential, 0.83 start, 0.66 parallel fork-"
+paper_tex/main.tex,0.62,seg_summary.csv:F1@50_lo,".83 start, 0.66 parallel fork--join and 0.62 semantic retry"
+paper_tex/main.tex,0.607,seg_summary.csv:F1@50_hi,b-agent turns but not retries (retry F1 0.607 with the cue a
+paper_tex/main.tex,0.606,seg_summary.csv:F1@100,etries (retry F1 0.607 with the cue and 0.606 without). The 
+paper_tex/main.tex,0.38,seg_observer_lag.csv:frac_gt_100ms,t). The authors' official Whisper-Leak (0.38--0.39) and Dee
+paper_tex/main.tex,0.39,seg_summary.csv:F1@50,e authors' official Whisper-Leak (0.38--0.39) and Deep Fing
+paper_tex/main.tex,0.26,size_results.csv:n,"k (0.38--0.39) and Deep Fingerprinting (0.26--0.34) code, a"
+paper_tex/main.tex,0.34,seg_observer_lag.csv:lag_p95_ms,"8--0.39) and Deep Fingerprinting (0.26--0.34) code, adapted"
+paper_tex/main.tex,0.707,seg_summary.csv:F1@50_lo,"-out real-stack turns our model reaches 0.707, against 0.476"
+paper_tex/main.tex,0.476,size_breaks.csv:det_recall_ctx_events," turns our model reaches 0.707, against 0.476 for Whisper-Le"
+paper_tex/main.tex,0.12,seg_observer_lag.csv:lag_p95_ms,"707, against 0.476 for Whisper-Leak and 0.12--0.34 for Deep"
+paper_tex/main.tex,0.34,seg_observer_lag.csv:lag_p95_ms,gainst 0.476 for Whisper-Leak and 0.12--0.34 for Deep Finge
+paper_tex/main.tex,0.385,size_results.csv:PICP90_lo,\midrule Whisper-Leak (official code) & 0.385 & 0.381 & 0.38
+paper_tex/main.tex,0.381,size_results.csv:MedAPE, Whisper-Leak (official code) & 0.385 & 0.381 & 0.387 & 0.47
+paper_tex/main.tex,0.387,manuscript_audit.csv:number,-Leak (official code) & 0.385 & 0.381 & 0.387 & 0.476\\ Deep
+paper_tex/main.tex,0.476,size_breaks.csv:det_recall_ctx_events,fficial code) & 0.385 & 0.381 & 0.387 & 0.476\\ Deep Fingerp
+paper_tex/main.tex,0.259,manuscript_audit.csv:number,\ Deep Fingerprinting (official code) & 0.259 & 0.256 & 0.34
+paper_tex/main.tex,0.256,size_results.csv:MedAPE_hi,ingerprinting (official code) & 0.259 & 0.256 & 0.341 & 0.12
+paper_tex/main.tex,0.341,seg_observer_lag.csv:lag_p99_ms,nting (official code) & 0.259 & 0.256 & 0.341 & 0.12--0.34$^
+paper_tex/main.tex,0.12,seg_observer_lag.csv:lag_p95_ms,fficial code) & 0.259 & 0.256 & 0.341 & 0.12--0.34$^\dagger
+paper_tex/main.tex,0.34,seg_observer_lag.csv:lag_p95_ms,l code) & 0.259 & 0.256 & 0.341 & 0.12--0.34$^\dagger$\\ Sl
+paper_tex/main.tex,0.426,manuscript_audit.csv:number,-0.34$^\dagger$\\ Slice features only & 0.426 & 0.422 & 0.47
+paper_tex/main.tex,0.422,tracker_size_cross.csv:MedAPE_per_corpus_fit_odd_eps,dagger$\\ Slice features only & 0.426 & 0.422 & 0.478 & 0.57
+paper_tex/main.tex,0.478,size_results.csv:spearman,\ Slice features only & 0.426 & 0.422 & 0.478 & 0.573\\ Ours
+paper_tex/main.tex,0.573,manuscript_audit.csv:number,features only & 0.426 & 0.422 & 0.478 & 0.573\\ Ours without
+paper_tex/main.tex,0.558,size_results.csv:p90_APE,& 0.573\\ Ours without context growth & 0.558 & 0.550 & 0.55
+paper_tex/main.tex,0.550,seg_summary.csv:R@100,\ Ours without context growth & 0.558 & 0.550 & 0.555 & 0.60
+paper_tex/main.tex,0.555,seg_summary.csv:F1@100_lo,ithout context growth & 0.558 & 0.550 & 0.555 & 0.604\\ Ours
+paper_tex/main.tex,0.604,tracker_size_cross.csv:n,ontext growth & 0.558 & 0.550 & 0.555 & 0.604\\ Ours without
+paper_tex/main.tex,0.778,seg_summary.csv:F1@100_lo, 0.555 & 0.604\\ Ours without latency & 0.778 & 0.776 & 0.70
+paper_tex/main.tex,0.776,size_results.csv:PICP90, 0.604\\ Ours without latency & 0.778 & 0.776 & 0.707 & --\\
+paper_tex/main.tex,0.707,seg_summary.csv:F1@50_lo, Ours without latency & 0.778 & 0.776 & 0.707 & --\\ Ours (f
+paper_tex/main.tex,0.819,seg_summary.csv:R@100,"76 & 0.707 & --\\ Ours (full) & \textbf{0.819 [0.809, 0.832]"
+paper_tex/main.tex,0.809,size_results.csv:p90_APE,"707 & --\\ Ours (full) & \textbf{0.819 [0.809, 0.832]} & 0.8"
+paper_tex/main.tex,0.832,seg_summary.csv:F1@50,"-\\ Ours (full) & \textbf{0.819 [0.809, 0.832]} & 0.807 & 0."
+paper_tex/main.tex,0.807,manuscript_audit.csv:number,"full) & \textbf{0.819 [0.809, 0.832]} & 0.807 & 0.710 & \tex"
+paper_tex/main.tex,0.710,size_results.csv:p90_APE,"\textbf{0.819 [0.809, 0.832]} & 0.807 & 0.710 & \textbf{0.70"
+paper_tex/main.tex,0.707,seg_summary.csv:F1@50_lo,".809, 0.832]} & 0.807 & 0.710 & \textbf{0.707}\\\bottomrule "
+paper_tex/main.tex,0.60,seg_summary.csv:F1@100,even exact sizes plus latency give only 0.60 accuracy and 0
+paper_tex/main.tex,0.62,seg_summary.csv:F1@50_lo,lus latency give only 0.60 accuracy and 0.62 unknown-tool A
+paper_tex/main.tex,0.95,seg_summary.csv:F1@50_lo,ave the size channel intact ($\rho \geq 0.95$). \item \text
+paper_tex/main.tex,0.93,seg_summary.csv:F1@50,"$-$1\%). It also hides nothing: $\rho = 0.93$, and edge mac"
+paper_tex/main.tex,0.82,seg_summary.csv:F1@50_lo,"ng to 4\,KB costs 7\% and gives $\rho = 0.82$; 16\,KB costs"
+paper_tex/main.tex,0.67,seg_summary.csv:P@100,"rho = 0.82$; 16\,KB costs 14\% ($\rho = 0.67$); 64\,KB cost"
+paper_tex/main.tex,0.43,seg_observer_lag.csv:frac_gt_50ms,"ho = 0.67$); 64\,KB costs 78\% ($\rho = 0.43$). \item \text"
+paper_tex/main.tex,0.61,seg_summary.csv:F1@50_hi,"he lowest graph accuracy (edge macro-F1 0.61, against 0.76 "
+paper_tex/main.tex,0.76,seg_summary.csv:F1@50_lo,"h accuracy (edge macro-F1 0.61, against 0.76 undefended) an"
+paper_tex/main.tex,0.17,seg_observer_lag.csv:frac_gt_50ms,"ion brings edge typing close to chance (0.17), so graph str"
+paper_tex/main.tex,0.71,seg_summary.csv:F1@50_lo,"\,KB padding already lowers $\rho$ from 0.71--0.97 to 0.48-"
+paper_tex/main.tex,0.97,seg_summary.csv:F1@50,"adding already lowers $\rho$ from 0.71--0.97 to 0.48--0.75,"
+paper_tex/main.tex,0.48,size_breaks.csv:det_recall_ctx_events,"lready lowers $\rho$ from 0.71--0.97 to 0.48--0.75, and 16\"
+paper_tex/main.tex,0.75,seg_summary.csv:P@50," lowers $\rho$ from 0.71--0.97 to 0.48--0.75, and 16\,KB pa"
+paper_tex/main.tex,0.97,seg_summary.csv:F1@50,"midrule Kaggle, dedicated & none & +0 & 0.97 & 3 \\ Kaggle,"
+paper_tex/main.tex,0.66,seg_summary.csv:F1@50_lo," 3 \\ Kaggle, dedicated & 4\,KB & +17 & 0.66 & 30 \\ Kaggle"
+paper_tex/main.tex,0.08,seg_observer_lag.csv:lag_p75_ms,"0 \\ Kaggle, dedicated & 16\,KB & +86 & 0.08 & 53 \\ Kaggle"
+paper_tex/main.tex,0.02,seg_observer_lag.csv:lag_p50_ms,"\\ Kaggle, dedicated & 64\,KB & +549 & -0.02 & 52 \\ Kaggle"
+paper_tex/main.tex,0.84,seg_summary.csv:F1@50,"2 & 52 \\ Kaggle, $M{=}4$ & none & +0 & 0.84 & 7 \\ Kaggle,"
+paper_tex/main.tex,0.60,seg_summary.csv:F1@100," & 7 \\ Kaggle, $M{=}4$ & 4\,KB & +17 & 0.60 & 39 \\ Kaggle"
+paper_tex/main.tex,0.33,seg_summary.csv:F1@50_lo," 39 \\ Kaggle, $M{=}4$ & 16\,KB & +76 & 0.33 & 42 \\ Kaggle"
+paper_tex/main.tex,0.11,seg_observer_lag.csv:lag_p90_ms,"42 \\ Kaggle, $M{=}4$ & 64\,KB & +439 & 0.11 & 50 \\ Kaggle"
+paper_tex/main.tex,0.71,seg_summary.csv:F1@50_lo,"1 & 50 \\ Kaggle, $M{=}8$ & none & +0 & 0.71 & 17 \\ Kaggle"
+paper_tex/main.tex,0.48,size_breaks.csv:det_recall_ctx_events,"& 17 \\ Kaggle, $M{=}8$ & 4\,KB & +15 & 0.48 & 40 \\ Kaggle"
+paper_tex/main.tex,0.27,seg_observer_lag.csv:frac_gt_50ms," 40 \\ Kaggle, $M{=}8$ & 16\,KB & +65 & 0.27 & 46 \\ Kaggle"
+paper_tex/main.tex,0.04,seg_observer_lag.csv:lag_p50_ms,"46 \\ Kaggle, $M{=}8$ & 64\,KB & +373 & 0.04 & 52 \\ AutoGe"
+paper_tex/main.tex,0.89,seg_summary.csv:F1@50,73 & 0.04 & 52 \\ AutoGen & none & +0 & 0.89 & 5 \\ AutoGen
+paper_tex/main.tex,0.75,seg_summary.csv:P@50,"0 & 0.89 & 5 \\ AutoGen & 4\,KB & +18 & 0.75 & 32 \\ AutoGe"
+paper_tex/main.tex,0.08,seg_observer_lag.csv:lag_p75_ms,"0.75 & 32 \\ AutoGen & 16\,KB & +105 & -0.08 & 45 \\ AutoGe"
+paper_tex/main.tex,0.31,size_results.csv:MedAE_B_lo,"0.08 & 45 \\ AutoGen & 64\,KB & +545 & -0.31 & 48 \\ \botto"
+paper_tex/main.tex,0.939,seg_summary.csv:R@50,",\% ($\geq$1\,KB)\\\midrule None & +0 & 0.939 & 0.759 & 0.95"
+paper_tex/main.tex,0.759,seg_summary.csv:F1@50_lo,"eq$1\,KB)\\\midrule None & +0 & 0.939 & 0.759 & 0.95 & 8 \\ "
+paper_tex/main.tex,0.95,seg_summary.csv:F1@50_lo,)\\\midrule None & +0 & 0.939 & 0.759 & 0.95 & 8 \\ Server 
+paper_tex/main.tex,0.943,seg_summary.csv:F1@100,.759 & 0.95 & 8 \\ Server state & -37 & 0.943 & 0.762 & 0.98
+paper_tex/main.tex,0.762,size_results.csv:PICP90,.95 & 8 \\ Server state & -37 & 0.943 & 0.762 & 0.98 & 6 \\ 
+paper_tex/main.tex,0.98,seg_summary.csv:F1@50,\\ Server state & -37 & 0.943 & 0.762 & 0.98 & 6 \\ gzip & 
+paper_tex/main.tex,0.944,seg_summary.csv:P@50,.943 & 0.762 & 0.98 & 6 \\ gzip & -21 & 0.944 & 0.759 & 0.95
+paper_tex/main.tex,0.759,seg_summary.csv:F1@50_lo,.762 & 0.98 & 6 \\ gzip & -21 & 0.944 & 0.759 & 0.95 & 9 \\ 
+paper_tex/main.tex,0.95,seg_summary.csv:F1@50_lo,".98 & 6 \\ gzip & -21 & 0.944 & 0.759 & 0.95 & 9 \\ Pad 4\,"
+paper_tex/main.tex,0.943,seg_summary.csv:F1@100," & 0.759 & 0.95 & 9 \\ Pad 4\,KB & +7 & 0.943 & 0.705 & 0.82"
+paper_tex/main.tex,0.705,size_results.csv:PICP90_lo," & 0.95 & 9 \\ Pad 4\,KB & +7 & 0.943 & 0.705 & 0.82 & 34 \\"
+paper_tex/main.tex,0.82,seg_summary.csv:F1@50_lo,"& 9 \\ Pad 4\,KB & +7 & 0.943 & 0.705 & 0.82 & 34 \\ Pad 16"
+paper_tex/main.tex,0.936,seg_summary.csv:F1@50_lo,"0.705 & 0.82 & 34 \\ Pad 16\,KB & +14 & 0.936 & 0.708 & 0.67"
+paper_tex/main.tex,0.708,size_results.csv:PICP90_hi,"0.82 & 34 \\ Pad 16\,KB & +14 & 0.936 & 0.708 & 0.67 & 56 \\"
+paper_tex/main.tex,0.67,seg_summary.csv:P@100,"4 \\ Pad 16\,KB & +14 & 0.936 & 0.708 & 0.67 & 56 \\ Pad 64"
+paper_tex/main.tex,0.939,seg_summary.csv:R@50,"0.708 & 0.67 & 56 \\ Pad 64\,KB & +78 & 0.939 & 0.669 & 0.43"
+paper_tex/main.tex,0.669,size_results.csv:MedAE_B,"0.67 & 56 \\ Pad 64\,KB & +78 & 0.939 & 0.669 & 0.43 & 69 \\"
+paper_tex/main.tex,0.43,seg_observer_lag.csv:frac_gt_50ms,"6 \\ Pad 64\,KB & +78 & 0.939 & 0.669 & 0.43 & 69 \\ Jitter"
+paper_tex/main.tex,0.947,seg_summary.csv:F1@50_hi," 69 \\ Jitter, non-streamed$^*$ & -43 & 0.947 & 0.750 & 0.95"
+paper_tex/main.tex,0.750,seg_summary.csv:R@250,"itter, non-streamed$^*$ & -43 & 0.947 & 0.750 & 0.95 & 14 \\"
+paper_tex/main.tex,0.95,seg_summary.csv:F1@50_lo,on-streamed$^*$ & -43 & 0.947 & 0.750 & 0.95 & 14 \\ SSE ba
+paper_tex/main.tex,0.948,seg_summary.csv:R@50, 14 \\ SSE batching (8) + jitter & -1 & 0.948 & 0.761 & 0.93
+paper_tex/main.tex,0.761,size_results.csv:spearman,SE batching (8) + jitter & -1 & 0.948 & 0.761 & 0.93 & 9 \\ 
+paper_tex/main.tex,0.93,seg_summary.csv:F1@50,ing (8) + jitter & -1 & 0.948 & 0.761 & 0.93 & 9 \\ Combine
+paper_tex/main.tex,0.836,size_results.csv:PICP90_lo, & 0.761 & 0.93 & 9 \\ Combined & -56 & 0.836 & 0.610 & 0.65
+paper_tex/main.tex,0.610,seg_summary.csv:F1@100, & 0.93 & 9 \\ Combined & -56 & 0.836 & 0.610 & 0.65 & 44 \\
+paper_tex/main.tex,0.65,seg_summary.csv:P@50,& 9 \\ Combined & -56 & 0.836 & 0.610 & 0.65 & 44 \\ \botto
+paper_tex/main.tex,0.85,seg_summary.csv:F1@50_lo,[t]\centering \figph{fig4_defences.pdf}{0.85\textwidth} \ca
+paper_tex/main.tex,3.0,size_results.csv:MedAPE,cker reaches 92\% predecessor accuracy (3.0\% size error) 
+paper_tex/main.tex,0.90,seg_summary.csv:F1@50,"tification succeeds on real frameworks (0.90 on AutoGen, 0."
+paper_tex/main.tex,0.69,seg_summary.csv:F1@50,"ds on real frameworks (0.90 on AutoGen, 0.69 on LangGraph),"
+paper_tex/main.tex,0.51,seg_summary.csv:F1@50_lo,unseen tools remains near chance (AUROC 0.51--0.62). AgentP
+paper_tex/main.tex,0.62,seg_summary.csv:F1@50_lo, tools remains near chance (AUROC 0.51--0.62). AgentPrint a
+paper_tex/main.tex,0.90,seg_summary.csv:F1@50,t rule recovers turn boundaries with F1 0.90--1.00 across t
+paper_tex/main.tex,1.00,seg_observer_lag.csv:multiplexed, recovers turn boundaries with F1 0.90--1.00 across the Clo
+paper_tex/main.tex,3.0,size_results.csv:MedAPE,ed joint conversation tracking restores 3.0--7.4\% error o
+paper_tex/main.tex,7.4,size_results.csv:MedAPE,int conversation tracking restores 3.0--7.4\% error on Gem
+paper_tex/sec_v3_real.tex,1.3,seg_observer_lag.csv:n, through a Cloudflare quick tunnel. TLS~1.3 and HTTP/2 ter
+paper_tex/sec_v3_real.tex,0.989,seg_summary.csv:F1@250_hi,not change segmentation: boundary F1 is 0.989--1.000 on the 
+paper_tex/sec_v3_real.tex,1.000,seg_observer_lag.csv:multiplexed,nge segmentation: boundary F1 is 0.989--1.000 on the raw sin
+paper_tex/sec_v3_real.tex,0.995,seg_summary.csv:P@50,"single-window capture (1,312 turns) and 0.995--1.000 on the "
+paper_tex/sec_v3_real.tex,1.000,seg_observer_lag.csv:multiplexed,"window capture (1,312 turns) and 0.995--1.000 on the cleaned"
+paper_tex/sec_v3_real.tex,0.95,seg_summary.csv:F1@50_lo,*}[t]\centering\figph{fig_real_ant.pdf}{0.95\textwidth} \ca
+paper_tex/sec_v3_real.tex,0.50,seg_summary.csv:n_conn,ned on the testbed falls to F1 $\approx$0.50--0.62. The cli
+paper_tex/sec_v3_real.tex,0.973,seg_summary.csv:F1@50,e connections the burst rule reaches F1 0.973 ($M{=}4$) and 
+paper_tex/sec_v3_real.tex,0.898,seg_summary.csv:F1@50_hi,"rst rule reaches F1 0.973 ($M{=}4$) and 0.898 ($M{=}8$), aga"
+paper_tex/sec_v3_real.tex,0.68,seg_summary.csv:F1@50_lo," ($M{=}4$) and 0.898 ($M{=}8$), against 0.68 and 0.70 for t"
+paper_tex/sec_v3_real.tex,0.70,seg_summary.csv:F1@50,") and 0.898 ($M{=}8$), against 0.68 and 0.70 for the testbe"
+paper_tex/sec_v3_real.tex,0.96,seg_summary.csv:F1@50," falls gradually with concurrency, from 0.96 at 2 to 0.89 a"
+paper_tex/sec_v3_real.tex,0.89,seg_summary.csv:F1@50,"lly with concurrency, from 0.96 at 2 to 0.89 at 8, and does"
+paper_tex/sec_v3_real.tex,0.62,seg_summary.csv:F1@50_lo, not collapse as it did in the testbed (0.62). The testbed 
+paper_tex/sec_v3_real.tex,0.977,seg_summary.csv:F1@50_hi," connections. The burst rule reaches F1 0.977 on LangGraph, "
+paper_tex/sec_v3_real.tex,0.952,seg_summary.csv:F1@50_lo,"rule reaches F1 0.977 on LangGraph, and 0.952 on AutoGen ove"
+paper_tex/sec_v3_real.tex,0.900,seg_summary.csv:F1@100_lo,"Graph, and 0.952 on AutoGen overall and 0.900 on its multipl"
+paper_tex/sec_v3_real.tex,0.585,manuscript_audit.csv:number,"\\\midrule Kaggle, natural mix & 1386 & 0.585 & 1.000 [1.000"
+paper_tex/sec_v3_real.tex,1.000,seg_observer_lag.csv:multiplexed,"le Kaggle, natural mix & 1386 & 0.585 & 1.000 [1.000, 1.000]"
+paper_tex/sec_v3_real.tex,1.000,seg_observer_lag.csv:multiplexed,"le, natural mix & 1386 & 0.585 & 1.000 [1.000, 1.000] \\ Kag"
+paper_tex/sec_v3_real.tex,1.000,seg_observer_lag.csv:multiplexed,"ural mix & 1386 & 0.585 & 1.000 [1.000, 1.000] \\ Kaggle, $M"
+paper_tex/sec_v3_real.tex,0.587,size_results.csv:PICP90,"] \\ Kaggle, $M{=}4$ plan (v1) & 1371 & 0.587 & 1.000 [0.999"
+paper_tex/sec_v3_real.tex,1.000,seg_observer_lag.csv:multiplexed,"gle, $M{=}4$ plan (v1) & 1371 & 0.587 & 1.000 [0.999, 1.000]"
+paper_tex/sec_v3_real.tex,0.999,seg_summary.csv:F1@50,"{=}4$ plan (v1) & 1371 & 0.587 & 1.000 [0.999, 1.000] \\ Kag"
+paper_tex/sec_v3_real.tex,1.000,seg_observer_lag.csv:multiplexed,"lan (v1) & 1371 & 0.587 & 1.000 [0.999, 1.000] \\ Kaggle, $M"
+paper_tex/sec_v3_real.tex,0.623,tool_openset_reps.csv:AUROC_msp,"] \\ Kaggle, $M{=}4$ plan (v2) & 3324 & 0.623 & 0.999 [0.998"
+paper_tex/sec_v3_real.tex,0.999,seg_summary.csv:F1@50,"gle, $M{=}4$ plan (v2) & 3324 & 0.623 & 0.999 [0.998, 1.000]"
+paper_tex/sec_v3_real.tex,0.998,seg_summary.csv:F1@50,"{=}4$ plan (v2) & 3324 & 0.623 & 0.999 [0.998, 1.000] \\ Kag"
+paper_tex/sec_v3_real.tex,1.000,seg_observer_lag.csv:multiplexed,"lan (v2) & 3324 & 0.623 & 0.999 [0.998, 1.000] \\ Kaggle, $M"
+paper_tex/sec_v3_real.tex,0.535,size_results.csv:n,"0] \\ Kaggle, $M{=}8$ plan (v1) & 565 & 0.535 & 1.000 [1.000"
+paper_tex/sec_v3_real.tex,1.000,seg_observer_lag.csv:multiplexed,"ggle, $M{=}8$ plan (v1) & 565 & 0.535 & 1.000 [1.000, 1.000]"
+paper_tex/sec_v3_real.tex,1.000,seg_observer_lag.csv:multiplexed,"M{=}8$ plan (v1) & 565 & 0.535 & 1.000 [1.000, 1.000] \\ Kag"
+paper_tex/sec_v3_real.tex,1.000,seg_observer_lag.csv:multiplexed,"plan (v1) & 565 & 0.535 & 1.000 [1.000, 1.000] \\ Kaggle, $M"
+paper_tex/sec_v3_real.tex,0.619,size_results.csv:PICP90,"] \\ Kaggle, $M{=}8$ plan (v2) & 3301 & 0.619 & 1.000 [0.999"
+paper_tex/sec_v3_real.tex,1.000,seg_observer_lag.csv:multiplexed,"gle, $M{=}8$ plan (v2) & 3301 & 0.619 & 1.000 [0.999, 1.000]"
+paper_tex/sec_v3_real.tex,0.999,seg_summary.csv:F1@50,"{=}8$ plan (v2) & 3301 & 0.619 & 1.000 [0.999, 1.000] \\ Kag"
+paper_tex/sec_v3_real.tex,1.000,seg_observer_lag.csv:multiplexed,"lan (v2) & 3301 & 0.619 & 1.000 [0.999, 1.000] \\ Kaggle, $M"
+paper_tex/sec_v3_real.tex,0.659,size_results.csv:MedAPE_lo,"0] \\ Kaggle, $M{=}4$ parallel & 6408 & 0.659 & 0.979 [0.978"
+paper_tex/sec_v3_real.tex,0.979,seg_summary.csv:P@50,"ggle, $M{=}4$ parallel & 6408 & 0.659 & 0.979 [0.978, 0.981]"
+paper_tex/sec_v3_real.tex,0.978,seg_summary.csv:F1@50,"M{=}4$ parallel & 6408 & 0.659 & 0.979 [0.978, 0.981] \\ Kag"
+paper_tex/sec_v3_real.tex,0.981,seg_summary.csv:F1@100_hi,"parallel & 6408 & 0.659 & 0.979 [0.978, 0.981] \\ Kaggle, $M"
+paper_tex/sec_v3_real.tex,0.686,size_results.csv:PICP90_lo,"1] \\ Kaggle, $M{=}8$ parallel & 9995 & 0.686 & 0.914 [0.911"
+paper_tex/sec_v3_real.tex,0.914,size_results.csv:spearman,"ggle, $M{=}8$ parallel & 9995 & 0.686 & 0.914 [0.911, 0.917]"
+paper_tex/sec_v3_real.tex,0.911,seg_summary.csv:F1@50_hi,"M{=}8$ parallel & 9995 & 0.686 & 0.914 [0.911, 0.917] \\ Lan"
+paper_tex/sec_v3_real.tex,0.917,seg_summary.csv:F1@250_hi,"parallel & 9995 & 0.686 & 0.914 [0.911, 0.917] \\ LangGraph "
+paper_tex/sec_v3_real.tex,0.676,manuscript_audit.csv:number,"911, 0.917] \\ LangGraph agent & 1547 & 0.676 & 0.977 [0.977"
+paper_tex/sec_v3_real.tex,0.977,seg_summary.csv:F1@50_hi,"17] \\ LangGraph agent & 1547 & 0.676 & 0.977 [0.977, 0.977]"
+paper_tex/sec_v3_real.tex,0.977,seg_summary.csv:F1@50_hi,"LangGraph agent & 1547 & 0.676 & 0.977 [0.977, 0.977] \\ Aut"
+paper_tex/sec_v3_real.tex,0.977,seg_summary.csv:F1@50_hi,"ph agent & 1547 & 0.676 & 0.977 [0.977, 0.977] \\ AutoGen ag"
+paper_tex/sec_v3_real.tex,0.640,manuscript_audit.csv:number,"0.977, 0.977] \\ AutoGen agent & 2362 & 0.640 & 0.952 [0.946"
+paper_tex/sec_v3_real.tex,0.952,seg_summary.csv:F1@50_lo,".977] \\ AutoGen agent & 2362 & 0.640 & 0.952 [0.946, 0.959]"
+paper_tex/sec_v3_real.tex,0.946,seg_summary.csv:F1@100_lo,"\ AutoGen agent & 2362 & 0.640 & 0.952 [0.946, 0.959] \\ Gem"
+paper_tex/sec_v3_real.tex,0.959,seg_summary.csv:F1@100_hi,"en agent & 2362 & 0.640 & 0.952 [0.946, 0.959] \\ Gemini, da"
+paper_tex/sec_v3_real.tex,0.499,tracker_size_cross.csv:MedAPE_per_corpus_fit_odd_eps,"0.959] \\ Gemini, day 1 (clean) & 700 & 0.499 & 0.997 [0.994"
+paper_tex/sec_v3_real.tex,0.997,seg_summary.csv:F1@50,"\ Gemini, day 1 (clean) & 700 & 0.499 & 0.997 [0.994, 1.000]"
+paper_tex/sec_v3_real.tex,0.994,seg_summary.csv:F1@50_lo,"i, day 1 (clean) & 700 & 0.499 & 0.997 [0.994, 1.000] \\ Gem"
+paper_tex/sec_v3_real.tex,1.000,seg_observer_lag.csv:multiplexed,"1 (clean) & 700 & 0.499 & 0.997 [0.994, 1.000] \\ Gemini, da"
+paper_tex/sec_v3_real.tex,0.508,manuscript_audit.csv:number,"1.000] \\ Gemini, day 2 (clean) & 453 & 0.508 & 0.999 [0.997"
+paper_tex/sec_v3_real.tex,0.999,seg_summary.csv:F1@50,"\ Gemini, day 2 (clean) & 453 & 0.508 & 0.999 [0.997, 1.000]"
+paper_tex/sec_v3_real.tex,0.997,seg_summary.csv:F1@50,"i, day 2 (clean) & 453 & 0.508 & 0.999 [0.997, 1.000] \\ Gro"
+paper_tex/sec_v3_real.tex,1.000,seg_observer_lag.csv:multiplexed,"2 (clean) & 453 & 0.508 & 0.999 [0.997, 1.000] \\ Groq, day "
+paper_tex/sec_v3_real.tex,0.500,tracker_link_cross.csv:acc_nonbirth,"7, 1.000] \\ Groq, day 1 (clean) & 91 & 0.500 & 0.995 [0.984"
+paper_tex/sec_v3_real.tex,0.995,seg_summary.csv:P@50,"] \\ Groq, day 1 (clean) & 91 & 0.500 & 0.995 [0.984, 1.000]"
+paper_tex/sec_v3_real.tex,0.984,seg_summary.csv:F1@250,"oq, day 1 (clean) & 91 & 0.500 & 0.995 [0.984, 1.000] \\ Gro"
+paper_tex/sec_v3_real.tex,1.000,seg_observer_lag.csv:multiplexed," 1 (clean) & 91 & 0.500 & 0.995 [0.984, 1.000] \\ Groq, day "
+paper_tex/sec_v3_real.tex,0.500,tracker_link_cross.csv:acc_nonbirth,", 1.000] \\ Groq, day 2 (clean) & 125 & 0.500 & 1.000 [1.000"
+paper_tex/sec_v3_real.tex,1.000,seg_observer_lag.csv:multiplexed," \\ Groq, day 2 (clean) & 125 & 0.500 & 1.000 [1.000, 1.000]"
+paper_tex/sec_v3_real.tex,1.000,seg_observer_lag.csv:multiplexed,"q, day 2 (clean) & 125 & 0.500 & 1.000 [1.000, 1.000] \\ Wor"
+paper_tex/sec_v3_real.tex,1.000,seg_observer_lag.csv:multiplexed,"2 (clean) & 125 & 0.500 & 1.000 [1.000, 1.000] \\ Workers AI"
+paper_tex/sec_v3_real.tex,0.500,tracker_link_cross.csv:acc_nonbirth,"0, 1.000] \\ Workers AI (clean) & 133 & 0.500 & 0.996 [0.989"
+paper_tex/sec_v3_real.tex,0.996,seg_summary.csv:F1@50_lo,"] \\ Workers AI (clean) & 133 & 0.500 & 0.996 [0.989, 1.000]"
+paper_tex/sec_v3_real.tex,0.989,seg_summary.csv:F1@250_hi,"rkers AI (clean) & 133 & 0.500 & 0.996 [0.989, 1.000] \\ \bo"
+paper_tex/sec_v3_real.tex,1.000,seg_observer_lag.csv:multiplexed,"I (clean) & 133 & 0.500 & 0.996 [0.989, 1.000] \\ \bottomrul"
+paper_tex/sec_v3_real.tex,3.3,size_results.csv:MedAE_B,"median error for results $\geq$1\,KB is 3.3\% on dedicated"
+paper_tex/sec_v3_real.tex,3.0,size_results.csv:MedAPE,B is 3.3\% on dedicated connections and 3.0--17\% across t
+paper_tex/sec_v3_real.tex,3.6,size_results.csv:MedAE_B,libration on even Gemini episodes gives 3.6\% error for re
+paper_tex/sec_v3_real.tex,0.42,size_results.csv:n,parent accuracy on multiplexed turns is 0.42 ($M{=}4$) and 
+paper_tex/sec_v3_real.tex,0.29,size_results.csv:n,multiplexed turns is 0.42 ($M{=}4$) and 0.29 ($M{=}8$). For
+paper_tex/sec_v3_real.tex,0.86,seg_summary.csv:F1@50_lo,"y & Joint\\\midrule Kaggle, dedicated & 0.86 & 0.91 & 3.2\%"
+paper_tex/sec_v3_real.tex,0.91,seg_summary.csv:F1@50_hi,"nt\\\midrule Kaggle, dedicated & 0.86 & 0.91 & 3.2\% & 3.3\"
+paper_tex/sec_v3_real.tex,3.2,size_results.csv:MedAPE,"drule Kaggle, dedicated & 0.86 & 0.91 & 3.2\% & 3.3\% \\ K"
+paper_tex/sec_v3_real.tex,3.3,size_results.csv:MedAE_B,"ggle, dedicated & 0.86 & 0.91 & 3.2\% & 3.3\% \\ Kaggle, $"
+paper_tex/sec_v3_real.tex,0.52,size_breaks.csv:det_recall,"91 & 3.2\% & 3.3\% \\ Kaggle, $M{=}4$ & 0.52 & 0.77 & 39.7\"
+paper_tex/sec_v3_real.tex,0.77,seg_summary.csv:F1@50_lo,"2\% & 3.3\% \\ Kaggle, $M{=}4$ & 0.52 & 0.77 & 39.7\% & 7.4"
+paper_tex/sec_v3_real.tex,39.7,size_results.csv:p90_APE,".3\% \\ Kaggle, $M{=}4$ & 0.52 & 0.77 & 39.7\% & 7.4\% \\ K"
+paper_tex/sec_v3_real.tex,7.4,size_results.csv:MedAPE,"aggle, $M{=}4$ & 0.52 & 0.77 & 39.7\% & 7.4\% \\ Kaggle, $"
+paper_tex/sec_v3_real.tex,0.34,seg_observer_lag.csv:lag_p95_ms,"7 & 39.7\% & 7.4\% \\ Kaggle, $M{=}8$ & 0.34 & 0.66 & 45.5\"
+paper_tex/sec_v3_real.tex,0.66,seg_summary.csv:F1@50_lo,"7\% & 7.4\% \\ Kaggle, $M{=}8$ & 0.34 & 0.66 & 45.5\% & 17."
+paper_tex/sec_v3_real.tex,45.5,size_results.csv:PICP90_hi,".4\% \\ Kaggle, $M{=}8$ & 0.34 & 0.66 & 45.5\% & 17.1\% \\ "
+paper_tex/sec_v3_real.tex,17.1,seg_observer_lag.csv:lag_p50_ms,"aggle, $M{=}8$ & 0.34 & 0.66 & 45.5\% & 17.1\% \\ LangGraph"
+paper_tex/sec_v3_real.tex,0.09,seg_observer_lag.csv:lag_p95_ms,& 0.66 & 45.5\% & 17.1\% \\ LangGraph & 0.09 & 0.65 & 36.9\
+paper_tex/sec_v3_real.tex,0.65,seg_summary.csv:P@50,& 45.5\% & 17.1\% \\ LangGraph & 0.09 & 0.65 & 36.9\% & 11.
+paper_tex/sec_v3_real.tex,36.9,tracker_size_cross.csv:MedAPE_per_corpus_fit_odd_eps,% & 17.1\% \\ LangGraph & 0.09 & 0.65 & 36.9\% & 11.6\% \\ 
+paper_tex/sec_v3_real.tex,11.6,size_results.csv:MedAPE_hi,% \\ LangGraph & 0.09 & 0.65 & 36.9\% & 11.6\% \\ AutoGen &
+paper_tex/sec_v3_real.tex,0.55,seg_summary.csv:F1@100_lo,9 & 0.65 & 36.9\% & 11.6\% \\ AutoGen & 0.55 & 0.86 & 30.8\
+paper_tex/sec_v3_real.tex,0.86,seg_summary.csv:F1@50_lo,5 & 36.9\% & 11.6\% \\ AutoGen & 0.55 & 0.86 & 30.8\% & 5.2
+paper_tex/sec_v3_real.tex,30.8,size_results.csv:MedAPE_hi,9\% & 11.6\% \\ AutoGen & 0.55 & 0.86 & 30.8\% & 5.2\% \\ G
+paper_tex/sec_v3_real.tex,5.2,size_results.csv:MedAE_B_hi,6\% \\ AutoGen & 0.55 & 0.86 & 30.8\% & 5.2\% \\ Gemini (p
+paper_tex/sec_v3_real.tex,0.14,seg_observer_lag.csv:lag_p75_ms,& 5.2\% \\ Gemini (per-request conn.) & 0.14 & 0.92 & -- & 
+paper_tex/sec_v3_real.tex,0.92,seg_summary.csv:F1@50_lo, \\ Gemini (per-request conn.) & 0.14 & 0.92 & -- & 3.0\% \
+paper_tex/sec_v3_real.tex,3.0,size_results.csv:MedAPE,per-request conn.) & 0.14 & 0.92 & -- & 3.0\% \\ \bottomru
+paper_tex/sec_v3_real.tex,0.92,seg_summary.csv:F1@50_lo,"table}  Profiled joint tracking reaches 0.92 on Gemini, whe"
+paper_tex/sec_v3_real.tex,0.86,seg_summary.csv:F1@50_lo,"ach request rides a new connection, and 0.86 on AutoGen. Fo"
+paper_tex/sec_v3_real.tex,3.0,size_results.csv:MedAPE,"lts $\geq$1\,KB the size error drops to 3.0\% on Gemini (f"
+paper_tex/sec_v3_real.tex,5.2,size_results.csv:MedAE_B_hi," 87\% log-free with the greedy linker), 5.2\% on AutoGen a"
+paper_tex/sec_v3_real.tex,7.4,size_results.csv:MedAPE,"he greedy linker), 5.2\% on AutoGen and 7.4\% at $M{=}4$. "
+paper_tex/sec_v3_real.tex,0.66,seg_summary.csv:F1@50_lo," corpora remain hard: $M{=}8$ (accuracy 0.66, size error 17"
+paper_tex/sec_v3_real.tex,0.65,seg_summary.csv:P@50,"y 0.66, size error 17\%) and LangGraph (0.65, 12\%), where "
+paper_tex/sec_v3_real.tex,0.80,seg_summary.csv:F1@50_hi, prompt and grow in lockstep. The $\geq$0.80 accuracy targe
+paper_tex/sec_v3_real.tex,0.90,seg_summary.csv:F1@50," but much less: predecessor accuracy is 0.90 (dedicated), 0"
+paper_tex/sec_v3_real.tex,0.68,seg_summary.csv:F1@50_lo,"edecessor accuracy is 0.90 (dedicated), 0.68 ($M{=}4$), 0.5"
+paper_tex/sec_v3_real.tex,0.55,seg_summary.csv:F1@100_lo,"cy is 0.90 (dedicated), 0.68 ($M{=}4$), 0.55 ($M{=}8$), 0.3"
+paper_tex/sec_v3_real.tex,0.33,seg_summary.csv:F1@50_lo,"cated), 0.68 ($M{=}4$), 0.55 ($M{=}8$), 0.33 (LangGraph), 0"
+paper_tex/sec_v3_real.tex,0.71,seg_summary.csv:F1@50_lo,"}4$), 0.55 ($M{=}8$), 0.33 (LangGraph), 0.71 (AutoGen) and "
+paper_tex/sec_v3_real.tex,0.42,size_results.csv:n,"), 0.33 (LangGraph), 0.71 (AutoGen) and 0.42 (Gemini). Prof"
+paper_tex/sec_v3_real.tex,0.89,seg_summary.csv:F1@50,3}). The resulting 90\% intervals cover 0.89--0.96 of resul
+paper_tex/sec_v3_real.tex,0.96,seg_summary.csv:F1@50,he resulting 90\% intervals cover 0.89--0.96 of results on 
+paper_tex/sec_v3_real.tex,0.955,seg_summary.csv:F1@100,"an); the others are conservative (up to 0.955), except LangG"
+paper_tex/sec_v3_real.tex,0.86,seg_summary.csv:F1@50_lo,s and applying it elsewhere ranges from 0.86 to 1.00. Cover
+paper_tex/sec_v3_real.tex,0.77,seg_summary.csv:F1@50_lo,"o 1.00. Coverage below 1\,KB is weaker (0.77--0.93). The in"
+paper_tex/sec_v3_real.tex,0.93,seg_summary.csv:F1@50,". Coverage below 1\,KB is weaker (0.77--0.93). The interval"
+paper_tex/sec_v3_real.tex,1.000,seg_observer_lag.csv:multiplexed,"e's 100\,s edge timeout. Boundary F1 is 1.000 [0.999, 1.000]"
+paper_tex/sec_v3_real.tex,0.999,seg_summary.csv:F1@50,"\,s edge timeout. Boundary F1 is 1.000 [0.999, 1.000], and t"
+paper_tex/sec_v3_real.tex,1.000,seg_observer_lag.csv:multiplexed,"e timeout. Boundary F1 is 1.000 [0.999, 1.000], and the Prop"
+paper_tex/sec_v3_real.tex,5.1,size_results.csv:MedAPE,", 1.000], and the Prop.~1 size error is 5.1\% for results "
+paper_tex/sec_v3_real.tex,0.995,seg_summary.csv:P@50," of our 2,000-turn goal. Boundary F1 is 0.995--1.000 on ever"
+paper_tex/sec_v3_real.tex,1.000,seg_observer_lag.csv:multiplexed," 2,000-turn goal. Boundary F1 is 0.995--1.000 on every clean"
+paper_tex/sec_v3_real.tex,0.90,seg_summary.csv:F1@50,tt{scripts/14}). Closed-set accuracy is 0.90 on AutoGen (ch
+paper_tex/sec_v3_real.tex,0.17,seg_observer_lag.csv:frac_gt_50ms,set accuracy is 0.90 on AutoGen (chance 0.17) and 0.69 on L
+paper_tex/sec_v3_real.tex,0.69,seg_summary.csv:F1@50,cy is 0.90 on AutoGen (chance 0.17) and 0.69 on LangGraph (
+paper_tex/sec_v3_real.tex,0.25,seg_observer_lag.csv:lag_p90_ms,"nce 0.17) and 0.69 on LangGraph (chance 0.25), against 0.52"
+paper_tex/sec_v3_real.tex,0.52,size_breaks.csv:det_recall,".69 on LangGraph (chance 0.25), against 0.52 on the scripte"
+paper_tex/sec_v3_real.tex,0.08,seg_observer_lag.csv:lag_p75_ms,cripted agent with twelve tools (chance 0.08). Detection of
+paper_tex/sec_v3_real.tex,0.51,seg_summary.csv:F1@50_lo,"x, energy and Mahalanobis scores (AUROC 0.51--0.62). Cipher"
+paper_tex/sec_v3_real.tex,0.62,seg_summary.csv:F1@50_lo,rgy and Mahalanobis scores (AUROC 0.51--0.62). Ciphertext t
+paper_tex/sec_v3_real.tex,30.0,tracker_size_profiled.csv:MedAPE_per_corpus_fit_odd_eps,"le Kaggle, dedicated & $<$1\,KB & 146 & 30.0 & 0.89 \\ Kagg"
+paper_tex/sec_v3_real.tex,0.89,seg_summary.csv:F1@50,"le, dedicated & $<$1\,KB & 146 & 30.0 & 0.89 \\ Kaggle, ded"
+paper_tex/sec_v3_real.tex,3.3,size_results.csv:MedAE_B,"Kaggle, dedicated & $\geq$1\,KB & 174 & 3.3 & 0.94 \\ Kagg"
+paper_tex/sec_v3_real.tex,0.94,seg_summary.csv:F1@50,", dedicated & $\geq$1\,KB & 174 & 3.3 & 0.94 \\ Kaggle, $M{"
+paper_tex/sec_v3_real.tex,33.0,tracker_link_cross.csv:acc,"4 \\ Kaggle, $M{=}4$ & $<$1\,KB & 741 & 33.0 & 0.80 \\ Kagg"
+paper_tex/sec_v3_real.tex,0.80,seg_summary.csv:F1@50_hi,"ggle, $M{=}4$ & $<$1\,KB & 741 & 33.0 & 0.80 \\ Kaggle, $M{"
+paper_tex/sec_v3_real.tex,7.4,size_results.csv:MedAPE," Kaggle, $M{=}4$ & $\geq$1\,KB & 1217 & 7.4 & 0.94 \\ Kagg"
+paper_tex/sec_v3_real.tex,0.94,seg_summary.csv:F1@50,"e, $M{=}4$ & $\geq$1\,KB & 1217 & 7.4 & 0.94 \\ Kaggle, $M{"
+paper_tex/sec_v3_real.tex,101.6,tracker_size_profiled.csv:MedAPE_per_corpus_fit_odd_eps,"4 \\ Kaggle, $M{=}8$ & $<$1\,KB & 896 & 101.6 & 0.80 \\ Kagg"
+paper_tex/sec_v3_real.tex,0.80,seg_summary.csv:F1@50_hi,"gle, $M{=}8$ & $<$1\,KB & 896 & 101.6 & 0.80 \\ Kaggle, $M{"
+paper_tex/sec_v3_real.tex,17.1,seg_observer_lag.csv:lag_p50_ms," Kaggle, $M{=}8$ & $\geq$1\,KB & 1471 & 17.1 & 0.96 \\ Lang"
+paper_tex/sec_v3_real.tex,0.96,seg_summary.csv:F1@50,", $M{=}8$ & $\geq$1\,KB & 1471 & 17.1 & 0.96 \\ LangGraph &"
+paper_tex/sec_v3_real.tex,66.9,size_results.csv:spearman,"1 & 0.96 \\ LangGraph & $<$1\,KB & 46 & 66.9 & 0.85 \\ Lang"
+paper_tex/sec_v3_real.tex,0.85,seg_summary.csv:F1@50_lo,"6 \\ LangGraph & $<$1\,KB & 46 & 66.9 & 0.85 \\ LangGraph &"
+paper_tex/sec_v3_real.tex,11.6,size_results.csv:MedAPE_hi,"0.85 \\ LangGraph & $\geq$1\,KB & 189 & 11.6 & 0.92 \\ Auto"
+paper_tex/sec_v3_real.tex,0.92,seg_summary.csv:F1@50_lo," LangGraph & $\geq$1\,KB & 189 & 11.6 & 0.92 \\ AutoGen & $"
+paper_tex/sec_v3_real.tex,55.1,tracker_link_cross.csv:acc,".6 & 0.92 \\ AutoGen & $<$1\,KB & 116 & 55.1 & 0.92 \\ Auto"
+paper_tex/sec_v3_real.tex,0.92,seg_summary.csv:F1@50_lo,"92 \\ AutoGen & $<$1\,KB & 116 & 55.1 & 0.92 \\ AutoGen & $"
+paper_tex/sec_v3_real.tex,5.2,size_results.csv:MedAE_B_hi,"& 0.92 \\ AutoGen & $\geq$1\,KB & 365 & 5.2 & 0.94 \\ Gemi"
+paper_tex/sec_v3_real.tex,0.94,seg_summary.csv:F1@50," \\ AutoGen & $\geq$1\,KB & 365 & 5.2 & 0.94 \\ Gemini (per"
+paper_tex/sec_v3_real.tex,20.3,size_results.csv:width_med_ratio," (per-request conn.) & $<$1\,KB & 202 & 20.3 & 0.92 \\ Gemi"
+paper_tex/sec_v3_real.tex,0.92,seg_summary.csv:F1@50_lo,"equest conn.) & $<$1\,KB & 202 & 20.3 & 0.92 \\ Gemini (per"
+paper_tex/sec_v3_real.tex,3.0,size_results.csv:MedAPE,"per-request conn.) & $\geq$1\,KB & 65 & 3.0 & 1.00 \\ \bot"
+paper_tex/sec_v3_real.tex,1.00,seg_observer_lag.csv:multiplexed,"quest conn.) & $\geq$1\,KB & 65 & 3.0 & 1.00 \\ \bottomrule"
+paper_tex/sec_v3_real.tex,0.69,seg_summary.csv:F1@50,otated assistant steps (Spearman $\rho$ 0.69--0.96). \item 
+paper_tex/sec_v3_real.tex,0.96,seg_summary.csv:F1@50, assistant steps (Spearman $\rho$ 0.69--0.96). \item \textb
+paper_tex/sec_v3_real.tex,0.92,seg_summary.csv:F1@50_lo,\\midrule USA\_cc\_dpsk & 642 & 25525 & 0.92 & 108 & 20.4 &
+paper_tex/sec_v3_real.tex,20.4,size_results.csv:MedAPE_lo,\_cc\_dpsk & 642 & 25525 & 0.92 & 108 & 20.4 & 57 \\ cc\_dp
+paper_tex/sec_v3_real.tex,0.96,seg_summary.csv:F1@50,& 20.4 & 57 \\ cc\_dpsk & 632 & 19078 & 0.96 & 146 & 12.7 &
+paper_tex/sec_v3_real.tex,12.7,size_results.csv:MedAPE_hi,\ cc\_dpsk & 632 & 19078 & 0.96 & 146 & 12.7 & 61 \\ cc\_mi
+paper_tex/sec_v3_real.tex,0.69,seg_summary.csv:F1@50,& 12.7 & 61 \\ cc\_mimo & 348 & 16630 & 0.69 & 111 & 7.5 & 
+paper_tex/sec_v3_real.tex,7.5,size_results.csv:MedAPE,\ cc\_mimo & 348 & 16630 & 0.69 & 111 & 7.5 & 76 \\ cc\_xi
+paper_tex/sec_v3_real.tex,0.84,seg_summary.csv:F1@50,& 7.5 & 76 \\ cc\_xiaoai & 382 & 8181 & 0.84 & 43 & 25.4 & 
+paper_tex/sec_v3_real.tex,25.4,tracker_size_profiled.csv:MedAPE_kaggle_fit,\ cc\_xiaoai & 382 & 8181 & 0.84 & 43 & 25.4 & 88 \\ qwen &
+paper_tex/sec_v3_real.tex,0.91,seg_summary.csv:F1@50_hi, 43 & 25.4 & 88 \\ qwen & 623 & 29330 & 0.91 & 129 & 15.6 &
+paper_tex/sec_v3_real.tex,15.6,manuscript_audit.csv:number,88 \\ qwen & 623 & 29330 & 0.91 & 129 & 15.6 & 71 \\ \botto
+paper_tex/sec_v3_real.tex,0.720,seg_summary.csv:F1@50,ily & volume\_hist (AgentPrint-style) & 0.720 & 0.714 \\ fam
+paper_tex/sec_v3_real.tex,0.714,manuscript_audit.csv:number,lume\_hist (AgentPrint-style) & 0.720 & 0.714 \\ family & ou
+paper_tex/sec_v3_real.tex,0.800,size_results.csv:spearman,\\ family & ours: recovered structure & 0.800 & 0.819 \\ fam
+paper_tex/sec_v3_real.tex,0.819,seg_summary.csv:R@100,y & ours: recovered structure & 0.800 & 0.819 \\ family & ou
+paper_tex/sec_v3_real.tex,0.846,seg_summary.csv:R@250,800 & 0.819 \\ family & ours + volume & 0.846 & 0.854 \\ tas
+paper_tex/sec_v3_real.tex,0.854,seg_summary.csv:F1@50_lo,819 \\ family & ours + volume & 0.846 & 0.854 \\ task & volu
+paper_tex/sec_v3_real.tex,0.457,manuscript_audit.csv:number,ask & volume\_hist (AgentPrint-style) & 0.457 & 0.450 \\ tas
+paper_tex/sec_v3_real.tex,0.450,tracker_size_cross.csv:MedAPE_kaggle_fit,lume\_hist (AgentPrint-style) & 0.457 & 0.450 \\ task & ours
+paper_tex/sec_v3_real.tex,0.543,tracker_kappa_cross.csv:eps,0 \\ task & ours: recovered structure & 0.543 & 0.551 \\ tas
+paper_tex/sec_v3_real.tex,0.551,size_results.csv:MedAE_B_lo,k & ours: recovered structure & 0.543 & 0.551 \\ task & ours
+paper_tex/sec_v3_real.tex,0.571,size_results.csv:PICP90,0.543 & 0.551 \\ task & ours + volume & 0.571 & 0.576 \\ \bo
+paper_tex/sec_v3_real.tex,0.576,manuscript_audit.csv:number,0.551 \\ task & ours + volume & 0.571 & 0.576 \\ \bottomrule
+paper_tex/sec_v3_real.tex,0.26,size_results.csv:n,lose to that of our re-implementations (0.26--0.39 versus 0
+paper_tex/sec_v3_real.tex,0.39,seg_summary.csv:F1@50,o that of our re-implementations (0.26--0.39 versus 0.25--0
+paper_tex/sec_v3_real.tex,0.25,seg_observer_lag.csv:lag_p90_ms,r re-implementations (0.26--0.39 versus 0.25--0.37) and rem
+paper_tex/sec_v3_real.tex,0.37,seg_observer_lag.csv:lag_p99_ms,mplementations (0.26--0.39 versus 0.25--0.37) and remains w

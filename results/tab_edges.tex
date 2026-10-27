@@ -1,0 +1,22 @@
+\begin{table}
+\caption{Edge-type F1 (undetected turns count as errors).}
+\label{tab:edges}
+\begin{tabular}{llrrrrrrrrr}
+\toprule
+tag & model & macroF1 & lo & hi & F1\_start & F1\_sequential & F1\_parallel\_fork\_join & F1\_transport\_retry & F1\_semantic\_retry & F1\_sub\_agent \\
+\midrule
+main\_seed3 & slice\_only & 0.426 & 0.413 & 0.438 & 0.806 & 0.469 & 0.272 & 0.169 & 0.303 & 0.539 \\
+main\_seed3 & v3\_full & 0.819 & 0.809 & 0.832 & 0.831 & 0.891 & 0.660 & 0.982 & 0.621 & 0.932 \\
+main\_seed3 & v3\_no\_context & 0.558 & 0.544 & 0.572 & 0.800 & 0.619 & 0.400 & 0.379 & 0.358 & 0.792 \\
+main\_seed3 & v3\_no\_latency & 0.778 & 0.766 & 0.789 & 0.821 & 0.833 & 0.631 & 0.982 & 0.588 & 0.812 \\
+failfast & slice\_only & 0.422 & 0.400 & 0.444 & 0.787 & 0.443 & 0.256 & 0.171 & 0.330 & 0.545 \\
+failfast & v3\_full & 0.807 & 0.782 & 0.827 & 0.798 & 0.889 & 0.638 & 0.988 & 0.607 & 0.922 \\
+failfast & v3\_no\_context & 0.550 & 0.520 & 0.577 & 0.800 & 0.600 & 0.369 & 0.469 & 0.292 & 0.768 \\
+failfast & v3\_no\_latency & 0.776 & 0.754 & 0.795 & 0.800 & 0.826 & 0.628 & 0.994 & 0.606 & 0.800 \\
+subM8 & slice\_only & 0.478 & 0.459 & 0.496 & 0.749 & 0.542 & 0.269 & 0.293 & 0.198 & 0.820 \\
+subM8 & v3\_full & 0.710 & 0.686 & 0.729 & 0.758 & 0.768 & 0.456 & 0.971 & 0.372 & 0.937 \\
+subM8 & v3\_no\_context & 0.555 & 0.537 & 0.572 & 0.753 & 0.656 & 0.332 & 0.481 & 0.239 & 0.870 \\
+subM8 & v3\_no\_latency & 0.707 & 0.689 & 0.725 & 0.788 & 0.743 & 0.446 & 0.983 & 0.377 & 0.903 \\
+\bottomrule
+\end{tabular}
+\end{table}

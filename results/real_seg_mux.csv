@@ -1,0 +1,11 @@
+tag,method,mux_conns,n_req,F1_100
+real_m4v3,burst_rule,257,4825,0.9727089306573219
+real_m4v3,frame_rule,257,4825,0.6793382611756423
+real_m8v3,burst_rule,268,8574,0.8980273726145345
+real_m8v3,frame_rule,268,8574,0.7021825478072151
+fw_autogen,burst_rule,104,1159,0.8998576174655909
+fw_autogen,frame_rule,104,1159,0.687833827893175
+fw_langgraph,burst_rule,1,1547,0.9765289256198347
+fw_langgraph,frame_rule,1,1547,0.6762841530054645
+real_7b_m4,burst_rule,9,99,0.9239130434782609
+real_7b_m4,frame_rule,9,99,0.668918918918919

@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+data/
+*.pcap
+*.pcapng
+*keylog*
+*.npz
+.env
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.pdf

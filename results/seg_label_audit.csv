@@ -1,0 +1,13 @@
+set,multiplexed,n_requests,paper_labels,sizeaware_labels
+train,False,7816,7816,7812
+train,True,13227,11671,13199
+main_seed3,False,3465,3465,3462
+main_seed3,True,2005,1885,2004
+subM1,False,1269,1269,1269
+subM1,True,404,384,404
+subM2,False,190,190,190
+subM2,True,1842,1713,1830
+subM4,False,227,227,227
+subM4,True,2640,2297,2631
+subM8,False,198,198,198
+subM8,True,4199,3383,4113

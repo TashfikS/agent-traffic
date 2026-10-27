@@ -1,0 +1,50 @@
+\begin{table}
+\caption{Boundary F1 on multiplexed connections (1,000-sample connection bootstrap).}
+\label{tab:seg}
+\begin{tabular}{lllrrlr}
+\toprule
+method & clock & tag & n\_conn & F1@50 & F1@100 [95\% CI] & F1@250 \\
+\midrule
+frame\_dct & app & main\_seed3 & 98 & 0.899 & 0.962 [0.954, 0.970] & 0.981 \\
+frame\_dct & app & subM1 & 19 & 0.901 & 0.965 [0.947, 0.982] & 0.983 \\
+frame\_dct & app & subM2 & 100 & 0.723 & 0.871 [0.840, 0.900] & 0.974 \\
+frame\_dct & app & subM4 & 100 & 0.570 & 0.824 [0.798, 0.852] & 0.972 \\
+frame\_dct & app & subM8 & 100 & 0.367 & 0.610 [0.555, 0.662] & 0.886 \\
+frame\_dct & wire & main\_seed3 & 98 & 1.000 & 1.000 [0.998, 1.000] & 1.000 \\
+frame\_dct & wire & subM1 & 19 & 1.000 & 1.000 [1.000, 1.000] & 1.000 \\
+frame\_dct & wire & subM2 & 100 & 0.993 & 0.993 [0.990, 0.997] & 0.993 \\
+frame\_dct & wire & subM4 & 100 & 0.997 & 0.997 [0.994, 0.999] & 0.997 \\
+frame\_dct & wire & subM8 & 100 & 0.978 & 0.978 [0.968, 0.987] & 0.979 \\
+frame\_gbm & app & main\_seed3 & 98 & 0.899 & 0.962 [0.954, 0.970] & 0.981 \\
+frame\_gbm & app & subM1 & 19 & 0.901 & 0.965 [0.947, 0.982] & 0.983 \\
+frame\_gbm & app & subM2 & 100 & 0.723 & 0.871 [0.840, 0.900] & 0.974 \\
+frame\_gbm & app & subM4 & 100 & 0.570 & 0.824 [0.798, 0.852] & 0.972 \\
+frame\_gbm & app & subM8 & 100 & 0.367 & 0.610 [0.556, 0.662] & 0.886 \\
+frame\_gbm & wire & main\_seed3 & 98 & 1.000 & 1.000 [0.998, 1.000] & 1.000 \\
+frame\_gbm & wire & subM1 & 19 & 1.000 & 1.000 [1.000, 1.000] & 1.000 \\
+frame\_gbm & wire & subM2 & 100 & 0.993 & 0.993 [0.990, 0.997] & 0.993 \\
+frame\_gbm & wire & subM4 & 100 & 0.997 & 0.997 [0.994, 0.999] & 0.997 \\
+frame\_gbm & wire & subM8 & 100 & 0.978 & 0.979 [0.968, 0.987] & 0.980 \\
+gbm\_nms\_paper & app & main\_seed3 & 98 & 0.880 & 0.932 [0.924, 0.940] & 0.950 \\
+gbm\_nms\_paper & app & subM1 & 19 & 0.886 & 0.944 [0.929, 0.959] & 0.954 \\
+gbm\_nms\_paper & app & subM2 & 100 & 0.720 & 0.849 [0.820, 0.874] & 0.938 \\
+gbm\_nms\_paper & app & subM4 & 100 & 0.575 & 0.791 [0.768, 0.815] & 0.902 \\
+gbm\_nms\_paper & app & subM8 & 100 & 0.389 & 0.606 [0.554, 0.657] & 0.826 \\
+gbm\_nms\_paper & wire & main\_seed3 & 98 & 0.968 & 0.968 [0.966, 0.970] & 0.968 \\
+gbm\_nms\_paper & wire & subM1 & 19 & 0.972 & 0.972 [0.966, 0.977] & 0.972 \\
+gbm\_nms\_paper & wire & subM2 & 100 & 0.956 & 0.956 [0.952, 0.960] & 0.956 \\
+gbm\_nms\_paper & wire & subM4 & 100 & 0.926 & 0.926 [0.921, 0.930] & 0.926 \\
+gbm\_nms\_paper & wire & subM8 & 100 & 0.885 & 0.886 [0.879, 0.892] & 0.887 \\
+rule\_paper & app & main\_seed3 & 98 & 0.880 & 0.932 [0.924, 0.939] & 0.949 \\
+rule\_paper & app & subM1 & 19 & 0.886 & 0.944 [0.929, 0.959] & 0.954 \\
+rule\_paper & app & subM2 & 100 & 0.721 & 0.849 [0.820, 0.874] & 0.938 \\
+rule\_paper & app & subM4 & 100 & 0.575 & 0.791 [0.768, 0.815] & 0.902 \\
+rule\_paper & app & subM8 & 100 & 0.389 & 0.606 [0.553, 0.657] & 0.826 \\
+rule\_paper & wire & main\_seed3 & 98 & 0.967 & 0.967 [0.965, 0.969] & 0.967 \\
+rule\_paper & wire & subM1 & 19 & 0.972 & 0.972 [0.966, 0.977] & 0.972 \\
+rule\_paper & wire & subM2 & 100 & 0.956 & 0.956 [0.952, 0.961] & 0.956 \\
+rule\_paper & wire & subM4 & 100 & 0.925 & 0.925 [0.921, 0.930] & 0.925 \\
+rule\_paper & wire & subM8 & 100 & 0.885 & 0.885 [0.879, 0.892] & 0.887 \\
+\bottomrule
+\end{tabular}
+\end{table}

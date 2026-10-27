@@ -1,0 +1,62 @@
+[
+ {
+  "tag": "fw_autogen",
+  "model": "deep_fingerprinting_official",
+  "n": 1126,
+  "macroF1": 0.3375178545345397,
+  "F1_start": 0.988,
+  "F1_sequential": 0.6617405582922824,
+  "F1_parallel_fork_join": 0.0,
+  "F1_transport_retry": 0.0,
+  "F1_semantic_retry": 0.0,
+  "F1_sub_agent": 0.375366568914956
+ },
+ {
+  "tag": "fw_langgraph",
+  "model": "deep_fingerprinting_official",
+  "n": 733,
+  "macroF1": 0.12137931034482759,
+  "F1_start": 0.0,
+  "F1_sequential": 0.4482758620689655,
+  "F1_parallel_fork_join": 0.0,
+  "F1_transport_retry": 0.0,
+  "F1_semantic_retry": 0.0,
+  "F1_sub_agent": 0.28
+ },
+ {
+  "tag": "real_m4v3",
+  "model": "deep_fingerprinting_official",
+  "n": 3132,
+  "macroF1": 0.324640266851189,
+  "F1_start": 0.6896551724137931,
+  "F1_sequential": 0.7260624679979518,
+  "F1_parallel_fork_join": 0.0,
+  "F1_transport_retry": 0.0,
+  "F1_semantic_retry": 0.0,
+  "F1_sub_agent": 0.5321239606953893
+ },
+ {
+  "tag": "real_m8v3",
+  "model": "deep_fingerprinting_official",
+  "n": 3801,
+  "macroF1": 0.22640697627592954,
+  "F1_start": 0.4132231404958678,
+  "F1_sequential": 0.7498235709244884,
+  "F1_parallel_fork_join": 0.0,
+  "F1_transport_retry": 0.0,
+  "F1_semantic_retry": 0.0,
+  "F1_sub_agent": 0.19539514623522092
+ },
+ {
+  "tag": "real_main",
+  "model": "deep_fingerprinting_official",
+  "n": 694,
+  "macroF1": 0.28415284214499165,
+  "F1_start": 0.8362068965517241,
+  "F1_sequential": 0.7838616714697406,
+  "F1_parallel_fork_join": 0.0,
+  "F1_transport_retry": 0.0,
+  "F1_semantic_retry": 0.0,
+  "F1_sub_agent": 0.08484848484848485
+ }
+]
